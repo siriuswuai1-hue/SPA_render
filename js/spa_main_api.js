@@ -1,6 +1,7 @@
 //const dataHost = "localhost";
-const dataHost = "192.168.10.2";
+//const dataHost = "192.168.10.2";
 //const dataHost = "10.201.171.105";
+const dataHost = "flask-api-render-gj52.onrender.com";
 
 // wowjs 初始化
 new WOW().init();
@@ -82,7 +83,7 @@ $(async function () {
             flag_l_name = flag_l_pass = false;
 
             //傳遞至後端執行登入驗證
-            axios.post(`http://${dataHost}:5000/api/login`, {
+            axios.post(`http://${dataHost}/api/login`, {
                 username: $("#l_name").val(),
                 password: $("#l_pass").val()
             })
@@ -180,7 +181,7 @@ $(async function () {
             if (inputJudge("#r_name", "text", 2, 30)) {
                 let username = $(this).val();
                 //傳遞至後端驗證帳號是否已存在
-                axios.post(`http://${dataHost}:5000/api/checkuni`, {
+                axios.post(`http://${dataHost}/api/checkuni`, {
                     username: username
                 })
                     .then(function (response) {
@@ -263,7 +264,7 @@ $(async function () {
                     username: $("#r_name").val(),
                     password: $("#r_pass01").val()
                 }
-                axios.post(`http://${dataHost}:5000/api/register`, jsonDATA)
+                axios.post(`http://${dataHost}/api/register`, jsonDATA)
                     .then(function (response) {
                         console.log(response);
                         if (response.request.status == 200) {
@@ -1214,7 +1215,7 @@ async function checkLoginStatus() {
         clearLoginUI();
         announceModal();
     } else {
-        axios.get(`http://${dataHost}:5000/api/me`, {
+        axios.get(`http://${dataHost}/api/me`, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(function (response) {
