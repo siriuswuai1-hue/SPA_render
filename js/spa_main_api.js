@@ -48,13 +48,12 @@ let flag_r_name = false,
     timer = null;
 
 async function init() {
+    await checkLoginStatus();
     await getTravelFoodItem();
     await getHotelData();
-    await getBarItem();
-    await getAllSongs();
+    //await getBarItem();
+    //await getAllSongs();
     //檢查toekn是否存在和合法
-    await checkLoginStatus();
-
 }
 
 //main function start
