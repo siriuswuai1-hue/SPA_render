@@ -1,0 +1,96 @@
+/* roller 相關應用 */
+/* 上 */
+.roller-box-t {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-t .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* background-color: rgba(141, 219, 67, 0.5); */
+    transform: translateY(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-t:hover .roller {
+    transform: translate(0);
+    transition: transform 1s;
+}
+
+/* 下 */
+.roller-box-b {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-b .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(141, 219, 67, 0.5);
+    transform: translateY(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-b:hover .roller {
+    transform: translate(0);
+    transition: transform 1s;
+}
+
+/* 左 */
+.roller-box-l {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-l .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(141, 219, 67, 0.5);
+    transform: translateX(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-l:hover .roller {
+    transform: translate(0);
+    transition: transform 1s;
+}
+
+/* 右 */
+.roller-box-r {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-r .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(141, 219, 67, 0.5);
+    transform: translateX(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-r:hover .roller {
+    transform: translate(0);
+    transition: transform 1s;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=ch, initial-scale=1.0">
+    <title>ch8. 間隔 (Spacing) - ex02</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+    <style>
+        .bg-cover {
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .roller-box {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roller-box .roller {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(141, 219, 67, 0.5);
+            transform: translateY(-100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .roller-box:hover .roller {
+            transform: translateX(0);
+            transition: transform 1.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 bg-cover roller-box"
+                style="background-image: url(images/party000.jpg); height: 220px;">
+                <div class="roller">
+                    <a class="btn btn-success mx-auto">跳舞區介紹</a>
+                </div>
+            </div>
+            <div class="col-md-4 bg-cover roller-box"
+                style="background-image: url(images/party001.jpg); height: 220px;">
+                <div class="roller">
+                    <a href="#" target="_blank" class="btn btn-danger mx-auto">進階會員功能</a>
+                </div>
+            </div>
+            <div class="col-md-4 bg-cover" style="background-image: url(images/party002.jpg); height: 220px;"></div>
+        </div>
+        <div class="row bg-01" style="height: 100vh;">
+            <div class="col-md-3">
+                <div class="d-flex flex-column h-100 row">
+                    <div class="h-25 bg-cover" style="background-image: url(images/party009.jpg);"></div>
+                    <div class="h-50 bg-cover roller-box" style="background-image: url(images//beauty02.jpg);">
+                        <div class="roller">
+                            <a href="#" target="_blank" class="btn btn-danger mx-auto">摩天輪</a>
+                        </div>
+                    </div>
+                    <div class="h-25 bg-cover" style="background-image: url(images/party001.jpg);"></div>
+                </div>
+            </div>
+            <div class="col-md-5 bg-cover roller-box" style="background-image: url(images/party003.jpg);">
+                        <div class="roller">
+                            <a href="#" target="_blank" class="btn btn-danger mx-auto">煙火秀</a>
+                        </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex flex-column h-100 row">
+                    <div class="h-50 bg-cover" style="background-image: url(images/party004.jpg);"></div>
+                    <div class="h-50 bg-cover" style="background-image: url(images/party005.jpg);"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 bg-cover" style="background-image: url(images/landscape01.avif); height: 220px;"></div>
+            <div class="col-md-3 bg-cover" style="background-image: url(images/landscape02.avif); height: 220px;"></div>
+            <div class="col-md-3 bg-cover" style="background-image: url(images/landscape03.avif); height: 220px;"></div>
+            <div class="col-md-3 bg-cover" style="background-image: url(images/landscape04.avif); height: 220px;"></div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

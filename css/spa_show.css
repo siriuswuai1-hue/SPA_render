@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+:root {
+    /* 廣泛用途 */
+    --color01: #D3B7D8;
+    /* 淡紫粉 - 柔和背景 */
+    --color02: #A13E97;
+    /* 品紅紫 - 視覺主色 */
+    --color03: #632A7E;
+    /* 深紫 - 文字與重點強調 */
+    --color04: #280E3B;
+    /* 夜紫 - 背景或底層區塊 */
+    --color05: #F4E9F9;
+    /* 亮粉霧白 - 區塊底色或Hover */
+    --color06: #E7C7F5;
+    /* 柔紫米色 - 補助色 */
+    --color07: #8C5FB4;
+    /* 紫羅蘭 - 標題或連結色 */
+    --color08: #B583D3;
+    /* 亮紫 - 次要強調 */
+    --color09: #EFE1F2;
+    /* 淺霧粉 - 內文區塊背景 */
+    --color10: #1E0129;
+    /* 暗夜紫 - Footer或對比底 */
+
+    --color11: #2874A6;
+    --color12: #AED6F1;
+    --color13: #154360;
+    --color14: #1B4F72;
+    --color15: #1F618D;
+    --color16: #fbfbfc;
+
+
+    /* 背景色 */
+    --bgcolor01: #B583D3;
+    --bgcolor02: #deeb91;
+    --bgcolor03: #b56cd6;
+
+
+    /* 文字顏色 */
+    --textcolor01: #ecebeb;
+    --textcolor02: #0c0c0c;
+}
+
+body {
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+
+/* 字體顏色 */
+.text-01 {
+    color: var(--color01);
+}
+
+.text-02 {
+    color: var(--color02);
+}
+
+.text-03 {
+    color: var(--color03);
+}
+
+/* 字體粗細 */
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+
+/* 背景色 */
+/* bg-01：主色亮紫漸層＋玻璃效果 */
+.bg-01 {
+    background: linear-gradient(90deg, rgba(245, 224, 206, 0.6), rgba(216, 124, 20, 0.6));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(140, 95, 180, 0.3);
+    border-radius: 15px;
+    padding: 5px;
+    height: 100%;
+}
+
+.bg-02 {
+    background-color: var(--bgcolor02);
+}
+
+.bg-03 {
+    background-color: var(--bgcolor03);
+}
+
+.bg-04 {
+    background: linear-gradient(90deg, rgba(245, 224, 206, 0.6), rgba(92, 216, 20, 0.6));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(140, 95, 180, 0.3);
+    border-radius: 15px;
+    padding: 5px;
+    height: 100%;
+}
+
+.bg-05 {
+    background: linear-gradient(90deg, rgba(92, 216, 20, 0.6), rgba(245, 224, 206, 0.6));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(140, 95, 180, 0.3);
+    border-radius: 15px;
+    padding: 5px;
+    height: 100%;
+}
+
+/* 背景圖相關 */
+.bg-cover {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* roller 相關應用 */
+.roller-box-t {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-t .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(141, 219, 67, 0.5);
+    transform: translateY(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-t:hover .roller {
+    transform: translateX(0);
+    transition: transform 1.5s;
+}
+
+.roller-box-b {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-b .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(141, 219, 67, 0.5);
+    transform: translateY(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-b:hover .roller {
+    transform: translateX(0);
+    transition: transform 1.5s;
+}
+
+* {
+    scroll-margin-top: 90px;
+    /* 固定導航欄高度 */
+}
+
+/* s03 v2 */
+.c-item2 {
+    height: 80vh;
+    min-height: 400px;
+    position: relative;
+}
+
+.c-item2::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.3));
+}
+
+.carousel-caption-box {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    max-width: 450px;
+    max-height: 400px;
+    text-align: left;
+}
+
+.carousel-badge {
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    border-radius: 999px;
+    padding: 4px 15px;
+    font-size: 0.85rem;
+    letter-spacing: 0.2rem;
+    display: inline-block;
+}
+
+/* s03 v1 */
+/* .carousel-caption-text {
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 10px;
+          box-shadow: 2px 2px 6px 2px #ccc;
+        } */
+
+/* 可用GPT AI 美化*/
+.s10-text {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px 1px #ccc;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.s10-text p {
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .s06-text {
+        z-index: 100;
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 1px 1px 2px 1px #ccc;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .s06-text p {
+        color: white;
+    }
+
+    .s08-img {
+        z-index: -100;
+    }
+}
+
+.product-card {
+    background-color: #111;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.01);
+    transition: transform 0.3s, border 0.3s, box-shadow 0.3s;
+}
+
+/* .product-card:hover {
+                transform: translateY(-5px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, 0.6);
+            } */
+
+.product-card img {
+    width: 100%;
+    /* height: 180px; */
+    object-fit: cover;
+}
+
+.product-section-title {
+    letter-spacing: 0.2rem;
+}

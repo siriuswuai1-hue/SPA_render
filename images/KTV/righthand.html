@@ -1,0 +1,2844 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://192.168.10.19/web202510/ -->
+<html lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#17</title>
+    <link rel="stylesheet" href="./righthand_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./righthand_files/animate.min.css">
+    <link rel="stylesheet" href="./righthand_files/all.min.css">
+    <link rel="stylesheet" href="./righthand_files/my.css">
+    <style>
+        .s07-userimg {
+            width: 120px;
+            height: 120px;
+            background-color: var(--color01);
+            background-image: url(images/Conan\ 柯南.jpg);
+            border-radius: 10px;
+            transition: transform 0.6s, box-shadow 0.6s;
+        }
+
+        .s07-userimg:hover {
+            /* width: 120px;
+            height: 120px;
+            background-color: var(--color01); */
+            background-image: url(images/Conan2\ 柯南.jpg);
+            transform: scale(1.2);
+            box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+
+
+        .s10-text {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 1px 1px 2px 1px #ccc;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .s10-text .h3 {
+            color: #000;
+        }
+
+
+        @media screen and (max-width: 768px) {
+
+            /* 當螢幕或視窗的寬度小於或等於 768 像素時（即在大部分平板和手機上），
+               將時間軸區塊 (.timeline-block-single-line) 元素
+               最前面通常用於裝飾或結構設計的偽元素 (::before) 隱藏起來。 
+            */
+            /* .timeline-block-single-line::before {
+                display: none;
+            } */
+
+            /* 圖片改為背景，整個 row 都可以當成背景承載區 */
+            .s06-row {
+                position: relative;
+                background: url("images/Background-Dark\ Sky-001.webp") center/cover no-repeat;
+                padding: 20px;
+            }
+
+            /* 隱藏原本的 img，只在 md 以上顯示 */
+            .s06-img img {
+                display: none;
+            }
+
+            /* 文字疊在圖片上方 */
+            .s06-text {
+                position: relative;
+                z-index: 10;
+
+                background-color: rgba(0, 0, 0, 0.45);
+                padding: 15px;
+                border-radius: 15px;
+                box-shadow: 1px 1px 2px 1px #ccc;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            .s06-text p {
+                color: white;
+            }
+
+        }
+    </style>
+<style>:root{--swal2-outline: 0 0 0 3px rgba(100, 150, 200, 0.5);--swal2-container-padding: 0.625em;--swal2-backdrop: rgba(0, 0, 0, 0.4);--swal2-backdrop-transition: background-color 0.15s;--swal2-width: 32em;--swal2-padding: 0 0 1.25em;--swal2-border: none;--swal2-border-radius: 0.3125rem;--swal2-background: white;--swal2-color: #545454;--swal2-show-animation: swal2-show 0.3s;--swal2-hide-animation: swal2-hide 0.15s forwards;--swal2-icon-zoom: 1;--swal2-icon-animations: true;--swal2-title-padding: 0.8em 1em 0;--swal2-html-container-padding: 1em 1.6em 0.3em;--swal2-input-border: 1px solid #d9d9d9;--swal2-input-border-radius: 0.1875em;--swal2-input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px transparent;--swal2-input-background: transparent;--swal2-input-transition: border-color 0.2s, box-shadow 0.2s;--swal2-input-hover-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px transparent;--swal2-input-focus-border: 1px solid #b4dbed;--swal2-input-focus-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px rgba(100, 150, 200, 0.5);--swal2-progress-step-background: #add8e6;--swal2-validation-message-background: #f0f0f0;--swal2-validation-message-color: #666;--swal2-footer-border-color: #eee;--swal2-footer-background: transparent;--swal2-footer-color: inherit;--swal2-timer-progress-bar-background: rgba(0, 0, 0, 0.3);--swal2-close-button-position: initial;--swal2-close-button-inset: auto;--swal2-close-button-font-size: 2.5em;--swal2-close-button-color: #ccc;--swal2-close-button-transition: color 0.2s, box-shadow 0.2s;--swal2-close-button-outline: initial;--swal2-close-button-box-shadow: inset 0 0 0 3px transparent;--swal2-close-button-focus-box-shadow: inset var(--swal2-outline);--swal2-close-button-hover-transform: none;--swal2-actions-justify-content: center;--swal2-actions-width: auto;--swal2-actions-margin: 1.25em auto 0;--swal2-actions-padding: 0;--swal2-actions-border-radius: 0;--swal2-actions-background: transparent;--swal2-action-button-transition: background-color 0.2s, box-shadow 0.2s;--swal2-action-button-hover: black 10%;--swal2-action-button-active: black 10%;--swal2-confirm-button-box-shadow: none;--swal2-confirm-button-border-radius: 0.25em;--swal2-confirm-button-background-color: #7066e0;--swal2-confirm-button-color: #fff;--swal2-deny-button-box-shadow: none;--swal2-deny-button-border-radius: 0.25em;--swal2-deny-button-background-color: #dc3741;--swal2-deny-button-color: #fff;--swal2-cancel-button-box-shadow: none;--swal2-cancel-button-border-radius: 0.25em;--swal2-cancel-button-background-color: #6e7881;--swal2-cancel-button-color: #fff;--swal2-toast-show-animation: swal2-toast-show 0.5s;--swal2-toast-hide-animation: swal2-toast-hide 0.1s forwards;--swal2-toast-border: none;--swal2-toast-box-shadow: 0 0 1px hsl(0deg 0% 0% / 0.075), 0 1px 2px hsl(0deg 0% 0% / 0.075), 1px 2px 4px hsl(0deg 0% 0% / 0.075), 1px 3px 8px hsl(0deg 0% 0% / 0.075), 2px 4px 16px hsl(0deg 0% 0% / 0.075)}[data-swal2-theme=dark]{--swal2-dark-theme-black: #19191a;--swal2-dark-theme-white: #e1e1e1;--swal2-background: var(--swal2-dark-theme-black);--swal2-color: var(--swal2-dark-theme-white);--swal2-footer-border-color: #555;--swal2-input-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);--swal2-validation-message-background: color-mix( in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10% );--swal2-validation-message-color: var(--swal2-dark-theme-white);--swal2-timer-progress-bar-background: rgba(255, 255, 255, 0.7)}@media(prefers-color-scheme: dark){[data-swal2-theme=auto]{--swal2-dark-theme-black: #19191a;--swal2-dark-theme-white: #e1e1e1;--swal2-background: var(--swal2-dark-theme-black);--swal2-color: var(--swal2-dark-theme-white);--swal2-footer-border-color: #555;--swal2-input-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);--swal2-validation-message-background: color-mix( in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10% );--swal2-validation-message-color: var(--swal2-dark-theme-white);--swal2-timer-progress-bar-background: rgba(255, 255, 255, 0.7)}}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto !important}body.swal2-no-backdrop .swal2-container{background-color:rgba(0,0,0,0) !important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px var(--swal2-backdrop)}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:rgba(0,0,0,0);pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{inset:0 auto auto 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{inset:0 0 auto auto}body.swal2-toast-shown .swal2-container.swal2-top-start,body.swal2-toast-shown .swal2-container.swal2-top-left{inset:0 auto auto 0}body.swal2-toast-shown .swal2-container.swal2-center-start,body.swal2-toast-shown .swal2-container.swal2-center-left{inset:50% auto auto 0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{inset:50% auto auto 50%;transform:translate(-50%, -50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{inset:50% 0 auto auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-start,body.swal2-toast-shown .swal2-container.swal2-bottom-left{inset:auto auto 0 0}body.swal2-toast-shown .swal2-container.swal2-bottom{inset:auto auto 0 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{inset:auto 0 0 auto}@media print{body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown){overflow-y:scroll !important}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop,.swal2-toast-shown) .swal2-container{position:static !important}}div:where(.swal2-container){display:grid;position:fixed;z-index:1060;inset:0;box-sizing:border-box;grid-template-areas:"top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";grid-template-rows:minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);height:100%;padding:var(--swal2-container-padding);overflow-x:hidden;transition:var(--swal2-backdrop-transition);-webkit-overflow-scrolling:touch}div:where(.swal2-container).swal2-backdrop-show,div:where(.swal2-container).swal2-noanimation{background:var(--swal2-backdrop)}div:where(.swal2-container).swal2-backdrop-hide{background:rgba(0,0,0,0) !important}div:where(.swal2-container).swal2-top-start,div:where(.swal2-container).swal2-center-start,div:where(.swal2-container).swal2-bottom-start{grid-template-columns:minmax(0, 1fr) auto auto}div:where(.swal2-container).swal2-top,div:where(.swal2-container).swal2-center,div:where(.swal2-container).swal2-bottom{grid-template-columns:auto minmax(0, 1fr) auto}div:where(.swal2-container).swal2-top-end,div:where(.swal2-container).swal2-center-end,div:where(.swal2-container).swal2-bottom-end{grid-template-columns:auto auto minmax(0, 1fr)}div:where(.swal2-container).swal2-top-start>.swal2-popup{align-self:start}div:where(.swal2-container).swal2-top>.swal2-popup{grid-column:2;place-self:start center}div:where(.swal2-container).swal2-top-end>.swal2-popup,div:where(.swal2-container).swal2-top-right>.swal2-popup{grid-column:3;place-self:start end}div:where(.swal2-container).swal2-center-start>.swal2-popup,div:where(.swal2-container).swal2-center-left>.swal2-popup{grid-row:2;align-self:center}div:where(.swal2-container).swal2-center>.swal2-popup{grid-column:2;grid-row:2;place-self:center center}div:where(.swal2-container).swal2-center-end>.swal2-popup,div:where(.swal2-container).swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;place-self:center end}div:where(.swal2-container).swal2-bottom-start>.swal2-popup,div:where(.swal2-container).swal2-bottom-left>.swal2-popup{grid-column:1;grid-row:3;align-self:end}div:where(.swal2-container).swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;place-self:end center}div:where(.swal2-container).swal2-bottom-end>.swal2-popup,div:where(.swal2-container).swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;place-self:end end}div:where(.swal2-container).swal2-grow-row>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-column:1/4;width:100%}div:where(.swal2-container).swal2-grow-column>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}div:where(.swal2-container).swal2-no-transition{transition:none !important}div:where(.swal2-container)[popover]{width:auto;border:0}div:where(.swal2-container) div:where(.swal2-popup){display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0, 100%);width:var(--swal2-width);max-width:100%;padding:var(--swal2-padding);border:var(--swal2-border);border-radius:var(--swal2-border-radius);background:var(--swal2-background);color:var(--swal2-color);font-family:inherit;font-size:1rem;container-name:swal2-popup}div:where(.swal2-container) div:where(.swal2-popup):focus{outline:none}div:where(.swal2-container) div:where(.swal2-popup).swal2-loading{overflow-y:hidden}div:where(.swal2-container) div:where(.swal2-popup).swal2-draggable{cursor:grab}div:where(.swal2-container) div:where(.swal2-popup).swal2-draggable div:where(.swal2-icon){cursor:grab}div:where(.swal2-container) div:where(.swal2-popup).swal2-dragging{cursor:grabbing}div:where(.swal2-container) div:where(.swal2-popup).swal2-dragging div:where(.swal2-icon){cursor:grabbing}div:where(.swal2-container) h2:where(.swal2-title){position:relative;max-width:100%;margin:0;padding:var(--swal2-title-padding);color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;overflow-wrap:break-word;cursor:initial}div:where(.swal2-container) div:where(.swal2-actions){display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:var(--swal2-actions-justify-content);width:var(--swal2-actions-width);margin:var(--swal2-actions-margin);padding:var(--swal2-actions-padding);border-radius:var(--swal2-actions-border-radius);background:var(--swal2-actions-background)}div:where(.swal2-container) div:where(.swal2-loader){display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 rgba(0,0,0,0) #2778c4 rgba(0,0,0,0)}div:where(.swal2-container) button:where(.swal2-styled){margin:.3125em;padding:.625em 1.1em;transition:var(--swal2-action-button-transition);border:none;box-shadow:0 0 0 3px rgba(0,0,0,0);font-weight:500}div:where(.swal2-container) button:where(.swal2-styled):not([disabled]){cursor:pointer}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){border-radius:var(--swal2-confirm-button-border-radius);background:initial;background-color:var(--swal2-confirm-button-background-color);box-shadow:var(--swal2-confirm-button-box-shadow);color:var(--swal2-confirm-button-color);font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm):hover{background-color:color-mix(in srgb, var(--swal2-confirm-button-background-color), var(--swal2-action-button-hover))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm):active{background-color:color-mix(in srgb, var(--swal2-confirm-button-background-color), var(--swal2-action-button-active))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny){border-radius:var(--swal2-deny-button-border-radius);background:initial;background-color:var(--swal2-deny-button-background-color);box-shadow:var(--swal2-deny-button-box-shadow);color:var(--swal2-deny-button-color);font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny):hover{background-color:color-mix(in srgb, var(--swal2-deny-button-background-color), var(--swal2-action-button-hover))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny):active{background-color:color-mix(in srgb, var(--swal2-deny-button-background-color), var(--swal2-action-button-active))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel){border-radius:var(--swal2-cancel-button-border-radius);background:initial;background-color:var(--swal2-cancel-button-background-color);box-shadow:var(--swal2-cancel-button-box-shadow);color:var(--swal2-cancel-button-color);font-size:1em}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel):hover{background-color:color-mix(in srgb, var(--swal2-cancel-button-background-color), var(--swal2-action-button-hover))}div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel):active{background-color:color-mix(in srgb, var(--swal2-cancel-button-background-color), var(--swal2-action-button-active))}div:where(.swal2-container) button:where(.swal2-styled):focus-visible{outline:none;box-shadow:var(--swal2-action-button-focus-box-shadow)}div:where(.swal2-container) button:where(.swal2-styled)[disabled]:not(.swal2-loading){opacity:.4}div:where(.swal2-container) button:where(.swal2-styled)::-moz-focus-inner{border:0}div:where(.swal2-container) div:where(.swal2-footer){margin:1em 0 0;padding:1em 1em 0;border-top:1px solid var(--swal2-footer-border-color);background:var(--swal2-footer-background);color:var(--swal2-footer-color);font-size:1em;text-align:center;cursor:initial}div:where(.swal2-container) .swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto !important;overflow:hidden;border-bottom-right-radius:var(--swal2-border-radius);border-bottom-left-radius:var(--swal2-border-radius)}div:where(.swal2-container) div:where(.swal2-timer-progress-bar){width:100%;height:.25em;background:var(--swal2-timer-progress-bar-background)}div:where(.swal2-container) img:where(.swal2-image){max-width:100%;margin:2em auto 1em;cursor:initial}div:where(.swal2-container) button:where(.swal2-close){position:var(--swal2-close-button-position);inset:var(--swal2-close-button-inset);z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:var(--swal2-close-button-transition);border:none;border-radius:var(--swal2-border-radius);outline:var(--swal2-close-button-outline);background:rgba(0,0,0,0);color:var(--swal2-close-button-color);font-family:monospace;font-size:var(--swal2-close-button-font-size);cursor:pointer;justify-self:end}div:where(.swal2-container) button:where(.swal2-close):hover{transform:var(--swal2-close-button-hover-transform);background:rgba(0,0,0,0);color:#f27474}div:where(.swal2-container) button:where(.swal2-close):focus-visible{outline:none;box-shadow:var(--swal2-close-button-focus-box-shadow)}div:where(.swal2-container) button:where(.swal2-close)::-moz-focus-inner{border:0}div:where(.swal2-container) div:where(.swal2-html-container){z-index:1;justify-content:center;margin:0;padding:var(--swal2-html-container-padding);overflow:auto;color:inherit;font-size:1.125em;font-weight:normal;line-height:normal;text-align:center;overflow-wrap:break-word;word-break:break-word;cursor:initial}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea),div:where(.swal2-container) select:where(.swal2-select),div:where(.swal2-container) div:where(.swal2-radio),div:where(.swal2-container) label:where(.swal2-checkbox){margin:1em 2em 3px}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea){box-sizing:border-box;width:auto;transition:var(--swal2-input-transition);border:var(--swal2-input-border);border-radius:var(--swal2-input-border-radius);background:var(--swal2-input-background);box-shadow:var(--swal2-input-box-shadow);color:inherit;font-size:1.125em}div:where(.swal2-container) input:where(.swal2-input).swal2-inputerror,div:where(.swal2-container) input:where(.swal2-file).swal2-inputerror,div:where(.swal2-container) textarea:where(.swal2-textarea).swal2-inputerror{border-color:#f27474 !important;box-shadow:0 0 2px #f27474 !important}div:where(.swal2-container) input:where(.swal2-input):hover,div:where(.swal2-container) input:where(.swal2-file):hover,div:where(.swal2-container) textarea:where(.swal2-textarea):hover{box-shadow:var(--swal2-input-hover-box-shadow)}div:where(.swal2-container) input:where(.swal2-input):focus,div:where(.swal2-container) input:where(.swal2-file):focus,div:where(.swal2-container) textarea:where(.swal2-textarea):focus{border:var(--swal2-input-focus-border);outline:none;box-shadow:var(--swal2-input-focus-box-shadow)}div:where(.swal2-container) input:where(.swal2-input)::placeholder,div:where(.swal2-container) input:where(.swal2-file)::placeholder,div:where(.swal2-container) textarea:where(.swal2-textarea)::placeholder{color:#ccc}div:where(.swal2-container) .swal2-range{margin:1em 2em 3px;background:var(--swal2-background)}div:where(.swal2-container) .swal2-range input{width:80%}div:where(.swal2-container) .swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}div:where(.swal2-container) .swal2-range input,div:where(.swal2-container) .swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}div:where(.swal2-container) .swal2-input{height:2.625em;padding:0 .75em}div:where(.swal2-container) .swal2-file{width:75%;margin-right:auto;margin-left:auto;background:var(--swal2-input-background);font-size:1.125em}div:where(.swal2-container) .swal2-textarea{height:6.75em;padding:.75em}div:where(.swal2-container) .swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:var(--swal2-input-background);color:inherit;font-size:1.125em}div:where(.swal2-container) .swal2-radio,div:where(.swal2-container) .swal2-checkbox{align-items:center;justify-content:center;background:var(--swal2-background);color:inherit}div:where(.swal2-container) .swal2-radio label,div:where(.swal2-container) .swal2-checkbox label{margin:0 .6em;font-size:1.125em}div:where(.swal2-container) .swal2-radio input,div:where(.swal2-container) .swal2-checkbox input{flex-shrink:0;margin:0 .4em}div:where(.swal2-container) label:where(.swal2-input-label){display:flex;justify-content:center;margin:1em auto 0}div:where(.swal2-container) div:where(.swal2-validation-message){align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:var(--swal2-validation-message-background);color:var(--swal2-validation-message-color);font-size:1em;font-weight:300}div:where(.swal2-container) div:where(.swal2-validation-message)::before{content:"!";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}div:where(.swal2-container) .swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:rgba(0,0,0,0);font-weight:600}div:where(.swal2-container) .swal2-progress-steps li{display:inline-block;position:relative}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:var(--swal2-progress-step-background);color:#fff}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:var(--swal2-progress-step-background)}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}div:where(.swal2-icon){position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;zoom:var(--swal2-icon-zoom);border:.25em solid rgba(0,0,0,0);border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;user-select:none}div:where(.swal2-icon) .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}div:where(.swal2-icon).swal2-error{border-color:#f27474;color:#f27474}div:where(.swal2-icon).swal2-error .swal2-x-mark{position:relative;flex-grow:1}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-error.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark{animation:swal2-animate-error-x-mark .5s}}div:where(.swal2-icon).swal2-warning{border-color:#f8bb86;color:#f8bb86}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-warning.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-warning.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .5s}}div:where(.swal2-icon).swal2-info{border-color:#3fc3ee;color:#3fc3ee}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-info.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-info.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .8s}}div:where(.swal2-icon).swal2-question{border-color:#87adbd;color:#87adbd}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-question.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-question.swal2-icon-show .swal2-icon-content{animation:swal2-animate-question-mark .8s}}div:where(.swal2-icon).swal2-success{border-color:#a5dc86;color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;border-radius:50%}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}div:where(.swal2-icon).swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-0.25em;left:-0.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}div:where(.swal2-icon).swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}@container swal2-popup style(--swal2-icon-animations:true){div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-animate-success-line-tip .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-animate-success-line-long .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-circular-line-right{animation:swal2-rotate-success-circular-line 4.25s ease-in}}[class^=swal2]{-webkit-tap-highlight-color:rgba(0,0,0,0)}.swal2-show{animation:var(--swal2-show-animation)}.swal2-hide{animation:var(--swal2-hide-animation)}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}.swal2-toast{box-sizing:border-box;grid-column:1/4 !important;grid-row:1/4 !important;grid-template-columns:min-content auto min-content;padding:1em;overflow-y:hidden;border:var(--swal2-toast-border);background:var(--swal2-background);box-shadow:var(--swal2-toast-box-shadow);pointer-events:all}.swal2-toast>*{grid-column:2}.swal2-toast h2:where(.swal2-title){margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-toast .swal2-loading{justify-content:center}.swal2-toast input:where(.swal2-input){height:2em;margin:.5em;font-size:1em}.swal2-toast .swal2-validation-message{font-size:1em}.swal2-toast div:where(.swal2-footer){margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-toast button:where(.swal2-close){grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-toast div:where(.swal2-html-container){margin:.5em 1em;padding:0;overflow:initial;font-size:1em;text-align:initial}.swal2-toast div:where(.swal2-html-container):empty{padding:0}.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:bold}.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-toast div:where(.swal2-actions){justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-toast button:where(.swal2-styled){margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;border-radius:50%}.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.8em;left:-0.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}@container swal2-popup style(--swal2-icon-animations:true){.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-toast-animate-success-line-tip .75s}.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-toast-animate-success-line-long .75s}}.swal2-toast.swal2-show{animation:var(--swal2-toast-show-animation)}.swal2-toast.swal2-hide{animation:var(--swal2-toast-hide-animation)}@keyframes swal2-show{0%{transform:translate3d(0, -50px, 0) scale(0.9);opacity:0}100%{transform:translate3d(0, 0, 0) scale(1);opacity:1}}@keyframes swal2-hide{0%{transform:translate3d(0, 0, 0) scale(1);opacity:1}100%{transform:translate3d(0, -50px, 0) scale(0.9);opacity:0}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-0.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(0.4);opacity:0}50%{margin-top:1.625em;transform:scale(0.4);opacity:0}80%{margin-top:-0.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0deg);opacity:1}}@keyframes swal2-rotate-loading{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-toast-show{0%{transform:translateY(-0.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(0.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0deg)}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-0.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}</style></head>
+
+<body>
+    <!--************** s01 社群媒體連結區塊（Social Media Links）*************************-->
+    <section id="s01" class="bg-secondary">
+        <div class="container py-2">
+            <div class="text-end">
+                <!-- ------------------------------------------------------------------- -->
+                <a href="https://www.facebook.com/?locale=zh_TW">
+                    <i class="fa-brands fa-square-facebook text-primary fa-2x"></i>
+                </a>
+                <!-- ------------------------------------------------------------------- -->
+                <a href="https://x.com/">
+                    <i class="fa-brands fa-square-x-twitter text-warning fa-2x"></i>
+                </a>
+                <!-- ------------------------------------------------------------------- -->
+                <a href="https://www.line.me/tw/">
+                    <i class="fa-brands fa-line text-success fa-2x"></i>
+                </a>
+                <!-- ------------------------------------------------------------------- -->
+                <a href="https://www.threads.com/?hl=zh-tw">
+                    <i class="fa-brands fa-threads fa-2x"></i>
+                </a>
+                <!-- ------------------------------------------------------------------- -->
+            </div>
+        </div>
+    </section>
+
+    <!--****************** s02 導覽區塊 ***************************-->
+    <section id="s02">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="http://192.168.10.19/web202510/#">
+                    <!-- "fa-codepen" 圖示 = https://fontawesome.com/search?q=code&ic=free-collection -->
+                    <i class="fa-brands fa-codepen text-primary fa-2x"></i>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="http://192.168.10.19/web202510/#"><i class="fa-solid fa-house me-1 text-info"></i>首頁</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://192.168.10.19/web202510/#s04">
+                                <i class="fa-solid fa-address-card me-1"></i>關於我們 (About us)
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://192.168.10.19/web202510/#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-brands fa-servicestack me-1"></i>服務項目 (Our Services)
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="http://192.168.10.19/web202510/#s08-1">策略優化軟體</a></li>
+                                <li><a class="dropdown-item" href="http://192.168.10.19/web202510/#s08-2">交易策略實作</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="http://192.168.10.19/web202510/#s08-3">大語言模型建構</a></li>
+                                <li><a class="dropdown-item" href="http://192.168.10.19/web202510/#s08-4">可轉換語言 UTL</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div>
+                        <!-- 會員登入; 新戶註冊; 會員管理;-->
+                        <!-- --------------------------------------------------------------------------- -->
+                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fa-solid fa-user"></i>會員登入</button>
+                        <!-- --------------------------------------------------------------------------- -->
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">
+                            <i class="fa-solid fa-registered"></i>新戶註冊</button>
+                        <!-- --------------------------------------------------------------------------- -->
+                        <button class="btn btn-danger" onclick="document.getElementById(&#39;s16&#39;).scrollIntoView({ behavior: &#39;smooth&#39; });">
+                            <i class="fa-solid fa-people-line"></i>會員管理</button>
+                        <!-- --------------------------------------------------------------------------- -->
+                        <!-- bootstrap button color = https://getbootstrap.com/docs/4.0/components/buttons/ -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- 彈出視窗 (會員管理) adminModal -->
+    <div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-primary">
+                    <h1 class="modal-title fs-5 fw-700" id="adminModalLabel">會員管理 (admin)</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- ================== 管理員帳號 (name_admin) ================== -->
+                    <div class="mb-3">
+                        <label for="name_admin" class="form-label">管理員帳號 (adminName)</label>
+                        <input type="text" class="form-control" id="name_admin" placeholder="請輸入至少3個字元(底線、數字、英文)">
+                        <div class="invalid-feedback">
+                            [帳號] 必須符合以下規定：
+                            <br>1. 開頭為英文字母或底線。
+                            <br>2. 至少一個數字。
+                            <br>3. 不可有標點符號。
+                            <br>4. 總長度至少 3 個字元 (ex. _17)。
+                        </div>
+                    </div>
+
+                    <!-- ================== 管理員密碼 (pass_admin) ================== -->
+                    <div class="mb-3">
+                        <label for="pass_admin" class="form-label">管理員密碼 (password_admin)</label>
+
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="pass_admin" placeholder="請輸入至少4個字元(英文大小寫、數字)">
+                            <div class="invalid-feedback">
+                                [密碼] 必須符合以下規定：
+                                <br>1. 至少一個英文大寫字母。
+                                <br>2. 至少一個英文小寫字母。
+                                <br>3. 至少一個數字。
+                                <br>4. 可以有標點符號。
+                                <br>5. 總長度至少 4 個字元。
+                            </div>
+
+                            <button class="btn btn-outline-secondary" type="button" id="togglePass_admin">
+                                <i class="bi bi-eye-slash" id="eyeIcon_admin"></i>
+                                <!-- <i> </i> 是 Bootstrap Icons 提供的功能，通常通過載入其 CSS 樣式表來實現。 -->
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <!-- 沒有帳號 (I've no account) => 跳至 #registerModal -->
+                    <a href="http://192.168.10.19/web202510/#" class="me-auto" data-bs-toggle="modal" data-bs-target="#">
+                        沒有帳號 (I've no account)</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消 (cancel)</button>
+                    <button type="button" class="btn btn-primary" id="btn_confirm_admin">確認 (confirm)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 彈出視窗 (會員登入) loginModal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-primary">
+                    <h1 class="modal-title fs-5 fw-700" id="loginModalLabel">會員登入 (member login)</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- ================== 登入帳號 (login userName) ================== -->
+                    <div class="mb-3">
+                        <label for="user_login" class="form-label">帳號 (user_login)</label>
+                        <input type="text" class="form-control" id="user_login" value="aa1" placeholder="請輸入至少3個字元(底線、數字、英文)">
+                        <div class="invalid-feedback">
+                            [帳號] 必須符合以下規定：
+                            <br>1. 開頭為英文字母或底線。
+                            <br>2. 至少一個數字。
+                            <br>3. 不可有標點符號。
+                            <br>4. 總長度至少 3 個字元 (ex. _17)。
+                        </div>
+                    </div>
+
+                    <!-- ================== 登入密碼 (login passWord) ================== -->
+                    <div class="mb-3">
+                        <label for="pass_login" class="form-label">密碼 (pass_login)</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="pass_login" value="aA123" placeholder="請輸入至少4個字元(英文大小寫、數字)">
+                            <div class="invalid-feedback">
+                                [密碼] 必須符合以下規定：
+                                <br>1. 至少一個英文大寫字母。
+                                <br>2. 至少一個英文小寫字母。
+                                <br>3. 至少一個數字。
+                                <br>4. 可以有標點符號。
+                                <br>5. 總長度至少 4 個字元。
+                            </div>
+
+                            <button class="btn btn-outline-secondary" type="button" id="togglePass_login">
+                                <i class="bi bi-eye-slash" id="eyeIcon_login"></i>
+                                <!-- <i> </i> 是 Bootstrap Icons 提供的功能，通常通過載入其 CSS 樣式表來實現。 -->
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <!-- 沒有帳號 (I've no account) => 跳至 #registerModal -->
+                    <a href="http://192.168.10.19/web202510/#" class="me-auto" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        沒有帳號 (I've no account)</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消 (cancel)</button>
+                    <button type="button" class="btn btn-primary" id="btn_confirm_login">確認 (confirm)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 彈出視窗(新戶註冊) registerModal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h1 class="modal-title fs-5 fw-700" id="registerModalLabel">新戶註冊 (member register)</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- 首先輸入 .row.timeline-block-single-line>.col-md-6*2 隨後按TAB鍵 == 水平等寬分割「兩個區塊」 -->
+                    <div class="row timeline-block-single-line">
+
+                        <div class="col-md-6">
+                            <div class="h3 fw-700">會員守則 (member rules)</div>
+                            <p><span class="fw-700">一、會員資格</span><br>
+                                註冊本網站會員時，請確認您已年滿 18 歲，並保證所填寫之姓名、電話、Email 等資料為真實、正確且可聯繫之資訊，如有變更請主動更新。</p>
+                            <p><span class="fw-700">二、帳號與密碼</span><br>
+                                會員有義務妥善保管帳號與密碼，不得出借、轉讓或提供第三人使用。凡經由該帳號登入系統後所進行之一切操作，將視為該會員本人之行為。</p>
+                            <p><span class="fw-700">三、個資與通知</span><br>
+                                會員同意本公司於合理範圍內，利用您提供之聯絡方式（包含 Email、簡訊、通訊軟體等），通知訂單資訊、服務異動及行銷優惠。個人資料僅用於服務與法令許可之範圍內處理。
+                            </p>
+                            <p><span class="fw-700">四、會員權益變更</span><br>
+                                本公司保留隨時修改會員守則、調整會員權益與服務內容之權利，修改後內容將公告於網站即自動生效。建議會員不定期查閱以維護自身權益。</p>
+                            <p class="small text-muted">
+                                完成註冊或勾選「同意」即表示您已詳細閱讀並同意遵守上述會員守則。
+                            </p>
+                            <div class="form-check form-switch">
+                                <label for="rules_agree" class="form-check-label">不同意|同意(I agree)</label>
+                                <input type="checkbox" name="" id="rules_agree" class="form-check-input">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <!-- ================== 註冊帳號 (register userName) ================== -->
+                            <div class="mb-3">
+                                <label for="user_register" class="form-label">註冊帳號 (register userName)</label>
+                                <input type="text" class="form-control" id="user_register" value="cc1" placeholder="請輸入至少3個字元(英文、數字、底線)">
+                                <div class="invalid-feedback">
+                                    [帳號] 必須符合以下規定：
+                                    <br>1. 開頭為英文字母或底線。
+                                    <br>2. 至少一個數字。
+                                    <br>3. 不可有標點符號。
+                                    <br>4. 總長度至少 3 個字元 (ex. _17)。
+                                </div>
+                            </div>
+
+                            <!-- ================== 註冊密碼 (register passWord) ================== -->
+                            <div class="mb-3">
+                                <label for="pass_register1" class="form-label">註冊密碼 (register passWord)</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="pass_register1" value="cC789" placeholder="請輸入至少4個字元(英文大小寫、數字)">
+                                    <div class="invalid-feedback">
+                                        [密碼] 必須符合以下規定：
+                                        <br>1. 至少一個英文大寫字母。
+                                        <br>2. 至少一個英文小寫字母。
+                                        <br>3. 至少一個數字。
+                                        <br>4. 可以有標點符號。
+                                        <br>5. 總長度至少 4 個字元。
+                                    </div>
+
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePass_register1">
+                                        <i class="bi bi-eye-slash" id="eyeIcon_register1"></i>
+                                        <!-- <i> </i> 是 Bootstrap Icons 提供的功能，通常通過載入其 CSS 樣式表來實現。 -->
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ============== 註冊確認密碼 (register password_register2) ============== -->
+                            <div class="mb-3">
+                                <label for="pass_register2" class="form-label">確認密碼 (confirm passWord)</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="pass_register2" value="cC789" placeholder="請輸入至少4個字元(英文大小寫、數字)">
+                                    <div class="invalid-feedback">
+                                        [密碼] 必須符合以下規定：
+                                        <br>1. 至少一個英文大寫字母。
+                                        <br>2. 至少一個英文小寫字母。
+                                        <br>3. 至少一個數字。
+                                        <br>4. 可以有標點符號。
+                                        <br>5. 總長度至少 4 個字元。
+                                    </div>
+
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePass_register2">
+                                        <i class="bi bi-eye-slash" id="eyeIcon_register2"></i>
+                                        <!-- <i> </i> 是 Bootstrap Icons 提供的功能，通常通過載入其 CSS 樣式表來實現。 -->
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ================== 註冊郵箱 (register mail_register) ================== -->
+                            <div class="mb-3">
+                                <label for="mail_register" class="form-label">電子郵箱 (email adderss)</label>
+                                <input type="email" class="form-control" id="mail_register" value="cc1@abc.com" placeholder="請輸入合法的電子郵箱地址">
+                                <div class="invalid-feedback">
+                                    [電子郵箱] 格式不正確。 [電子郵箱] 正確格式範例: user@example.com
+                                </div>
+                            </div>
+
+                            <!-- ================== 註冊城市 (register city_register) ================== -->
+                            <div class="mb-3">
+                                <label for="city_register" class="form-label">居住城市 (residence city)</label>
+                                <select class="form-control" id="city_register" value="新竹市">
+                                    <option value="">請選擇城市</option>
+                                    <option value="基隆市">基隆市</option>
+                                    <option value="台北市">台北市</option>
+                                    <option value="桃園市">桃園市</option>
+                                    <option value="新竹市">新竹市</option>
+                                    <option value="苗栗市">苗栗市</option>
+                                    <option value="台中市">台中市</option>
+                                    <option value="彰化市">彰化市</option>
+                                    <option value="雲林縣">雲林縣</option>
+                                    <option value="嘉義市">嘉義市</option>
+                                    <option value="台南市">台南市</option>
+                                    <option value="高雄市">高雄市</option>
+                                    <option value="屏東市">屏東市</option>
+                                    <option value="宜蘭市">宜蘭市</option>
+                                    <option value="花蓮市">花蓮市</option>
+                                    <option value="台東市">台東市</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    請選擇 [您居住的城市]。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <!-- 已有帳號 (I've an account) => 跳至 #loginModal -->
+                            <a href="http://192.168.10.19/web202510/#" class="me-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                已有帳號 (I've an account)</a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消 (cancel)</button>
+                            <button type="button" class="btn btn-primary" id="btn_confirm_register">確認
+                                (confirm)</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    
+    
+
+    <!--****************** s03 公司簡介 ***************************-->
+    <section id="s03">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" data-bs-interval="7000">
+            <!-- -------------------------------------------------------------------------- -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <!-- -------------------------------------------------------------------------- -->
+            <div class="carousel-inner">
+                <div class="carousel-item active bg-cover" style="background-image: url(images/Matrix\ Raining\ Code.png); height: 85vh;">
+                    <div class="carousel-caption carousel-caption-box bg-dark bg-opacity-50 p-4 rounded-3 shadow-lg">
+                        <div class="carousel-badge"><i class="fa-solid fa-briefcase"></i>&nbsp;程式課程</div>
+                        <div class="h3 fw-500 my-3">一種語法&nbsp;&nbsp;通行全球</div>
+                        <!-- -------------------------------------------------------------- -->
+                        <p class="mb-3 text-white" style="font-size: 17px;">一秒轉出 TradingView, Multicharts</p>
+                        <div class="carousel-list text-white mb-3">
+                            <div class="mb-1"><i class="fa-solid fa-circle-check text-warning me-2"></i>&nbsp;語法固定 ×
+                                易學易用
+                            </div>
+                            <div class="mb-1"><i class="fa-solid fa-circle-check text-warning me-2"></i>&nbsp;說明清楚 x
+                                文件齊備
+                            </div>
+                        </div>
+                        <div>
+                            <a href="http://192.168.10.19/web202510/#s08" class="btn btn-warning"> <i class="fa-solid fa-calendar-check"></i>&nbsp;我想要學</a>
+                            <button class="btn btn-outline-light"><i class="fa-solid fa-cloud-arrow-down"></i>&nbsp;語言簡介</button>
+                        </div>
+                        <!-- -------------------------------------------------------------- -->
+                    </div>
+
+                </div>
+
+                <div class="carousel-item bg-cover" style="background-image: url(images/GIF\ Stock\ Market.gif); height: 85vh;">
+                    <div class="carousel-caption carousel-caption-box bg-dark bg-opacity-50 p-4 rounded-3 shadow-lg">
+                        <div class="carousel-badge"><i class="fa-solid fa-briefcase"></i>&nbsp;個人服務</div>
+                        <div class="h3 fw-500 my-3">策略開發平台、策略代工</div>
+                        <!-- -------------------------------------------------------------- -->
+                        <p class="mb-3 text-white" style="font-size: 17px;">資深專家&nbsp;&nbsp;為您的 [○○交易策略] 把關</p>
+                        <div class="carousel-list text-white mb-3">
+                            <div class="mb-1"><i class="fa-solid fa-circle-check text-warning me-2"></i>&nbsp;收費固定 ×
+                                合約明確
+                            </div>
+                            <div class="mb-1"><i class="fa-solid fa-circle-check text-warning me-2"></i>&nbsp;您說想法 x
+                                我寫程式
+                            </div>
+                        </div>
+                        <div>
+                            <a href="http://192.168.10.19/web202510/#s08" class="btn btn-warning"> <i class="fa-solid fa-calendar-check"></i>&nbsp;我想要買</a>
+                            <!-- <button class="btn btn-warning"><i class="fa-solid fa-calendar-check"></i>&nbsp;我想要買</button> -->
+                            <button class="btn btn-outline-light"><i class="fa-solid fa-cloud-arrow-down"></i>&nbsp;軟體簡介</button>
+                        </div>
+                        <!-- -------------------------------------------------------------- -->
+                    </div>
+                </div>
+
+                <div class="carousel-item bg-cover" style="background-image: url(images/GIF\ Computer\ Network.gif); height: 85vh;">
+                    <div class="carousel-caption carousel-caption-box bg-dark bg-opacity-50 p-4 rounded-3 shadow-lg">
+                        <div class="carousel-badge"><i class="fa-solid fa-briefcase"></i>&nbsp;☉☉服務</div>
+                        <div class="h3 fw-500 my-3">☉☉私用&nbsp;&nbsp;人工智慧大模型</div>
+                        <!-- -------------------------------------------------------------- -->
+                        <p class="mb-3 text-white" style="font-size: 17px;">資深專家&nbsp;&nbsp;為您的 [○○大模型] 把關</p>
+                        <div class="carousel-list text-white mb-3">
+                            <div class="mb-1"><i class="fa-solid fa-circle-check text-warning me-2"></i>&nbsp;收費固定 ×
+                                合約明確
+                            </div>
+                            <div class="mb-1"><i class="fa-solid fa-circle-check text-warning me-2"></i>&nbsp;您說需求 x
+                                我來實作
+                            </div>
+                        </div>
+                        <div>
+                            <a href="http://192.168.10.19/web202510/#s08" class="btn btn-warning"> <i class="fa-solid fa-calendar-check"></i>&nbsp;我想談談</a>
+                            <button class="btn btn-outline-light"><i class="fa-solid fa-cloud-arrow-down"></i>&nbsp;專案簡介</button>
+                        </div>
+                        <!-- -------------------------------------------------------------- -->
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!--****************** s04 漂亮倒數計數器 counterup ***************************-->
+    <section id="s04">
+        <div class="row align-items-center">
+            <div class="col-md-5 bg-cover d-none d-md-block" style="background-image: url(images/Matrix\ multilingual.png); height: 600px;">
+            </div>
+
+            <div class="col-md-7 p-5">
+                <div class="col-md-6 text-center">
+                    
+                    <div class="h1" style="cursor: pointer;" onclick="document.getElementById(&#39;s02&#39;).scrollIntoView({ behavior: &#39;smooth&#39; });" title="滑鼠左鍵點擊 跳轉到頁首">
+                        <span class="text-primary fw-700">s04 台灣製造</span>
+                    </div>
+
+                    <div class="h1">多語種程式橋樑</div>
+                    <p class="h4 mb-1">○○策略開發套裝軟體</p>
+                    <p class="h4 mb-1">○○交易策略實作專案</p>
+                    <p class="h4 mb-1">☉☉大語言模型之創建</p>
+                    <p class="h4 mb-1">☉☉一致化可轉換語言</p>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-3 text-center">
+                        <div class="h4">年均專案</div>
+                        <div class="display-4 fw-800 text-primary counter01 is-visible" style="visibility: visible;">99 <span class="h4">/件</span> </div>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="h4">獲獎數目</div>
+                        <div class="display-4 fw-800 text-danger counter02 is-visible" style="visibility: visible;">9 <span class="h4">/項</span> </div>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="h4">專業認證</div>
+                        <div class="display-4 fw-800 text-warning counter03 is-visible" style="visibility: visible;">9 <span class="h4">/項</span> </div>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="h4">公司據點</div>
+                        <div class="display-4 fw-800 text-info counter04 is-visible" style="visibility: visible;">9 <span class="h4">/個</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--****************** s05 ☉☉精神標語 ***************************-->
+    <section id="s05" class="bg-secondary bg-opacity-50 py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <i class="fa-brands fa-codepen fa-7x text-danger text-01 mt-3"></i>
+                    <div class="h2 fw-700 text-danger mt-3">s05 ☉☉精神-1</div>
+                    <p class="h4 mt-3 text-dark d-none d-md-block">
+                        為天地立心，為生民立命。</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fa-brands fa-codepen fa-7x text-success text-02 mt-3"></i>
+                    <div class="h2 fw-700 text-success mt-3">s05 ☉☉精神-2</div>
+                    <p class="h4 mt-3 text-dark d-none d-md-block">
+                        為往聖繼絕學，為萬世開太平。</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fa-brands fa-codepen fa-7x text-primary text-03 mt-3"></i>
+                    <div class="h2 fw-700 text-primary mt-3">s05 ☉☉精神-3</div>
+                    <p class="h4 mt-3 text-dark d-none d-md-block">
+                        遠離紅海撕殺，開闢藍海坦途。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--****************** s06 寬縮到(md)文(s06-text)叠圖(s06-img)上 ********************-->
+    <div class="section" id="s06">
+        <div class="row s06-row">
+            <!-- 圖片區 -->
+            <div class="col-md-5 s06-img">
+                <img src="./righthand_files/Background-Dark Sky-001.webp" alt="" class="img-fluid d-none d-md-block">
+            </div>
+
+            <!-- 文字區 -->
+            <div class="col-md-7 display-6 s06-text">
+                s06 觀自在菩薩。行深般若波羅蜜多時。
+                照見五蘊皆空。度一切苦厄。舍利子。色不異空。空不異色。
+                色即是空。空即是色。受想行識。亦復如是。
+                舍利子。是諸法空相。不生不滅。不垢不淨。不增不減。
+            </div>
+        </div>
+    </div>
+
+
+    <!--*************** s07 專案介紹 ***********************-->
+    <div class="section" id="s07">
+        <div class="container">
+            <div class="display-6 fw-600 text-03 text-center my-4">s07 專案介紹(#17)</div>
+            <div class="row align-items-center">
+                <!-- ------------------------------------------------------- -->
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <div class="s07-userimg bg-cover me-3"></div>
+                        <div>
+                            <div class="h2">作者的話(#17)</div>
+                            <p style="font-size: 20px;">大家平安，大家好。<br>
+                                小弟在這，祝福大家，身體健康，萬事如意，<br>
+                                好吃好睡，錢花不完，歲歲平安，年年有餘，<br>
+                                頭好壯壯，百毒不侵，省時省力，常遇良人。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- ------------------------------------------------------- -->
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <i class="fa-solid fa-computer-mouse fa-3x me-3"></i>
+                        <!-- fa-computer-mouse = https://fontawesome.com/icons/computer-mouse?f=classic&s=solid -->
+                        <div>
+                            <div class="h2">專案簡介(#17)</div>
+                            <!-- 會員登入; 新戶註冊; 會員管理; 會計系統; -->
+                            <p style="font-size: 17px;" class="button-01">1. 會員登入</p>
+                            <p style="font-size: 17px;" class="button-01">2. 新戶註冊</p>
+                            <p style="font-size: 17px;" class="button-01">3. 會員管理</p>
+                            <p style="font-size: 17px;" class="button-01">4. 會計系統</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- ------------------------------------------------------- -->
+            </div>
+        </div>
+    </div>
+
+
+    <!--****************** s08 服務價格介紹 ***************************-->
+    <section id="s08" style="position: relative;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 py-5">
+
+                    <dl class="row fs-5">
+
+                        <!-- 方案 01 -->
+                        <dt class="col-sm-4" id="s08-1">s08 策略優化軟體</dt>
+                        <dd class="col-sm-8">
+                            <p>電腦語言創造、中介語言混淆、交易回測器、最佳化工具。套裝軟體零售、教育版特價、論壇支援、全自動交易策略專案實作服務。</p>
+                            <p class="fw-700 text-primary">軟體購買 = NT$ 15,000 (+技術支援24個月)</p>
+                            <p class="fw-700 text-primary">軟體更新 = NT$ 5,000 (+技術支援12個月)</p>
+                        </dd>
+
+                        <!-- 方案 02 -->
+                        <dt class="col-sm-4" id="s08-2">s08 交易策略實作</dt>
+                        <dd class="col-sm-8">
+                            <p>最受歡迎！幫助您把內心的想法轉為真實交易策略。本公司具備卅十年以上交易策略撰寫經驗，讓我們陪著您一步一步撰寫出來(策略內容必需由客戶提供)。</p>
+                            <p class="fw-700 text-success">NT$ 38,000 起 (購買套裝軟體，每套現折$1000)</p>
+                        </dd>
+
+                        <!-- 方案 03 -->
+                        <dt class="col-sm-4" id="s08-3">s08 大語言模型建構</dt>
+                        <dd class="col-sm-8">
+                            <p>大語言模型建構設備昂貴，
+                                <br>多數求職者沒有能力購買。
+                                <br>本公司從零開始建構大語言模型，
+                                <br>可以節省您大量自行摸索的時間。
+                                <br>(幼幼版.模型建置過程 = 請看本公司 Youtube)
+                            </p>
+                            <p class="fw-700 text-success">依專案報價</p>
+                        </dd>
+
+                        <!-- 方案 04 -->
+                        <dt class="col-sm-4" id="s08-4">s08 可轉換語言 UTL</dt>
+                        <dd class="col-sm-8">
+                            <p>統一可轉換語言</p>
+                            <p>(Unified Convertible Language, UTL)</p>
+                            <p>學會一種 UTL 可以節省大量學習時間</p>
+                            <p class="fw-700 text-danger">NT$ 38,000 起</p>
+                        </dd>
+
+                        <!-- 示範巢狀 -->
+                        <dt class="col-sm-4">s08 服務可追加項目</dt>
+                        <dd class="col-sm-8">
+                            <dl class="row">
+                                <dt class="col-sm-4">熱門加購</dt>
+                                <dd class="col-sm-8">
+                                    <ul class="mb-0">
+                                        <li>
+                                            <p>技術支援.金卡會員</p>
+                                        </li>
+                                        <li>
+                                            <p>技術支援.銀卡會員</p>
+                                        </li>
+                                        <li>
+                                            <p>語言模型.需求分析</p>
+                                        </li>
+                                        <li>
+                                            <p>語言模型.硬體選購</p>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-md-5 bg-cover" style="position: absolute; top: 0; bottom: 0; background-image: url(images/Background-Dark\ Sky-002.webp);">
+            </div>
+        </div>
+    </section>
+
+
+    <!--*************** s09 地址和基本資料詢問 ***********************-->
+    <section id="s09" class="mt-3">
+        <div class="container">
+            <div class="row">
+                <h4 class="text-end">s09 大數據(城市、區域、街道) 三層選單 (#17)</h4>
+                <div class="col-md-6">
+                    <iframe src="./righthand_files/embed.html" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="s09_user" class="form-label">連絡人姓名</label>
+                        <input type="text" class="form-control" id="s09_user" value="一非" placeholder="請輸入，連絡人姓名，方便與您連絡">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="s09_phone" class="form-label">連絡人手機</label>
+                        <input type="text" class="form-control" id="s09_phone" value="09**" placeholder="請輸入，連絡人手機，方便與您連絡">
+                    </div>
+
+                    <!-- ---------------------------------------------------------------------- -->
+                    <div class="mb-3">
+                        <label for="s09_city" class="form-label">s09 第一層:選擇城市 (Select City)</label>
+                        <select name="" id="s09_city" class="form-select form-select-lg"><option value="" disabled="" selected="">---s09 請選擇城市---</option><option value="臺北市">臺北市</option><option value="基隆市">基隆市</option><option value="新北市">新北市</option><option value="連江縣">連江縣</option><option value="宜蘭縣">宜蘭縣</option><option value="釣魚臺">釣魚臺</option><option value="新竹市">新竹市</option><option value="新竹縣">新竹縣</option><option value="桃園市">桃園市</option><option value="苗栗縣">苗栗縣</option><option value="臺中市">臺中市</option><option value="彰化縣">彰化縣</option><option value="南投縣">南投縣</option><option value="嘉義市">嘉義市</option><option value="嘉義縣">嘉義縣</option><option value="雲林縣">雲林縣</option><option value="臺南市">臺南市</option><option value="高雄市">高雄市</option><option value="南海島">南海島</option><option value="澎湖縣">澎湖縣</option><option value="金門縣">金門縣</option><option value="屏東縣">屏東縣</option><option value="臺東縣">臺東縣</option><option value="花蓮縣">花蓮縣</option></select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="s09_area" class="form-label">s09 第二層:選擇區域 (Select Area)</label>
+                        <select name="" id="s09_area" class="form-select form-select-lg">
+                            <option value="" disabled="" selected="">---請先選擇城市---</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="s09_road" class="form-label">s09 第三層:選擇街道 (Select Road)</label>
+                        <select name="" id="s09_road" class="form-select form-select-lg">
+                            <option value="" disabled="" selected="">---請先選擇區域---</option>
+                        </select>
+                    </div>
+                    <!-- ---------------------------------------------------------------------- -->
+
+                    <div class="my-4  text-center">
+                        <button class="btn btn-secondary">取消</button>
+                        <button class="btn btn-primary">確認送出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--*************** s10 徵才公告 ***********************-->
+    <section id="s10">
+
+        <div class="row">
+            <div class="col-md-6 bg-cover" style="background-image: url(images/Background-Man-L-side.webp); height: 360px;">
+                <div class="row">
+
+                    <div class="col-md-7 s10-text ms-4 mt-5">
+
+                        <span class="h6 text-bg-success px-2 py-1 rounded-3">s10 加入我們</span>
+                        <div class="h5 text-bg-dark mt-3">
+                            職位: 人工智慧.大語言模型工程師.兩名 <br>
+                            薪資: 保障底薪四萬八仟;獎金另計; <br>
+                            工作: 算法開發.資料清理.參數微調, ...
+                        </div>
+                        <a href="http://192.168.10.19/web202510/#" class="btn text-bg-primary">應徵工作</a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6 bg-cover" style="background-image: url(images/Background-Man-R-Side.webp); height: 360px;">
+                <div class="row justify-content-end">
+                    <div class="col-md-7 s10-text ms-4 mt-5">
+
+                        <span class="h6 text-bg-success px-2 py-1 rounded-3">s10 加入我們</span>
+                        <div class="h5 text-bg-dark mt-3">
+                            職位: ○○交易策略.算法工程師.兩名 <br>
+                            薪資: 保障底薪四萬八仟;獎金另計; <br>
+                            工作: PowerLanguage, PineScript, ...
+                        </div>
+                        <a href="http://192.168.10.19/web202510/#" class="btn text-bg-primary">應徵工作</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--*************** s11 時間軸 ***********************-->
+    <div class="container p-3">
+        <div class="row timeline-show">
+            <!-- ----------------------------------------------------------- -->
+            <div class="col-md-6 timeline-one">
+
+                <h3>s11 時間軸總複習(單線交錯)(#17)</h3>
+                <div class="col-md-6 timeline-block-single-line">
+
+                    <div class="timeline-row">
+                        <div class="timeline-content left-content">
+                            <p>Row 1 左區塊</p>
+                        </div>
+                        <div class="timeline-content right-content"></div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="timeline-content left-content">
+                        </div>
+                        <div class="timeline-content right-content">
+                            <p>Row 2 右區塊</p>
+
+                        </div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="timeline-content left-content">
+                            <p>Row 3 左區塊</p>
+                        </div>
+                        <div class="timeline-content right-content">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            <div class="col-md-6 timeline-two">
+
+                <h3>s11 時間軸總複習(雙線交錯)(#17)</h3>
+                <div class="col-md-6 timeline-block-double-line">
+
+                    <div class="timeline-row">
+                        <div class="timeline-content left-content">
+                            <p>Row 1 左區塊</p>
+                        </div>
+                        <div class="timeline-content right-content"></div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="timeline-content left-content">
+                        </div>
+                        <div class="timeline-content right-content">
+                            <p>Row 2 右區塊</p>
+
+                        </div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="timeline-content left-content">
+                            <p>Row 3 左區塊</p>
+                        </div>
+                        <div class="timeline-content right-content">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ----------------------------------------------------------- -->
+        </div>
+    </div>
+
+    <!--*************** s12 捲窗簾 ***********************-->
+    <div class="container">
+        <div class="row">
+            <h3>s12 捲窗簾總複習 (#17)</h3>
+            <!-- Card 1 -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="roller-box-bottom-to-top">
+                        <img src="./righthand_files/Conan 柯南.jpg" class="card-img-top" alt="圖片1">
+                        <div class="roller">
+                            <!-- !important would override everything -->
+                            <span style="color: black !important; font-size: 20px;">查看詳情</span>
+                            <!-- <span style="color: white; font-size: 20px;">查看詳情</span> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">卡片標題 1</h5>
+                        <p class="card-text">這是卡片 1 的描述文字。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="roller-box-bottom-to-top">
+                        <img src="./righthand_files/Runner-01.jpg" class="card-img-top" alt="圖片2">
+                        <div class="roller">
+                            <!-- !important would override everything -->
+                            <span style="color: black !important; font-size: 20px;">查看詳情</span>
+                            <!-- <span style="color: white; font-size: 20px;">查看詳情</span> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">卡片標題 2</h5>
+                        <p class="card-text">這是卡片 2 的描述文字。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-3">
+                <div class="flip-card">
+                    <div class="roller-box-bottom-to-top">
+                        <img src="./righthand_files/Runner-02.jpg" class="card-img-top" alt="圖片3">
+                        <div class="roller">
+                            <span style="color: white; font-size: 20px;">查看詳情</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">卡片標題 3</h5>
+                        <p class="card-text">這是卡片 3 的描述文字。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="roller-box-bottom-to-top">
+                        <img src="./righthand_files/Runner-03.jpg" class="card-img-top" alt="圖片4">
+                        <div class="roller">
+                            <span style="color: white; font-size: 20px;">查看詳情</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">卡片標題 4</h5>
+                        <p class="card-text">這是卡片 4 的描述文字。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--*************** s13 文字動畫 ************************-->
+    <div class="container p-3">
+
+        <div style="display: flex; align-items: center;">
+            <i class="fa-brands fa-codepen text-primary fa-3x wow animate__heartBeat" data-wow-duration="6s" style="visibility: visible; animation-duration: 6s; animation-name: heartBeat;"></i>
+            <span style="font-size: 20px; margin-left: 8px;">s13 文字動畫 ...</span>
+        </div>
+
+        <div class="row" style="position: relative; height: 100px; display: flex; align-items: center; justify-content: center;">
+            <!-- Left person - starts from left, moves to center-left -->
+            <i class="fa-solid fa-person fa-4x wow animate__ animate__lightSpeedInLeft animated" data-wow-delay="0s" data-wow-duration="3s" style="position: absolute; left: calc(50% - 110px); visibility: visible; animation-duration: 3s; animation-delay: 0s; animation-name: lightSpeedInLeft;"></i>
+
+            <!-- Heart in the middle -->
+            <i class="fa-solid fa-heart-pulse fa-2x wow animate__animated animate__heartBeat animated" data-wow-delay="1s" data-wow-duration="1s" data-wow-iteration="infinite" style="position: absolute; left: calc(50% - 40px); visibility: visible; animation-duration: 1s; animation-delay: 1s; animation-iteration-count: infinite; animation-name: heartBeat;"></i>
+
+            <!-- burger in the middle -->
+            <i class="fa-solid fa-burger fa-2x wow animate__animated animate__heartBeat animated" data-wow-delay="1s" data-wow-duration="6s" data-wow-iteration="infinite" style="position: absolute; left: calc(50% + 20px); visibility: visible; animation-duration: 6s; animation-delay: 1s; animation-iteration-count: infinite; animation-name: heartBeat;"></i>
+
+            <!-- Right person - starts from right, moves to center-right -->
+            <i class="fa-solid fa-person-dress fa-4x wow animate__ animate__lightSpeedInRight animated" data-wow-delay="0s" data-wow-duration="3s" style="position: absolute; left: calc(50% + 70px); visibility: visible; animation-duration: 3s; animation-delay: 0s; animation-name: lightSpeedInRight;"></i>
+        </div>
+
+    </div>
+
+    <!--*************** s14 輪播切版.總複習 *******************-->
+    <div class="container p-3">
+        <h3>s14 輪播切版.總複習</h3>
+        <!-- =============================================================== -->
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+            <!-- ----------------------------------------------------------- -->
+            <div class="carousel-inner">
+                <!-- --------------------------------------------------------------- -->
+                <div class="carousel-item active carousel-item-start" data-bs-interval="7000">
+                    <div class="row g-3">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="product-card">
+                                <img src="./righthand_files/GIF Transformers 1.gif" alt="場景 1">
+                            </div>
+                            <div class="small text-white text-truncate fw-700">變形金剛 1</div>
+                            <div class="d-flex justify-content-between ">
+                                <span class="text-warning fw-700"><i class="fa-solid fa-camera me-1"></i>action 1</span>
+                                <span class="text-warning fw-700">NT$ 1,0000 起</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="product-card">
+                                <img src="./righthand_files/GIF Transformers 2.gif" alt="場景 2">
+                            </div>
+                            <div class="small text-white text-truncate fw-700">變形金剛 2</div>
+                            <div class="d-flex justify-content-between ">
+                                <span class="text-warning fw-700"><i class="fa-solid fa-camera me-1"></i>action 2</span>
+                                <span class="text-warning fw-700">NT$ 2,0000 起</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="product-card">
+                                <img src="./righthand_files/GIF Transformers 3.gif" alt="場景 3">
+                            </div>
+                            <div class="small text-white text-truncate fw-700">變形金剛 3</div>
+                            <div class="d-flex justify-content-between ">
+                                <span class="text-warning fw-700"><i class="fa-solid fa-camera me-1"></i>action 3</span>
+                                <span class="text-warning fw-700">NT$ 3,0000 起</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="product-card">
+                                <img src="./righthand_files/GIF Transformers 4.gif" alt="場景 4">
+                            </div>
+                            <div class="small text-white text-truncate fw-700">變形金剛 4</div>
+                            <div class="d-flex justify-content-between ">
+                                <span class="text-warning fw-700"><i class="fa-solid fa-camera me-1"></i>action 4</span>
+                                <span class="text-warning fw-700">NT$ 4,0000 起</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- --------------------------------------------------------------- -->
+                <div class="carousel-item carousel-item-next carousel-item-start" data-bs-interval="7000">
+                    <div class="row g-3">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="product-card">
+                                <img src="./righthand_files/GIF Flying Dragons 1.gif" alt="場景 1">
+                            </div>
+                            <div class="small text-white text-truncate fw-700">冰與火之歌 1</div>
+                            <div class="d-flex justify-content-between ">
+                                <span class="text-warning fw-700"><i class="fa-solid fa-camera me-1"></i>action 1</span>
+                                <span class="text-warning fw-700">NT$ 5,0000 起</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="product-card">
+                                <img src="./righthand_files/GIF Flying Dragons 2.gif" alt="場景 2">
+                            </div>
+                            <div class="small text-white text-truncate fw-700">冰與火之歌 2</div>
+                            <div class="d-flex justify-content-between ">
+                                <span class="text-warning fw-700"><i class="fa-solid fa-camera me-1"></i>action 2</span>
+                                <span class="text-warning fw-700">NT$ 6,0000 起</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="product-card">
+                                <img src="./righthand_files/GIF Flying Dragons 3.gif" alt="場景 3">
+                            </div>
+                            <div class="small text-white text-truncate fw-700">冰與火之歌 3</div>
+                            <div class="d-flex justify-content-between ">
+                                <span class="text-warning fw-700"><i class="fa-solid fa-camera me-1"></i>action 3</span>
+                                <span class="text-warning fw-700">NT$ 7,0000 起</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="product-card">
+                                <img src="./righthand_files/GIF Flying Dragons 4.gif" alt="場景 4">
+                            </div>
+                            <div class="small text-white text-truncate fw-700">冰與火之歌 4</div>
+                            <div class="d-flex justify-content-between ">
+                                <span class="text-warning fw-700"><i class="fa-solid fa-camera me-1"></i>action 4</span>
+                                <span class="text-warning fw-700">NT$ 8,0000 起</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------- -->
+            <!-- 輪播特效.向左輪轉 carousel-control-prev -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <!-- ----------------------------------------------------------- -->
+            <!-- 輪播特效.向右輪轉 carousel-control-next -->
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <!-- ----------------------------------------------------------- -->
+        </div>
+        <!-- =============================================================== -->
+    </div>
+
+    <!--*************** s15 監聽.總複習 *********************-->
+    <div class="container p-3">
+        <h3>s15 監聽.總複習</h3>
+        <!-- --------------------------------------------------------------- -->
+        <div class="row justify-content-center"></div>
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header h3 fw-700 text-bg-success">飲品點選</div>
+                <div class="card-body">
+                    <!-- ----------------------------------------------------------- -->
+                    <!-- 飲品名稱 -->
+                    <div class="mb-3">
+                        <label for="p_name" class="form-label">飲品名稱</label>
+                        <input type="text" class="form-control is-invalid" id="p_name" placeholder="產品名稱字數2~8字" list="foodlist">
+                        <datalist id="foodlist">
+                            <option value="綠茶"></option>
+                            <option value="紅茶"></option>
+                            <option value="拿鐵咖啡"></option>
+                            <option value="美式咖啡"></option>
+                        </datalist>
+                        <div class="valid-feedback">[飲品名稱] 合規!</div>
+                        <div class="invalid-feedback">[飲品名稱] 不符規定!</div>
+                    </div>
+                    <!-- ----------------------------------------------------------- -->
+                    <!-- 飲品容量 -->
+                    <div class="mb-3">
+                        <select name="" id="p_size" class="form-select form-select-lg is-invalid">
+                            <option value="" selected="" disabled="">---飲品容量(必選)---</option>
+                            <option value="L">L (700cc)</option>
+                            <option value="XL">XL (1000cc)</option>
+                        </select>
+                        <div class="valid-feedback">[飲品容量] 已選!</div>
+                        <div class="invalid-feedback">[飲品容量] 尚未選擇!</div>
+                    </div>
+                    <!-- ----------------------------------------------------------- -->
+                    <!-- 飲品甜度 -->
+                    <div class="mb-3">
+                        <select name="" id="p_sugar" class="form-select form-select-lg is-invalid">
+                            <option value="" selected="" disabled="">---飲品甜度(必選)---</option>
+                            <option value="0">無糖 (0ml)</option>
+                            <option value="3">三分 (10ml)</option>
+                            <option value="5">半糖 (20ml)</option>
+                            <option value="9">全糖 (40ml)</option>
+                        </select>
+                        <div class="valid-feedback">[飲品甜度] 已選!</div>
+                        <div class="invalid-feedback">[飲品甜度] 尚未選擇!</div>
+                    </div>
+                    <!-- ----------------------------------------------------------- -->
+                    <!-- 冰塊 -->
+                    <div class="mb-3">
+                        <select name="" id="p_ice" class="form-select form-select-lg is-invalid">
+                            <option value="" selected="" disabled="">---冰塊(必選)---</option>
+                            <option value="0">去冰 (0%)</option>
+                            <option value="3">微冰 (30%)</option>
+                            <option value="5">半冰 (50%)</option>
+                            <option value="7">全冰 (70%)</option>
+                        </select>
+                        <div class="valid-feedback">[冰塊] 已選!</div>
+                        <div class="invalid-feedback">[冰塊] 尚未選擇!</div>
+                    </div>
+                    <!-- ----------------------------------------------------------- -->
+                    <!-- 按鈕 -->
+                    <div class="text-center mt-3">
+                        <button class="btn btn-secondary" id="cancel_drink_btn">取消</button>
+                        <button class="btn btn-primary" id="ok_drink_btn">確認</button>
+                    </div>
+                    <!-- ----------------------------------------------------------- -->
+                    <!-- 飲品選擇.結果展示區 -->
+                    <div class="col-md-6 mt-3">
+                        <div class="card mb-5">
+                            <div class="card-header h3 fw-700 text-bg-success">飲品選擇.結果展示區</div>
+                            <div class="card-body" id="my-card-body">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ----------------------------------------------------------- -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------------------------------------------------------- -->
+    
+
+    <!--******************* s16 (明宏大師 CRUD) 阿彌陀佛 *******************-->
+    <div class="container p-3" id="s16">
+        <h3>s16 (明宏大師 CRUD) 阿彌陀佛</h3>
+        <!-- ----------------------------------------------------------- -->
+        <div class="row g-3">
+            <!-- ---------- LEFT COLUMN ---------- -->
+            <div class="col-md-5">
+                <div class="p-3 border rounded">
+                    <h5 class="mb-3">s16 會員管理</h5>
+                    <!-- ================== 搜尋帳號 (user_CRUD) ================== -->
+                    <div class="mb-3">
+                        <label for="user_CRUD" class="form-label">搜尋帳號 (請輸入.名稱部份字元.即可找到)</label>
+                        <input type="text" class="form-control" id="find_CRUD" value="a" placeholder="輸入想搜尋的 [名稱.部份字元]">
+                    </div>
+                    <!-- ======= [搜尋] [顯示全部] CRUD =====zzzz xxxx==== -->
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-warning" id="search_btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="輸入想搜尋的 [名稱.部份字元]">搜尋(S)</button>
+
+                        <button class="btn btn-secondary" id="show_all_btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="顯示 [所有帳戶] 清單">顯示全部</button>
+                    </div>
+
+                    <!-- ======= [水平分隔線] CRUD =====zzzz xxxx==== -->
+                    <hr class="my-3 line-3d-stable">
+
+                    <!-- ================== 註冊帳號 (user_CRUD) ================== -->
+                    <div class="mb-3">
+                        <label for="user_CRUD" class="form-label">註冊帳號 (register userName)</label>
+                        <input type="text" class="form-control" id="user_CRUD" value="cc2" placeholder="請輸入至少3個字元(英文、數字、底線)">
+                        <div class="invalid-feedback">
+                            [帳號] 必須符合以下規定：
+                            <br>1. 開頭為英文字母或底線。
+                            <br>2. 至少一個數字。
+                            <br>3. 不可有標點符號。
+                            <br>4. 總長度至少 3 個字元 (ex. _17)。
+                        </div>
+                    </div>
+
+                    <!-- ================== 註冊密碼 (pass_CRUD) ================== -->
+                    <div class="mb-3">
+                        <label for="pass_CRUD" class="form-label">註冊密碼 (register passWord)</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="pass_CRUD" value="cC456" placeholder="請輸入至少4個字元(英文大小寫、數字)">
+                            <div class="invalid-feedback">
+                                [密碼] 必須符合以下規定：
+                                <br>1. 至少一個英文大寫字母。
+                                <br>2. 至少一個英文小寫字母。
+                                <br>3. 至少一個數字。
+                                <br>4. 可以有標點符號。
+                                <br>5. 總長度至少 4 個字元。
+                            </div>
+
+                            <button class="btn btn-outline-secondary" type="button" id="togglepass_CRUD">
+                                <i class="bi bi-eye-slash" id="eyeIcon_pass_CRUD"></i>
+                                <!-- <i> </i> 是 Bootstrap Icons 提供的功能，通常通過載入其 CSS 樣式表來實現。 -->
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ================== 註冊郵箱 (mail_CRUD) ================== -->
+                    <div class="mb-3">
+                        <label for="mail_CRUD" class="form-label">電子郵箱 (email adderss)</label>
+                        <input type="email" class="form-control" id="mail_CRUD" value="cc2@abc.com" placeholder="請輸入合法的電子郵箱地址">
+                        <div class="invalid-feedback">
+                            [電子郵箱] 格式不正確。 [電子郵箱] 正確格式範例: user@example.com
+                        </div>
+                    </div>
+
+                    <!-- ================== 註冊城市 (city_CRUD) ================== -->
+                    <div class="mb-3">
+                        <label for="city_CRUD" class="form-label">居住城市 (residence city)</label>
+                        <select class="form-control" id="city_CRUD" value="台中市">
+                            <option value="">請選擇城市</option>
+                            <option value="基隆市">基隆市</option>
+                            <option value="台北市">台北市</option>
+                            <option value="桃園市">桃園市</option>
+                            <option value="新竹市">新竹市</option>
+                            <option value="苗栗市">苗栗市</option>
+                            <option value="台中市">台中市</option>
+                            <option value="彰化市">彰化市</option>
+                            <option value="雲林縣">雲林縣</option>
+                            <option value="嘉義市">嘉義市</option>
+                            <option value="台南市">台南市</option>
+                            <option value="高雄市">高雄市</option>
+                            <option value="屏東市">屏東市</option>
+                            <option value="宜蘭市">宜蘭市</option>
+                            <option value="花蓮市">花蓮市</option>
+                            <option value="台東市">台東市</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            請選擇 [您居住的城市]。
+                        </div>
+                    </div>
+
+                    <!-- ======= [寫入+讀取] [刪除] [更新] CRUD =====zzzz xxxx==== -->
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary" id="create-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Create then read this user">寫入+讀取(CR)</button>
+
+                        <button class="btn btn-success" id="update_btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Update selected item">更新(U)</button>
+
+                        <button class="btn btn-danger" id="delete_btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Delete selected item(s)">刪除(D)</button>
+
+                        <button class="btn btn-secondary" onclick="document.getElementById(&#39;s02&#39;).scrollIntoView({ behavior: &#39;smooth&#39; });">回到首頁</button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ---------- RIGHT COLUMN ---------- -->
+            <div class="col-md-7">
+                <div class="scroll-table">
+                    <table class="table table-bordered table-hover table-rwd">
+                        <thead class="table-light">
+                            <tr>
+                                <th>選取</th>
+                                <th>帳戶名稱</th>
+                                <th>帳戶密碼</th>
+                                <th>電子郵件</th>
+                                <th>所在城市</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mytbody">
+<tr>
+    <td data-th="刪|改">
+        <input type="checkbox" class="form-check-input delete-checkbox" value="delete" data-id="1" data-user="aa1" data-pass="aA123" data-mail="aa1@abc.com" data-city="台北市"> 刪
+        <input type="radio" class="form-check-input update-radio" name="update-action" value="update" data-id="1" data-user="aa1" data-pass="aA123" data-mail="aa1@abc.com" data-city="台北市"> 改
+    </td>
+    <td data-th="帳戶名稱">aa1</td>
+    <td data-th="帳戶密碼">aA123</td>
+    <td data-th="電子郵件">aa1@abc.com</td>
+    <td data-th="所在城市">台北市</td>
+</tr>
+<tr>
+    <td data-th="刪|改">
+        <input type="checkbox" class="form-check-input delete-checkbox" value="delete" data-id="2" data-user="bb1" data-pass="bB123" data-mail="bb1@abc.com" data-city="台南市"> 刪
+        <input type="radio" class="form-check-input update-radio" name="update-action" value="update" data-id="2" data-user="bb1" data-pass="bB123" data-mail="bb1@abc.com" data-city="台南市"> 改
+    </td>
+    <td data-th="帳戶名稱">bb1</td>
+    <td data-th="帳戶密碼">bB123</td>
+    <td data-th="電子郵件">bb1@abc.com</td>
+    <td data-th="所在城市">台南市</td>
+</tr>
+<tr>
+    <td data-th="刪|改">
+        <input type="checkbox" class="form-check-input delete-checkbox" value="delete" data-id="3" data-user="aa2" data-pass="aA456" data-mail="aa2@abc.com" data-city="台中市"> 刪
+        <input type="radio" class="form-check-input update-radio" name="update-action" value="update" data-id="3" data-user="aa2" data-pass="aA456" data-mail="aa2@abc.com" data-city="台中市"> 改
+    </td>
+    <td data-th="帳戶名稱">aa2</td>
+    <td data-th="帳戶密碼">aA456</td>
+    <td data-th="電子郵件">aa2@abc.com</td>
+    <td data-th="所在城市">台中市</td>
+</tr>
+<tr>
+    <td data-th="刪|改">
+        <input type="checkbox" class="form-check-input delete-checkbox" value="delete" data-id="4" data-user="bb2" data-pass="bB456" data-mail="bb2@abc.com" data-city="台南市"> 刪
+        <input type="radio" class="form-check-input update-radio" name="update-action" value="update" data-id="4" data-user="bb2" data-pass="bB456" data-mail="bb2@abc.com" data-city="台南市"> 改
+    </td>
+    <td data-th="帳戶名稱">bb2</td>
+    <td data-th="帳戶密碼">bB456</td>
+    <td data-th="電子郵件">bb2@abc.com</td>
+    <td data-th="所在城市">台南市</td>
+</tr>
+<tr>
+    <td data-th="刪|改">
+        <input type="checkbox" class="form-check-input delete-checkbox" value="delete" data-id="5" data-user="cc1" data-pass="cC123" data-mail="cc1@abc.com" data-city="台南市"> 刪
+        <input type="radio" class="form-check-input update-radio" name="update-action" value="update" data-id="5" data-user="cc1" data-pass="cC123" data-mail="cc1@abc.com" data-city="台南市"> 改
+    </td>
+    <td data-th="帳戶名稱">cc1</td>
+    <td data-th="帳戶密碼">cC123</td>
+    <td data-th="電子郵件">cc1@abc.com</td>
+    <td data-th="所在城市">台南市</td>
+</tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- ---------------------------------------------------------- -->
+    </div>
+
+    <!-- ************************* s17 模型價格 ************************-->
+    <div class="container-fluid" id="app" data-v-app=""><h3>s17 模型價格</h3><!-- <div class="display-2 fw-700 text-center bg-opacity-50 py-3 my-3 text-02">模型價格</div> --><!-- ----------------------------------------------------------- --><div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6"><div class="col mt-3 position-relative"><div class="flip-card"><div class="flip-card-inner rounded-5"><div class="flip-card-front pt-5 rounded-5"><h1>ChaGPT</h1><h1>1</h1></div><div class="flip-card-back rounded-5"><!-- C:\wamp64\www\web202510\images_ai\ --><a href="https://chatgpt.com/zh-Hant/pricing/" target="_blank"><img src="./righthand_files/1.png" alt=""></a></div></div></div></div><div class="col mt-3 position-relative"><div class="flip-card"><div class="flip-card-inner rounded-5"><div class="flip-card-front pt-5 rounded-5"><h1>Claude</h1><h1>2</h1></div><div class="flip-card-back rounded-5"><!-- C:\wamp64\www\web202510\images_ai\ --><a href="https://www.claude.com/pricing" target="_blank"><img src="./righthand_files/2.png" alt=""></a></div></div></div></div><div class="col mt-3 position-relative"><div class="flip-card"><div class="flip-card-inner rounded-5"><div class="flip-card-front pt-5 rounded-5"><h1>Cursor</h1><h1>3</h1></div><div class="flip-card-back rounded-5"><!-- C:\wamp64\www\web202510\images_ai\ --><a href="https://cursor.com/zh-Hant/pricing" target="_blank"><img src="./righthand_files/3.png" alt=""></a></div></div></div></div><div class="col mt-3 position-relative"><div class="flip-card"><div class="flip-card-inner rounded-5"><div class="flip-card-front pt-5 rounded-5"><h1>Gemini</h1><h1>4</h1></div><div class="flip-card-back rounded-5"><!-- C:\wamp64\www\web202510\images_ai\ --><a href="https://one.google.com/ai" target="_blank"><img src="./righthand_files/4.png" alt=""></a></div></div></div></div><div class="col mt-3 position-relative"><div class="flip-card"><div class="flip-card-inner rounded-5"><div class="flip-card-front pt-5 rounded-5"><h1>Trae</h1><h1>5</h1></div><div class="flip-card-back rounded-5"><!-- C:\wamp64\www\web202510\images_ai\ --><a href="https://www.trae.ai/pricing" target="_blank"><img src="./righthand_files/5.png" alt=""></a></div></div></div></div><div class="col mt-3 position-relative"><div class="flip-card"><div class="flip-card-inner rounded-5"><div class="flip-card-front pt-5 rounded-5"><h1>wisprflow</h1><h1>6</h1></div><div class="flip-card-back rounded-5"><!-- C:\wamp64\www\web202510\images_ai\ --><a href="https://wisprflow.ai/pricing" target="_blank"><img src="./righthand_files/6.png" alt=""></a></div></div></div></div></div><!-- ----------------------------------------------------------- --></div>
+
+    <!-- ************************* s18 友站連結 ************************-->
+    <section id="s18">
+        <div class="container h5 p-3">
+            <ul class="nav">
+                <li class="nav-item">
+                    <p><i class="fa-brands fa-codepen text-primary fa-1x"></i>&nbsp;s17 copyright (一非) @ <span id="currentDate">2025年12月5日 星期五</span>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="http://192.168.10.19/web202510/#">友站01</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://192.168.10.19/web202510/#">友站02</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://192.168.10.19/web202510/#">友站03</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <script src="./righthand_files/bootstrap.bundle.min.js.下載"></script>
+    <script src="./righthand_files/counterup2@2.0.2.js.下載"></script>
+    <script src="./righthand_files/jquery-3.7.1.js.下載"></script>
+
+    <script>
+        //*********************counterup 2*********************
+        const counterUp = window.counterUp.default
+        const callback = entries => {
+            entries.forEach(entry => {
+                const el = entry.target
+                if (entry.isIntersecting && !el.classList.contains('is-visible')) {
+                    counterUp(el, {
+                        duration: 2000,
+                        delay: 16,
+                    })
+                    el.classList.add('is-visible')
+                }
+            })
+        }
+        const IO = new IntersectionObserver(callback, { threshold: 1 })
+        const el01 = document.querySelector('.counter01')
+        IO.observe(el01)
+        const el02 = document.querySelector('.counter02')
+        IO.observe(el02)
+        const el03 = document.querySelector('.counter03')
+        IO.observe(el03)
+        const el04 = document.querySelector('.counter04')
+        IO.observe(el04)
+    </script>
+
+    <script>
+        // 1.取得今天的日期
+        const today = new Date();
+        // 2.日期精確格式化 (例如: "2025年11月25日 星期二")
+        // 2.日期使用 Intl.DateTimeFormat 來指定地區和格式
+        const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+        const formattedDate = new Intl.DateTimeFormat('zh-TW', options).format(today);
+        // 3. 找到步驟 1 中準備好的 HTML 元素
+        // 4. 將格式化後的日期放進該 HTML 元素中
+        const dateElement = document.getElementById('currentDate');
+        if (dateElement) { dateElement.textContent = formattedDate; }
+    </script>
+
+    <!-- ================== 登入帳號 (acct userName, pass) ================== -->
+    <script>
+        let flag_name_acct = false;
+        let flag_pass_acct = false;
+        //
+        $(function () {
+            // --- 帳號 (name_acct) 驗證 ---
+            $("#user_login").on("input", function () {
+                const userName = $(this).val();
+                const userNameRegex = /^[_a-zA-Z](?=.*\d)[a-zA-Z0-9_]{2,}$/;
+                if (userNameRegex.test(userName)) {
+                    // 符合所有規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_name_acct = true;
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_name_acct = false;
+                }
+            });
+
+            // --- 密碼 (pass_acct) 驗證 ---
+            $("#pass_login").on("input", function () {
+                const passWord = $(this).val();
+                const passWordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{4,}$/;
+                if (passWordRegex.test(passWord)) {
+                    // 符合所有規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_pass_acct = true;
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_pass_acct = false;
+                }
+            });
+
+
+        }); // end $(function () {
+    </script>
+    <!-- ================== 登入帳號 (admin userName, pass) ================== -->
+    <script>
+        let flag_name_admin = false;
+        let flag_pass_admin = false;
+        //
+        $(function () {
+            // --- 帳號 (name_admin) 驗證 ---
+            $("#user_login").on("input", function () {
+                const userName = $(this).val();
+                const userNameRegex = /^[_a-zA-Z](?=.*\d)[a-zA-Z0-9_]{2,}$/;
+                if (userNameRegex.test(userName)) {
+                    // 符合所有規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_name_admin = true;
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_name_admin = false;
+                }
+            });
+
+            // --- 密碼 (pass_admin) 驗證 ---
+            $("#pass_login").on("input", function () {
+                const passWord = $(this).val();
+                const passWordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{4,}$/;
+                if (passWordRegex.test(passWord)) {
+                    // 符合所有規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_pass_admin = true;
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_pass_admin = false;
+                }
+            });
+
+        }); // end $(function () {
+    </script>
+    <!-- ================== 登入帳號 (login userName, pass) ================== -->
+    <script>
+        let flag_user_login = true;
+        let flag_pass_login = true;
+        //
+        $(function () {
+            // --- 帳號 (user_login) 驗證 ---
+            $("#user_login").on("input", function () {
+                const userName = $(this).val();
+                const userNameRegex = /^[_a-zA-Z](?=.*\d)[a-zA-Z0-9_]{2,}$/;
+                if (userNameRegex.test(userName)) {
+                    // 符合所有規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_user_login = true;
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_user_login = false;
+                }
+            });
+
+            // --- 密碼 (pass_login) 驗證 ---
+            $("#pass_login").on("input", function () {
+                const passWord = $(this).val();
+                const passWordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{4,}$/;
+                if (passWordRegex.test(passWord)) {
+                    // 符合所有規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_pass_login = true;
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_pass_login = false;
+                }
+            });
+
+        }); // end $(function () {
+        // ========== Login BUTTON ==========
+        $("#btn_confirm_login").on("click", function () {
+            if (flag_user_login && flag_pass_login) {
+
+                let loginUser = $("#user_login").val();
+                let loginPass = $("#pass_login").val();
+
+                // 🔥 Check if user exists and password matches
+                axios.get(`http://192.168.10.19:3000/user?user=${loginUser}`)
+                    .then(function (response) {
+
+                        if (response.data.length > 0) {
+                            // User exists, now check password
+                            let userData = response.data[0];
+
+                            if (userData.pass === loginPass) {
+                                // Password matches - Login successful
+                                Swal.fire({
+                                    title: "[" + userData.user + "] 登入成功",
+                                    icon: "success",
+                                    confirmButtonText: "確認"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // Hide the modal
+                                        $("#loginModal").modal('hide');
+                                        //
+                                        // You can add login success actions here
+                                        // e.g., redirect, store session, etc.
+                                        console.log('Login successful for user:', userData.user);
+                                        //
+                                        // Clear form
+                                        $("#user_login").val("");
+                                        $("#pass_login").val("");
+                                    }
+                                });
+                            } else {
+                                // Password doesn't match - Login failed
+                                Swal.fire({
+                                    title: "登入失敗!",
+                                    text: "帳號或密碼錯誤",
+                                    icon: "error",
+                                    confirmButtonText: "確認"
+                                });
+                            }
+                        } else {
+                            // User doesn't exist - Login failed
+                            Swal.fire({
+                                title: "登入失敗!",
+                                text: "帳號或密碼錯誤",
+                                icon: "error",
+                                confirmButtonText: "確認"
+                            });
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        Swal.fire({
+                            title: "登入失敗!",
+                            text: error.message,
+                            icon: "error",
+                            confirmButtonText: "確認"
+                        });
+                    });
+
+            } else {
+                Swal.fire({
+                    title: "欄位有錯!",
+                    icon: "error",
+                    confirmButtonText: "確認"
+                });
+            }
+        }); // end $("#btn_confirm_login").on("click", function () {
+    </script>
+    <!-- ================== 註冊帳號 (register userName, pass) ================== -->
+    <!-- ================== 註冊郵箱 (register mail_register) ================== -->
+    <!-- ================== 註冊城市 (register city_register) ================== -->
+    <script>
+        let flag_user_register = true; // 註冊帳號 註冊密碼 註冊郵箱 註冊城市
+        let flag_pass_register1 = true; // 註冊密碼
+        let flag_pass_register2 = true; // 註冊密碼確認
+        let flag_mail_register = true; // 註冊郵箱
+        let flag_city_register = true; //  註冊城市
+        //
+        $(function () {
+            // --- 註冊帳號 (user_register) 驗證 ---
+            $("#user_register").on("input", function () {
+                const userName = $(this).val();
+                const userNameRegex = /^[_a-zA-Z](?=.*\d)[a-zA-Z0-9_]{2,}$/;
+                if (userNameRegex.test(userName)) {
+                    // 符合所有規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_user_register = true;
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_user_register = false;
+                }
+            });
+
+            // --- 註冊密碼 (pass_register1) 驗證 ---
+            $("#pass_register1").on("input", function () {
+                const passWord = $(this).val();
+                const passWordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{4,}$/;
+                if (passWordRegex.test(passWord)) {
+                    // 符合所有規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_pass_register1 = true;
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_pass_register1 = false;
+                }
+            });
+
+            // --- 註冊密碼確認 (pass_register2) 驗證 ---
+            $("#pass_register2").on("input", function () {
+                const passWord = $(this).val();
+                const passWordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{4,}$/;
+                if (passWordRegex.test(passWord)) {
+                    // 符合所有規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_pass_register2 = true;
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_pass_register2 = false;
+                }
+            });
+
+            // --- 電子郵箱 (mail_register) 驗證 ---
+            $("#mail_register").on("input", function () {
+                const email = $(this).val();
+                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                if (emailRegex.test(email)) {
+                    // 符合規定 (格式合法)
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_mail_register = true;
+                } else {
+                    // 不符合規定 (格式不合法)
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_mail_register = false;
+                }
+            });
+
+            // --- 城市選擇 (city_register) 驗證 (必選) ---
+            // 監聽 ID 為 city_register 的 select 元素的變動事件
+            $("#city_register").on("change", function () {
+                const selectedValue = $(this).val();
+                if (selectedValue === "") {
+                    // 選了 "請選擇城市" (value="")，不符合規定
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    flag_city_register = false;
+                } else {
+                    // 選擇了有效城市，符合規定
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    flag_city_register = true;
+                }
+            });
+
+        }); // end $(function () {
+        // ========== Register BUTTON ==========
+        $("#btn_confirm_register").on("click", function () {
+            if (flag_user_register && flag_pass_register1 && flag_mail_register && flag_city_register) {
+
+                let newUser = $("#user_register").val();
+
+                // 🔥 Check if user exists via API
+                axios.get(`http://192.168.10.19:3000/user?user=${newUser}`)
+                    .then(function (response) {
+
+                        if (response.data.length > 0) {
+                            // User already exists
+                            Swal.fire({
+                                // title: "帳戶已存在，不可註冊!",
+                                title: `帳戶 [${newUser}] 已存在，不可註冊!`,
+                                icon: "error",
+                                confirmButtonText: "確認"
+                            });
+                        } else {
+                            // User doesn't exist, proceed with creation
+                            let jsonDATA = {
+                                user: newUser,
+                                pass: $("#pass_register1").val(),
+                                mail: $("#mail_register").val(),
+                                city: $("#city_register").val()
+                            };
+
+                            axios.post('http://192.168.10.19:3000/user', jsonDATA)
+                                .then(function (response) {
+                                    if (response.status == 201) {
+                                        Swal.fire({
+                                            title: "註冊成功!",
+                                            icon: "success",
+                                            confirmButtonText: "確認",
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                getAllItem();
+                                                console.log('getAllItem() was called.');
+
+                                                // Clear form
+                                                $("#user_register").val("");
+                                                $("#pass_register1").val("");
+                                                $("#mail_register").val("");
+                                                $("#city_register").val("");
+                                            }
+                                        });
+                                    }
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                    Swal.fire({
+                                        title: "註冊失敗!",
+                                        text: error.message,
+                                        icon: "error",
+                                        confirmButtonText: "確認"
+                                    });
+                                });
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        Swal.fire({
+                            title: "檢查失敗!",
+                            text: error.message,
+                            icon: "error",
+                            confirmButtonText: "確認"
+                        });
+                    });
+
+            } else {
+                Swal.fire({
+                    title: "欄位有錯!",
+                    icon: "error",
+                    confirmButtonText: "確認"
+                });
+            }
+        }); // end $("#btn_confirm_register").on("click", function () {
+    </script>
+
+
+    <!-- ================== CRUD 註冊帳號 (user_CRUD, pass_CRUD) ================== -->
+    <!-- ================== CRUD 註冊郵箱 (mail_CRUD) ================== -->
+    <!-- ================== CRUD 註冊城市 (city_CRUD) ================== -->
+    <script src="./righthand_files/sweetalert2@11.js.下載"></script>
+    <script src="./righthand_files/axios.min.js.下載"></script>
+    <script>
+        let flag_user_CRUD = true; // 註冊帳號 註冊密碼 註冊郵箱 註冊城市
+        let flag_pass_CRUD = true; // 註冊密碼
+        let flag_mail_CRUD = true; // 註冊郵箱
+        let flag_city_CRUD = true; // 註冊城市
+        //
+        // ⚠ $(function(){ ... }) 等同於 document.ready，只會在網頁第一次載入時觸發一次 xxxx 目前用不到
+        //
+        // --- 註冊帳號 (user_CRUD) 驗證 ---
+        $("#user_CRUD").on("input", function () {
+            const userName = $(this).val();
+            const userNameRegex = /^[_a-zA-Z](?=.*\d)[a-zA-Z0-9_]{2,}$/;
+            if (userNameRegex.test(userName)) {
+                // 符合所有規定
+                $(this).removeClass('is-invalid').addClass('is-valid');
+                flag_user_CRUD = true;
+            } else {
+                // 不符合規定
+                $(this).removeClass('is-valid').addClass('is-invalid');
+                flag_user_CRUD = false;
+            }
+        });
+
+        // --- 註冊密碼 (pass_CRUD) 驗證 ---
+        $("#pass_CRUD").on("input", function () {
+            const passWord = $(this).val();
+            const passWordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{4,}$/;
+            if (passWordRegex.test(passWord)) {
+                // 符合所有規定
+                $(this).removeClass('is-invalid').addClass('is-valid');
+                flag_pass_CRUD = true;
+            } else {
+                // 不符合規定
+                $(this).removeClass('is-valid').addClass('is-invalid');
+                flag_pass_CRUD = false;
+            }
+        });
+
+        // --- 電子郵箱 (mail_CRUD) 驗證 ---
+        $("#mail_CRUD").on("input", function () {
+            const email = $(this).val();
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (emailRegex.test(email)) {
+                // 符合規定 (格式合法)
+                $(this).removeClass('is-invalid').addClass('is-valid');
+                flag_mail_CRUD = true;
+            } else {
+                // 不符合規定 (格式不合法)
+                $(this).removeClass('is-valid').addClass('is-invalid');
+                flag_mail_CRUD = false;
+            }
+        });
+
+        // --- 城市選擇 (city_CRUD) 驗證 (必選) ---
+        // 監聽 ID 為 city_register 的 select 元素的變動事件
+        $("#city_CRUD").on("change", function () {
+            const selectedValue = $(this).val();
+            if (selectedValue === "") {
+                // 選了 "請選擇城市" (value="")，不符合規定
+                $(this).removeClass('is-valid').addClass('is-invalid');
+                flag_city_CRUD = false;
+            } else {
+                // 選擇了有效城市，符合規定
+                $(this).removeClass('is-invalid').addClass('is-valid');
+                flag_city_CRUD = true;
+            }
+        });
+
+        // <!--******************* s16 (明宏大師 CRUD) 阿彌陀佛 *******************-->
+        // <!-- 新增按鈕; 參考 product-20251128-add.html (明宏大師) -->
+        // jsonDATA 負責 {收集 object 內容};
+        let alldata = [];
+
+        // 🔥 New function to search and display matched items
+        function getMatchedItem() {
+            let searchKeyword = $("#find_CRUD").val().trim();
+
+            if (searchKeyword === "") {
+                Swal.fire({
+                    title: "請輸入搜尋關鍵字!",
+                    icon: "warning",
+                    confirmButtonText: "確認"
+                });
+                return;
+            }
+
+            axios.get('http://192.168.10.19:3000/user')
+                .then(function (response) {
+                    // 🔥 Filter data that matches partial characters
+                    let matchedData = response.data.filter(item =>
+                        item.user.includes(searchKeyword)
+                    );
+
+                    if (matchedData.length === 0) {
+                        Swal.fire({
+                            title: "查無資料!",
+                            html: `找不到包含 <strong>${searchKeyword}</strong> 的帳戶`,
+                            icon: "info",
+                            confirmButtonText: "確認"
+                        });
+                        // Show all data instead
+                        alldata = response.data;
+                    } else {
+                        Swal.fire({
+                            title: "搜尋成功!",
+                            html: `找到 <strong>${matchedData.length}</strong> 筆符合的資料`,
+                            icon: "success",
+                            confirmButtonText: "確認",
+                            timer: 1500
+                        });
+                        alldata = matchedData;
+                    }
+
+                    renderTable();
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: "搜尋失敗!",
+                        text: error.message,
+                        icon: "error",
+                        confirmButtonText: "確認"
+                    });
+                });
+        }
+
+        // old function to get and display all items
+        function getAllItem() {
+            return axios.get('http://192.168.10.19:3000/user')
+                .then(function (response) {
+                    alldata = response.data;
+                    renderTable();
+                    return response.data.length;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    return 0;
+                });
+        }
+
+        // render table rows & columns
+        function renderTable() {
+            $("#mytbody").empty();
+            alldata.forEach((item) => {
+                let strHTML = `
+<tr>
+    <td data-th="刪|改">
+        <input type="checkbox" class="form-check-input delete-checkbox" value="delete" data-id="${item.id}"
+               data-user="${item.user}" 
+               data-pass="${item.pass}" 
+               data-mail="${item.mail}" 
+               data-city="${item.city}"> 刪
+        <input type="radio" class="form-check-input update-radio" name="update-action" value="update" data-id="${item.id}" 
+               data-user="${item.user}" 
+               data-pass="${item.pass}" 
+               data-mail="${item.mail}" 
+               data-city="${item.city}"> 改
+    </td>
+    <td data-th="帳戶名稱">${item.user}</td>
+    <td data-th="帳戶密碼">${item.pass}</td>
+    <td data-th="電子郵件">${item.mail}</td>
+    <td data-th="所在城市">${item.city}</td>
+</tr>`;
+                $("#mytbody").append(strHTML);
+            });
+
+            attachEventListeners();
+        }
+
+        // 🔥 Listen to {update-radio, delete-checkbox}
+        // 🔥 Fill form with DOM operations
+        function attachEventListeners() {
+            // When update-radio is selected
+            $('.update-radio').on('change', function () {
+                if (this.checked) {
+                    // Uncheck all other update radios
+                    $('.update-radio').not(this).prop('checked', false);
+
+                    // 🔥 Uncheck the delete-checkbox in the same row
+                    $(this).closest('tr').find('.delete-checkbox').prop('checked', false);
+
+                    // Fill form
+                    fillForm(this);
+                }
+            });
+
+            // When delete-checkbox is checked
+            $('.delete-checkbox').on('change', function () {
+                if (this.checked) {
+                    // 🔥 Uncheck the update-radio in the same row
+                    $(this).closest('tr').find('.update-radio').prop('checked', false);
+
+                    // Fill form
+                    fillForm(this);
+                }
+            });
+        }
+
+        // Fill form function
+        function fillForm(element) {
+            const $el = $(element);
+
+            document.getElementById('user_CRUD').value = $el.data('user');
+            document.getElementById('pass_CRUD').value = $el.data('pass');
+            document.getElementById('mail_CRUD').value = $el.data('mail');
+
+            // Set city
+            const cityValue = $el.data('city');
+            const selectElement = document.getElementById('city_CRUD');
+
+            console.log('Setting city:', cityValue);
+
+            // Method 1: Direct assignment
+            selectElement.value = cityValue;
+
+            // Method 2: If failed, iterate through options
+            if (!selectElement.value) {
+                for (let i = 0; i < selectElement.options.length; i++) {
+                    if (selectElement.options[i].value === cityValue) {
+                        selectElement.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            console.log('Selected city:', selectElement.value);
+        }
+
+        // Initialize Bootstrap tooltips
+        $(function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+
+        // 🔥 Load data when page loads
+        getAllItem();
+
+        // 🔥 Event listener for search button zzzz xxxx
+        // ========== SEARCH BUTTON ==========
+        $("#search_btn").on("click", function () {
+            // let <input> with id = "user_CRUD" to be valid as user press the search_btn
+            // $(user_CRUD).removeClass('is-invalid').addClass('is-valid');
+            getMatchedItem();
+        });
+
+        // 🔥 Optional: Search on Enter key press in user_CRUD input
+        $("#user_CRUD").on("keypress", function (e) {
+            if (e.which === 13) { // Enter key
+                // let <input> with id = "user_CRUD" to be valid as user press the search_btn
+                // $(user_CRUD).removeClass('is-invalid').addClass('is-valid');
+                getMatchedItem();
+            }
+        });
+
+        // ========== SHOW ALL BUTTON ==========
+        // 🔥 Show all data button
+        $("#show_all_btn").on("click", async function () {
+            const total_user_qty = await getAllItem();
+            Swal.fire({
+                title: `已顯示全部 ${total_user_qty} 筆資料!`,
+                icon: "info",
+                confirmButtonText: "確認",
+                timer: 1500
+            });
+        });
+
+        // ========== CREATE BUTTON ==========
+        $("#create-btn").on("click", function () {
+            if (flag_user_CRUD && flag_pass_CRUD && flag_mail_CRUD && flag_city_CRUD) {
+
+                let newUser = $("#user_CRUD").val();
+
+                // 🔥 Check if user exists via API
+                axios.get(`http://192.168.10.19:3000/user?user=${newUser}`)
+                    .then(function (response) {
+
+                        if (response.data.length > 0) {
+                            // User already exists
+                            Swal.fire({
+                                // title: "帳戶已存在，不可新增!",
+                                title: `帳戶 [${newUser}] 已存在，不可新增!`,
+                                icon: "error",
+                                confirmButtonText: "確認"
+                            });
+                        } else {
+                            // User doesn't exist, proceed with creation
+                            let jsonDATA = {
+                                user: newUser,
+                                pass: $("#pass_CRUD").val(),
+                                mail: $("#mail_CRUD").val(),
+                                city: $("#city_CRUD").val()
+                            };
+
+                            axios.post('http://192.168.10.19:3000/user', jsonDATA)
+                                .then(function (response) {
+                                    if (response.status == 201) {
+                                        Swal.fire({
+                                            title: "新增成功!",
+                                            icon: "success",
+                                            confirmButtonText: "確認",
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                getAllItem();
+                                                console.log('getAllItem() was called.');
+
+                                                // Clear form
+                                                $("#user_CRUD").val("");
+                                                $("#pass_CRUD").val("");
+                                                $("#mail_CRUD").val("");
+                                                $("#city_CRUD").val("");
+                                            }
+                                        });
+                                    }
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                    Swal.fire({
+                                        title: "新增失敗!",
+                                        text: error.message,
+                                        icon: "error",
+                                        confirmButtonText: "確認"
+                                    });
+                                });
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        Swal.fire({
+                            title: "檢查失敗!",
+                            text: error.message,
+                            icon: "error",
+                            confirmButtonText: "確認"
+                        });
+                    });
+
+            } else {
+                Swal.fire({
+                    title: "欄位有錯!",
+                    icon: "error",
+                    confirmButtonText: "確認"
+                });
+            }
+        });
+
+        // ========== UPDATE BUTTON ==========
+        $("#update_btn").on("click", function () {
+            // 🔥 Get checked update-radio instead of delete-checkbox
+            let checkedRadio = $(".update-radio:checked");
+
+            if (checkedRadio.length === 0) {
+                Swal.fire({
+                    title: "請選擇要更新的項目!",
+                    icon: "warning",
+                    confirmButtonText: "確認"
+                });
+                return;
+            }
+
+            // 🔥 Use .data('id') instead of .val()
+            let itemId = checkedRadio.data('id');
+
+            console.log('Update item ID:', itemId); // Debug
+
+            // Validate all fields before updating
+            if (!flag_user_CRUD || !flag_pass_CRUD || !flag_mail_CRUD || !flag_city_CRUD) {
+                Swal.fire({
+                    title: "欄位有錯!",
+                    text: "請確認所有欄位都符合規定",
+                    icon: "error",
+                    confirmButtonText: "確認"
+                });
+                return;
+            }
+
+            // Collect updated data
+            let updateData = {
+                user: $("#user_CRUD").val(),
+                pass: $("#pass_CRUD").val(),
+                mail: $("#mail_CRUD").val(),
+                city: $("#city_CRUD").val()
+            };
+
+            console.log('Update data:', updateData); // Debug
+
+            // Confirm update
+            Swal.fire({
+                title: "確定要更新嗎?",
+                text: `將更新 ID: ${itemId} 的資料`,
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "確定更新",
+                cancelButtonText: "取消"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.put(`http://192.168.10.19:3000/user/${itemId}`, updateData)
+                        .then(function (response) {
+                            if (response.status == 200) {
+                                Swal.fire({
+                                    title: "更新成功!",
+                                    icon: "success",
+                                    confirmButtonText: "確認"
+                                }).then(() => {
+                                    getAllItem(); // Refresh table
+
+                                    // 🔥 Clear the update-radio selection
+                                    $(".update-radio:checked").prop('checked', false);
+
+                                    // Optionally clear form
+                                    $("#user_CRUD").val("");
+                                    $("#pass_CRUD").val("");
+                                    $("#mail_CRUD").val("");
+                                    $("#city_CRUD").val("");
+                                });
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                            Swal.fire({
+                                title: "更新失敗!",
+                                text: error.message,
+                                icon: "error",
+                                confirmButtonText: "確認"
+                            });
+                        });
+                }
+            });
+        });
+
+        // ========== DELETE BUTTON ==========
+        $("#delete_btn").on("click", function () {
+            // Get all checked checkboxes
+            let checkedIds = [];
+            $(".delete-checkbox:checked").each(function () {
+                checkedIds.push($(this).data('id')); // 🔥 改用 .data('id')
+            });
+
+            console.log('.delete-checkbox:checked => ', checkedIds);
+
+            if (checkedIds.length === 0) {
+                Swal.fire({
+                    title: "請選擇要刪除的項目!",
+                    icon: "warning",
+                    confirmButtonText: "確認"
+                });
+                return; // 🔥 加上 return 避免繼續執行
+            }
+
+            // Confirm deletion
+            Swal.fire({
+                title: "確定要刪除嗎?",
+                //
+                // text: `將刪除 ${checkedIds.length} 筆資料`,
+                html: `將刪除 ${checkedIds.length} 筆資料:<br>將刪除 id = {${checkedIds.join(', ')}}`,
+                // html: `
+                //     <p>將刪除 ${checkedIds.length} 筆資料:</p>
+                //     <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                //         <code>將刪除 id = {${checkedIds.join(', ')}}</code>
+                //     </div>
+                // `,
+                //
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "確定刪除",
+                cancelButtonText: "取消",
+                confirmButtonColor: '#d33'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Delete each selected item
+                    let deletePromises = checkedIds.map(id => {
+                        return axios.delete(`http://192.168.10.19:3000/user/${id}`);
+                    });
+
+                    Promise.all(deletePromises)
+                        .then(() => {
+                            Swal.fire({
+                                title: "刪除成功!",
+                                text: `已刪除 ${checkedIds.length} 筆資料`,
+                                icon: "success",
+                                confirmButtonText: "確認"
+                            }).then(() => {
+                                getAllItem(); // Refresh table
+                            });
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                            Swal.fire({
+                                title: "刪除失敗!",
+                                text: error.message,
+                                icon: "error",
+                                confirmButtonText: "確認"
+                            });
+                        });
+                }
+            });
+        });
+
+    </script>
+
+
+    <!-- ==== Peeping at 偷看密碼 (eyeIcon_acct, togglePass_acct) === -->
+    <script>
+        document.getElementById("togglePass_acct").addEventListener("click", function () {
+            const input = document.getElementById("pass_acct");
+            const icon = document.getElementById("eyeIcon_acct");
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            }
+        });
+    </script>
+
+    <!-- ==== Peeping at 偷看密碼 (eyeIcon_admin, togglePass_admin) === -->
+    <script>
+        document.getElementById("togglePass_admin").addEventListener("click", function () {
+            const input = document.getElementById("pass_admin");
+            const icon = document.getElementById("eyeIcon_admin");
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            }
+        });
+    </script>
+    <!-- ==== Peeping at 偷看密碼 (eyeIcon_login, togglePass_login) === -->
+    <script>
+        document.getElementById("togglePass_login").addEventListener("click", function () {
+            const input = document.getElementById("pass_login");
+            const icon = document.getElementById("eyeIcon_login");
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            }
+        });
+    </script>
+    <!-- ==== Peeping at 偷看密碼 (eyeIcon_register1, togglePass_register1) === -->
+    <script>
+        document.getElementById("togglePass_register1").addEventListener("click", function () {
+            const input = document.getElementById("pass_register1");
+            const icon = document.getElementById("eyeIcon_register1");
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            }
+        });
+    </script>
+    <!-- ==== Peeping at 偷看密碼 (eyeIcon_register2, togglePass_register2) === -->
+    <script>
+        document.getElementById("togglePass_register2").addEventListener("click", function () {
+            const input = document.getElementById("pass_register2");
+            const icon = document.getElementById("eyeIcon_register2");
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            }
+        });
+    </script>
+    <!-- ==== Peeping at 偷看密碼 (eyeIcon_pass_CRUD, togglepass_CRUD) === -->
+    <script>
+        document.getElementById("togglepass_CRUD").addEventListener("click", function () {
+            const input = document.getElementById("pass_CRUD");
+            const icon = document.getElementById("eyeIcon_pass_CRUD");
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            }
+        });
+    </script>
+
+
+    <!--*************** s09 地址和基本資料詢問 ***********************-->
+    <!-- url: "js/json/AllData.json", // 故意寫錯==觸發 error; 寫對==F12, Console, 可見 json 內含資料 -->
+    <!-- // 0. 載入 JSON 資料 (只載入一次 Load JSON once) -->
+    <!-- // 1. 監聽.城市選擇變化 (Listen to city selection change) -->
+    <!-- // 2. 監聽.區域選擇變化 (Listen to area selection change) -->
+    <!-- // 3. 監聽.街道選擇變化 (Listen to road selection change) -->
+    <script> // 載入縣市資料
+
+        // ============================================
+        // 三層級聯選單必要函數 (Required Functions for 3-Level Cascading Dropdown)
+        // 城市 → 區域 → 街道 (含完整資訊) [City → Area → Road with Full Info]
+        // ============================================
+
+        let allData = null; // 全域變數:儲存 JSON 資料 (Global variable: store JSON data)
+
+        // ============================================
+        // 初始化函數 (Initialization Function)
+        // ============================================
+
+        $(function () {
+            // 載入 JSON 資料 (Load JSON data)
+            $.ajax({
+                type: "GET",
+                url: "js/json/AllData.json",
+                dataType: "json",
+                success: function (data) {
+                    allData = data;
+                    loadCityList(data);
+                },
+                error: function () {
+                    Swal.fire({
+                        title: "連線錯誤!",
+                        text: "無法載入 js/json/AllData.json",
+                        icon: "error"
+                    });
+                }
+            });
+
+            // 綁定事件監聽器 (Bind event listeners)
+            bindEventListeners();
+        });
+
+
+        // ============================================
+        // 必要函數 1: 綁定事件監聽器 (Bind Event Listeners)
+        // ============================================
+
+        function bindEventListeners() {
+            // 城市選擇變化 (City selection change)
+            $("#s09_city").change(function () {
+                resetAreaAndRoad();          // 重置區域和街道選單
+                let selectedCity = $(this).val();
+                loadAreaList(selectedCity);  // 載入該城市的區域
+            });
+
+            // 區域選擇變化 (Area selection change)
+            $("#s09_area").change(function () {
+                resetRoad();                                // 重置街道選單
+                let selectedCity = $("#s09_city").val();
+                let selectedArea = $(this).val();
+                loadRoadList(selectedCity, selectedArea);  // 載入該區域的街道
+            });
+
+            // 街道選擇變化 (Road selection change)
+            $("#s09_road").change(function () {
+                displayResult();
+            });
+        }
+
+
+        // ============================================
+        // 必要函數 2: 載入城市列表 (Load City List)
+        // ============================================
+
+        function loadCityList(data) {
+            $("#s09_city").empty();
+            $("#s09_city").append('<option value="" disabled selected>---s09 請選擇城市---</option>');
+
+            data.forEach(function (city) {
+                $("#s09_city").append(
+                    `<option value="${city.CityName}">${city.CityName}</option>`
+                );
+            });
+
+            console.log("城市列表已載入 (City list loaded)");
+        }
+
+
+        // ============================================
+        // 必要函數 3: 載入區域列表 (Load Area List)
+        // 只顯示選中城市的區域 (Only show areas of selected city)
+        // ============================================
+
+        function loadAreaList(selectedCityName) {
+            $("#s09_area").empty();
+            $("#s09_area").append('<option value="" disabled selected>---s09 請選擇區域---</option>');
+
+            // 遍歷資料找到選中的城市 (Loop through data to find selected city)
+            allData.forEach(function (city) {
+                if (city.CityName === selectedCityName) {
+                    // 加入該城市的所有區域 (Add all areas of this city)
+                    city.AreaList.forEach(function (area) {
+                        $("#s09_area").append(
+                            `<option value="${area.AreaName}" data-zipcode="${area.ZipCode}">
+                        ${area.ZipCode} ${area.AreaName}
+                    </option>`
+                        );
+                    });
+                }
+            });
+
+            // 啟用區域選單 (Enable area dropdown)
+            $("#s09_area").prop('disabled', false);
+            console.log(`已載入 ${selectedCityName} 的區域資料`);
+        }
+
+
+        // ============================================
+        // 必要函數 4: 載入街道列表 (Load Road List)
+        // 格式: 郵遞區號 + 區域名稱 + 街道名稱
+        // Format: ZipCode + AreaName + RoadName
+        // ============================================
+
+        function loadRoadList(selectedCityName, selectedAreaName) {
+            $("#s09_road").empty();
+            $("#s09_road").append('<option value="" disabled selected>---s09 請選擇街道---</option>');
+
+            let zipCode = ""; // 儲存郵遞區號 (Store zipcode)
+
+            // 遍歷資料找到選中的城市和區域 (Loop to find selected city and area)
+            allData.forEach(function (city) {
+                if (city.CityName === selectedCityName) {
+                    city.AreaList.forEach(function (area) {
+                        if (area.AreaName === selectedAreaName) {
+                            zipCode = area.ZipCode; // 取得郵遞區號
+
+                            // 遍歷該區域的所有街道 (Loop through all roads in this area)
+                            area.RoadList.forEach(function (road) {
+                                // 格式: 郵遞區號 區域名稱 - 街道名稱
+                                // Format: ZipCode AreaName - RoadName
+                                $("#s09_road").append(
+                                    `<option value="${area.ZipCode}" 
+                                     data-area="${area.AreaName}" 
+                                     data-road="${road.RoadName}">
+                                ${area.ZipCode} ${area.AreaName} - ${road.RoadName}
+                            </option>`
+                                );
+                            });
+                        }
+                    });
+                }
+            });
+
+            // 啟用街道選單 (Enable road dropdown)
+            $("#s09_road").prop('disabled', false);
+            console.log(`已載入 ${selectedAreaName} 的街道資料`);
+        }
+
+
+        // ============================================
+        // 必要函數 5: 重置區域和街道選單 (Reset Area and Road)
+        // ============================================
+
+        function resetAreaAndRoad() {
+            // 重置區域選單 (Reset area dropdown)
+            $("#s09_area").empty();
+            $("#s09_area").append('<option value="" disabled selected>---s09 請先選擇城市---</option>');
+            $("#s09_area").prop('disabled', true);
+
+            // 重置街道選單 (Reset road dropdown)
+            $("#s09_road").empty();
+            $("#s09_road").append('<option value="" disabled selected>---s09 請先選擇區域---</option>');
+            $("#s09_road").prop('disabled', true);
+
+            // 隱藏結果 (Hide result)
+            $("#result").hide();
+        }
+
+
+        // ============================================
+        // 必要函數 6: 重置街道選單 (Reset Road)
+        // ============================================
+
+        function resetRoad() {
+            $("#s09_road").empty();
+            $("#s09_road").append('<option value="" disabled selected>---s09 請選擇街道---</option>');
+
+            // 隱藏結果 (Hide result)
+            $("#result").hide();
+        }
+
+
+        // ============================================
+        // 必要函數 7: 顯示選擇結果 (Display Result)
+        // ============================================
+
+        function displayResult() {
+            // 取得所有選擇的值 (Get all selected values)
+            let city = $("#s09_city").val();
+            let area = $("#s09_area").val();
+            let zipCode = $("#s09_area option:selected").data('zipcode');
+            let road = $("#s09_road option:selected").data('road');
+
+            // 組合完整地址 (Combine full address)
+            let fullAddress = `${zipCode} ${city}${area}${road}`;
+
+            // 顯示結果 (Display result)
+            $("#result-text").html(`
+        <strong>城市 (City):</strong> ${city}<br>
+        <strong>郵遞區號 (ZipCode):</strong> ${zipCode}<br>
+        <strong>區域 (Area):</strong> ${area}<br>
+        <strong>街道 (Road):</strong> ${road}<br>
+        <strong>完整地址 (Full Address):</strong> ${fullAddress} `);
+            $("#result").show();
+
+            // Console 輸出 (Console output)
+            console.log("選擇結果:", {
+                city: city,
+                zipCode: zipCode,
+                area: area,
+                road: road,
+                fullAddress: fullAddress
+            });
+        }
+
+
+        // ============================================
+        // 選用函數 (Optional Functions)
+        // ============================================
+
+        // 選用函數 1: 取得當前選擇的完整資訊 (Get current selection info)
+        function getCurrentSelection() {
+            return {
+                city: $("#s09_city").val(),
+                area: $("#s09_area").val(),
+                zipCode: $("#s09_area option:selected").data('zipcode'),
+                road: $("#s09_road option:selected").data('road')
+            };
+        }
+
+        // 選用函數 2: 驗證是否全部選擇完成 (Validate if all selections are complete)
+        function isSelectionComplete() {
+            let city = $("#s09_city").val();
+            let area = $("#s09_area").val();
+            let road = $("#s09_road").val();
+
+            return city !== "" && area !== "" && road !== "";
+        }
+
+        // 選用函數 3: 清空所有選單 (Clear all dropdowns)
+        function clearAllSelections() {
+            $("#s09_city").val("");
+            resetAreaAndRoad();
+        }
+
+
+        // ============================================
+        // 使用範例 (Usage Examples)
+        // ============================================
+
+        /*
+        // 範例 1: 取得當前選擇
+        let selection = getCurrentSelection();
+        console.log(selection);
+        // 輸出: {city: "臺北市", area: "中正區", zipCode: "100", road: "八德路１段"}
+        
+        // 範例 2: 檢查是否選擇完成
+        if (isSelectionComplete()) {
+            console.log("使用者已完成所有選擇!");
+        }
+        
+        // 範例 3: 清空所有選單
+        clearAllSelections();
+        */
+    </script>
+
+    <!--*************** s15 監聽總複習 ************************-->
+    <script>
+        // 取得所有表單元素
+        const pName = document.getElementById('p_name');
+        const pSize = document.getElementById('p_size');
+        const pSugar = document.getElementById('p_sugar');
+        const pIce = document.getElementById('p_ice');
+        const okBtn = document.getElementById('ok_drink_btn');
+        const cancelBtn = document.getElementById('cancel_drink_btn');
+        const cardBody = document.getElementById('my-card-body');
+
+        // 驗證飲品名稱 (2-8字)
+        function validateName() {
+            const value = pName.value.trim();
+            const isValid = value.length >= 2 && value.length <= 8;
+
+            if (isValid) {
+                pName.classList.remove('is-invalid');
+                pName.classList.add('is-valid');
+            } else {
+                pName.classList.remove('is-valid');
+                pName.classList.add('is-invalid');
+            }
+            return isValid;
+        }
+
+        // 驗證下拉選單
+        function validateSelect(element) {
+            const isValid = element.value !== '';
+
+            if (isValid) {
+                element.classList.remove('is-invalid');
+                element.classList.add('is-valid');
+            } else {
+                element.classList.remove('is-valid');
+                element.classList.add('is-invalid');
+            }
+            return isValid;
+        }
+
+        // 檢查所有欄位是否都已填寫
+        function checkAllFields() {
+            const nameValid = validateName();
+            const sizeValid = validateSelect(pSize);
+            const sugarValid = validateSelect(pSugar);
+            const iceValid = validateSelect(pIce);
+
+            return nameValid && sizeValid && sugarValid && iceValid;
+        }
+
+        // 監聽飲品名稱輸入
+        pName.addEventListener('input', validateName);
+        pName.addEventListener('blur', validateName);
+
+        // 監聽下拉選單變更
+        pSize.addEventListener('change', () => validateSelect(pSize));
+        pSugar.addEventListener('change', () => validateSelect(pSugar));
+        pIce.addEventListener('change', () => validateSelect(pIce));
+
+        // 取得選項的顯示文字
+        function getOptionText(selectElement) {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            return selectedOption.text;
+        }
+
+        // 確認按鈕點擊事件
+        okBtn.addEventListener('click', function () {
+            // 先驗證所有欄位
+            if (!checkAllFields()) {
+                alert('請確認所有欄位皆已正確填寫！');
+                return;
+            }
+
+            // 取得所有選擇的值
+            const drinkName = pName.value.trim();
+            const drinkSize = getOptionText(pSize);
+            const drinkSugar = getOptionText(pSugar);
+            const drinkIce = getOptionText(pIce);
+
+            // 顯示選擇結果
+            cardBody.innerHTML = `
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">✅ 飲品訂單已確認！</h4>
+                <hr>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <strong>🥤 飲品名稱：</strong>
+                        <span class="badge bg-primary fs-6">${drinkName}</span>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <strong>📏 飲品容量：</strong>
+                        <span class="badge bg-info fs-6">${drinkSize}</span>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <strong>🍯 飲品甜度：</strong>
+                        <span class="badge bg-warning text-dark fs-6">${drinkSugar}</span>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <strong>🧊 冰塊選擇：</strong>
+                        <span class="badge bg-secondary fs-6">${drinkIce}</span>
+                    </div>
+                </div>
+                <hr>
+                <p class="mb-0 text-center">
+                    <small>訂單時間：${new Date().toLocaleString('zh-TW')}</small>
+                </p>
+            </div>
+        `;
+
+            // 顯示成功訊息
+            alert('飲品訂單已成功建立！');
+        });
+
+        // 取消按鈕點擊事件
+        cancelBtn.addEventListener('click', function () {
+            // 重置所有欄位
+            pName.value = '';
+            pSize.selectedIndex = 0;
+            pSugar.selectedIndex = 0;
+            pIce.selectedIndex = 0;
+
+            // 重置所有驗證狀態
+            pName.classList.remove('is-valid');
+            pName.classList.add('is-invalid');
+            pSize.classList.remove('is-valid');
+            pSize.classList.add('is-invalid');
+            pSugar.classList.remove('is-valid');
+            pSugar.classList.add('is-invalid');
+            pIce.classList.remove('is-valid');
+            pIce.classList.add('is-invalid');
+
+            // 清空顯示區
+            cardBody.innerHTML = '<p class="text-muted text-center">請完成飲品選擇後點擊確認按鈕</p>';
+
+            alert('表單已重置！');
+        });
+    </script>
+
+    <!-- js/wow.min.js 來自 https://cdnjs.com/libraries/wow -->
+    <script src="./righthand_files/wow.min.js.下載"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+    <script src="./righthand_files/vue.global.js.下載"></script>
+    <!-- <script src="js/axios.min.js"></script> -->
+    <script>
+        const App = {
+            data() {
+                return {
+                    text: "hi",
+                    mydata: [],
+                }
+            },
+            created() {
+                const vm = this;
+                axios.get('js/ai_pricing.json')
+                    .then(function (response) {
+                        // handle success
+                        console.log(response.data);
+                        vm.mydata = response.data;
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    })
+                    .finally(function () {
+                        // always executed
+                    });
+            }
+        }
+        Vue.createApp(App).mount('#app');
+    </script>
+
+
+
+</body></html>

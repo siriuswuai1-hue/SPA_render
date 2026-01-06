@@ -1,0 +1,91 @@
+/*start 水波字*/
+.waterfont {
+    position: relative;
+    /* margin: 0; */
+    /* font-size: 100px; */
+    /* font-family: impact, arial-black;  設定成比較粗的字體 */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    color: #fff;
+}
+
+/* 底色 */
+.waterfont::before {
+    -webkit-text-stroke: 3px #006;
+}
+
+/* 外框色 */
+.waterfont::after {
+    color: #06c;
+}
+
+/* 水波色 */
+
+.waterfont::before,
+h1::after {
+    position: absolute;
+    /* 絕對定位讓兩者可以重疊 */
+    top: 0;
+    left: 0;
+    content: attr(text);
+    /* 讀取元素屬性 */
+}
+
+.waterfont::before {
+    z-index: 2;
+    color: #0000;
+    paint-order: stroke;
+    /* 外框文字 */
+}
+
+.waterfont::after {
+    z-index: 1;
+    animation: oxxo 1s infinite alternate linear;
+    /* 套用動畫 */
+}
+
+/* 注意節點數量都要一致 */
+@keyframes oxxo {
+    0% {
+        clip-path: polygon(0% 70%,
+                6% 60%,
+                15% 62%,
+                22% 68%,
+                30% 73%,
+                42% 71%,
+                51% 66%,
+                59% 59%,
+                66% 56%,
+                74% 57%,
+                83% 62%,
+                90% 69%,
+                96% 72%,
+                100% 65%,
+                100% 100%,
+                0% 100%);
+    }
+
+    100% {
+        clip-path: polygon(0% 70%,
+                7% 76%,
+                13% 80%,
+                20% 81%,
+                25% 76%,
+                33% 70%,
+                43% 65%,
+                51% 65%,
+                57% 70%,
+                64% 76%,
+                73% 81%,
+                84% 78%,
+                91% 73%,
+                100% 65%,
+                100% 100%,
+                0% 100%);
+    }
+}
+
+/*end 水波字*/

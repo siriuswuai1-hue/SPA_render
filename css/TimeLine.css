@@ -1,0 +1,73 @@
+        :root {
+            --font-content-t: '加入我們';
+            --font-weight-t: 900;
+            --font-top-t: 25%;
+            --font-left-t: 46%;
+            --font-color-t: blue;
+            --font-size-t: 80px;
+            --time-line-c: grey; /* line color */
+            --time-line-t: 2%;  /* top */
+            --time-line-b: 2%;  /* bottom */
+            --time-line-l: 50%;  /* left */
+            --time-line-w: 2px;  /* width */
+        }
+
+        /* 畫中線 */
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: var(--time-line-t);
+            bottom: var(--time-line-b);
+            width: var(--time-line-w);
+            background-color: var(--time-line-c);
+            left: var(--time-line-l);
+            /* transform: translateX(-50%); */
+        }
+
+        /* 畫圓點 */
+        .timeline-section-pointer,
+        .timeline-section-text {
+            position: relative;
+        }
+
+        .timeline-section-pointer::before {
+            position: absolute;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: var(--color02);
+            top: 50%;
+            border-radius: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 6px solid var(--color04);
+        }
+
+
+        .timeline-section-text::before {
+            display: block;
+            position: absolute;
+            line-height: var(--font-size-t);
+            height: calc(var(--font-size-t)*10);
+            writing-mode: vertical-rl;
+            content: var(--font-content-t);
+            font-size: var(--font-size-t);
+            font-weight: var(--font-weight-t);
+            color: var(--font-color-t);
+            /* top: 50%; */
+            left: var(--font-left-t);
+            transform: translateY(var(--font-top-t));
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .timeline-section::before,
+            .timeline-section-pointer::before,
+            .timeline-section-text::before {
+                display: none;
+            }
+        }

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel - 商品輪播效果</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+    <style>
+        .product-card {
+            background-color: #111;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.01);
+            transition: transform 0.3s, border 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product-section-title {
+            letter-spacing: 0.2rem;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <section class="bg-dark">
+        <div class="container py-5">
+            <div class="d-flex justify-content-between align-items-end">
+                <div>
+                    <div class="text-uppercase small text-warning">Featured Packages</div>
+                    <div class="fw-900 product-section-title h3 text-white">人氣派對方案</div>
+                </div>
+                <a href="#" class="text-decoration-none text-secondary small">
+                    查看全部方案<i class="fa-solid fa-arrow-right-long ms-2"></i>
+                </a>
+            </div>
+
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="product-card">
+                                    <img src="images/party000.jpg" alt="尾牙方案....">
+                                </div>
+                                <div class="small text-white text-truncate fw-900">企業尾牙方案</div>
+                                <div class="d-flex justify-content-between ">
+                                    <span class="text-warning fw-900"><i
+                                            class="fa-solid fa-users me-1"></i>50-150人</span>
+                                    <span class="text-warning fw-900">NT$ 69,999起</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="product-card">
+                                    <img src="images/party001.jpg" alt="尾牙方案....">
+                                </div>
+                                <div class="small text-white text-truncate fw-900">企業尾牙方案</div>
+                                <div class="d-flex justify-content-between ">
+                                    <span class="text-warning fw-900"><i
+                                            class="fa-solid fa-users me-1"></i>50-150人</span>
+                                    <span class="text-warning fw-900">NT$ 69,999起</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="product-card">
+                                    <img src="images/party002.jpg" alt="尾牙方案....">
+                                </div>
+                                <div class="small text-white text-truncate fw-900">企業尾牙方案</div>
+                                <div class="d-flex justify-content-between ">
+                                    <span class="text-warning fw-900"><i
+                                            class="fa-solid fa-users me-1"></i>50-150人</span>
+                                    <span class="text-warning fw-900">NT$ 69,999起</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="product-card">
+                                    <img src="images/party003.jpg" alt="尾牙方案....">
+                                </div>
+                                <div class="small text-white text-truncate fw-900">企業尾牙方案</div>
+                                <div class="d-flex justify-content-between ">
+                                    <span class="text-warning fw-900"><i
+                                            class="fa-solid fa-users me-1"></i>50-150人</span>
+                                    <span class="text-warning fw-900">NT$ 69,999起</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="product-card">
+                                    <img src="images/party004.jpg" alt="尾牙方案....">
+                                </div>
+                                <div class="small text-white text-truncate fw-900">企業尾牙方案</div>
+                                <div class="d-flex justify-content-between ">
+                                    <span class="text-warning fw-900"><i
+                                            class="fa-solid fa-users me-1"></i>50-150人</span>
+                                    <span class="text-warning fw-900">NT$ 69,999起</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="product-card">
+                                    <img src="images/party005.jpg" alt="尾牙方案....">
+                                </div>
+                                <div class="small text-white text-truncate fw-900">企業尾牙方案</div>
+                                <div class="d-flex justify-content-between ">
+                                    <span class="text-warning fw-900"><i
+                                            class="fa-solid fa-users me-1"></i>50-150人</span>
+                                    <span class="text-warning fw-900">NT$ 69,999起</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="product-card">
+                                    <img src="images/party006.jpg" alt="尾牙方案....">
+                                </div>
+                                <div class="small text-white text-truncate fw-900">企業尾牙方案</div>
+                                <div class="d-flex justify-content-between ">
+                                    <span class="text-warning fw-900"><i
+                                            class="fa-solid fa-users me-1"></i>50-150人</span>
+                                    <span class="text-warning fw-900">NT$ 69,999起</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="product-card">
+                                    <img src="images/party007.jpg" alt="尾牙方案....">
+                                </div>
+                                <div class="small text-white text-truncate fw-900">企業尾牙方案</div>
+                                <div class="d-flex justify-content-between ">
+                                    <span class="text-warning fw-900"><i
+                                            class="fa-solid fa-users me-1"></i>50-150人</span>
+                                    <span class="text-warning fw-900">NT$ 69,999起</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+    </section>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

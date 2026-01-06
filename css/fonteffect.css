@@ -1,0 +1,741 @@
+/* 可修改這些變數來快速切換主題色與粗細 */
+:root {
+    /* 字內填色 */
+    --font-color: #009c15;
+    --font-back: orange;
+    --neon-color: #ae00ff;
+    --neon-back: #f389e5;
+    --fill-color1: grey;
+    --fill-color2: orange;
+    --fill-color3: green;
+    --fill-color4: blue;
+    --fill-hover: #a9adaa;
+
+    /* 外框顏色 */
+    --stroke-color: cyan;
+    --stroke-color1: blue;
+    --stroke-color2: yellow;
+    --stroke-color3: red;
+
+    /* 外框粗細 (px) */
+    --stroke-width: 3px;
+
+    /* 字型大小 */
+    --font-size: 84px;
+
+    /* 顏色開始結束 */
+    --start-color: red;
+    --stop-color: blue;
+
+    --bgb-opacity: 0.1;
+    /* 背景透明度 */
+
+    --f-line-color: grey;
+    --f-line-back: transparent;
+    /* 框線 */
+}
+
+/* 隱藏元素 */
+.hideElement {
+    display: none;
+}
+
+/* 字顏色 */
+.text-darkslategrey {
+    color: darkslategrey !important;
+}
+
+.text-red {
+    color: red !important;
+}
+
+.text-orange {
+    color: orange !important;
+}
+
+.text-yellow {
+    color: yellow !important;
+}
+
+.text-green {
+    color: green !important;
+}
+
+.text-blue {
+    color: blue !important;
+}
+
+.text-indigo {
+    color: indigo !important;
+}
+
+.text-purple {
+    color: purple !important;
+}
+
+.text-brown {
+    color: brown !important;
+}
+
+.text-pink {
+    color: pink !important;
+}
+
+.text-aqua {
+    color: aqua !important;
+}
+
+.text-crimson {
+    color: crimson !important;
+}
+
+.text-cyan {
+    color: cyan !important;
+}
+
+.text-darkblue {
+    color: darkblue !important;
+}
+
+.text-darkgreen {
+    color: darkgreen !important;
+}
+
+.text-gold {
+    color: gold !important;
+}
+
+.text-grey {
+    color: grey !important;
+}
+
+.text-greenyellow {
+    color: greenyellow !important;
+}
+
+.text-magenta {
+    color: magenta !important;
+}
+
+.text-navy {
+    color: navy !important;
+}
+
+.text-sliver {
+    color: silver !important;
+}
+
+.text-skyblue {
+    color: skyblue !important;
+}
+
+.text-seagreen {
+    color: seagreen !important;
+}
+
+.text-teal {
+    color: teal !important;
+}
+
+.text-tomato {
+    color: tomato !important;
+}
+
+.text-transparent {
+    color: transparent !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.text-black {
+    color: black !important;
+}
+
+/* 背景顏色 */
+.bg-darkslategrey {
+    background-color: darkslategrey !important;
+}
+
+.bg-red {
+    background-color: red !important;
+}
+
+.bg-orange {
+    background-color: orange !important;
+}
+
+.bg-yellow {
+    background-color: yellow !important;
+}
+
+.bg-green {
+    background-color: green !important;
+}
+
+.bg-blue {
+    background-color: blue !important;
+}
+
+.bg-indigo {
+    background-color: indigo !important;
+}
+
+.bg-purple {
+    background-color: purple !important;
+}
+
+.bg-brown {
+    background-color: brown !important;
+}
+
+.bg-pink {
+    background-color: pink !important;
+}
+
+.bg-aqua {
+    background-color: aqua !important;
+}
+
+.bg-crimson {
+    background-color: crimson !important;
+}
+
+.bg-cyan {
+    background-color: cyan !important;
+}
+
+.bg-darkblue {
+    background-color: darkblue !important;
+}
+
+.bg-darkgreen {
+    background-color: darkgreen !important;
+}
+
+.bg-gold {
+    background-color: gold !important;
+}
+
+.bg-grey {
+    background-color: grey !important;
+}
+
+.bg-greenyellow {
+    background-color: greenyellow !important;
+}
+
+.bg-magenta {
+    background-color: magenta !important;
+}
+
+.bg-navy {
+    background-color: navy !important;
+}
+
+.bg-sliver {
+    background-color: silver !important;
+}
+
+.bg-skyblue {
+    background-color: skyblue !important;
+}
+
+.bg-seagreen {
+    background-color: seagreen !important;
+}
+
+.bg-teal {
+    background-color: teal !important;
+}
+
+.bg-tomato {
+    background-color: tomato !important;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+.bg-white {
+    background-color: white !important;
+}
+
+.bg-black {
+    background-color: black !important;
+}
+
+/* 方向鍵 */
+.dir-text {
+    width: 50px;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* 顏色框線 */
+.f-line {
+    border-color: var(--f-line-back);
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px 2px var(--f-line-color);
+}
+
+/* 圓框 */
+.f-round {
+    border-radius: 50% !important;
+}
+
+/* 黑透明背景框 */
+.bgb-text {
+    background-color: rgba(0, 0, 0, var(--bgb-opacity));
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px 1px #ccc;
+}
+
+.bgb-text p {
+    color: white;
+}
+
+/* 呼吸 */
+.b-text {
+    animation: Breath 3s ease-in-out infinite;
+}
+
+.b-text:hover {
+    animation: Breath 0.5s ease-in-out infinite;
+}
+
+@keyframes Breath {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .85;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* start 水波字 */
+.waterfont {
+    position: relative;
+    /* margin: 0; */
+    /* font-size: 100px; */
+    /* font-family: impact, arial-black;  設定成比較粗的字體 */
+    /* margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto; */
+    width: max-content;
+    color: #fff;
+}
+
+.waterfont:hover::before {
+    -webkit-text-stroke: 5px green;
+}
+
+/* 底色 */
+.waterfont::before {
+    -webkit-text-stroke: 3px #006;
+}
+
+/* 外框色 */
+.waterfont::after {
+    color: #06c;
+}
+
+/* 水波色 */
+
+.waterfont::before,
+.waterfont::after {
+    position: absolute;
+    /* 絕對定位讓兩者可以重疊 */
+    top: 0;
+    left: 0;
+    content: attr(text);
+    /* 讀取元素屬性 */
+}
+
+.waterfont::before {
+    z-index: 2;
+    color: #0000;
+    paint-order: stroke;
+    /* 外框文字 */
+}
+
+.waterfont::after {
+    z-index: 1;
+    animation: oxxo 1s infinite alternate linear;
+    /* 套用動畫 */
+}
+
+/* 注意節點數量都要一致 */
+@keyframes oxxo {
+    0% {
+        clip-path: polygon(0% 70%,
+                6% 60%,
+                15% 62%,
+                22% 68%,
+                30% 73%,
+                42% 71%,
+                51% 66%,
+                59% 59%,
+                66% 56%,
+                74% 57%,
+                83% 62%,
+                90% 69%,
+                96% 72%,
+                100% 65%,
+                100% 100%,
+                0% 100%);
+    }
+
+    100% {
+        clip-path: polygon(0% 70%,
+                7% 76%,
+                13% 80%,
+                20% 81%,
+                25% 76%,
+                33% 70%,
+                43% 65%,
+                51% 65%,
+                57% 70%,
+                64% 76%,
+                73% 81%,
+                84% 78%,
+                91% 73%,
+                100% 65%,
+                100% 100%,
+                0% 100%);
+    }
+}
+
+/*end 水波字 */
+
+
+
+/*start 流光 Radiant light */
+/* 流光字 */
+.r-text {
+    font-size: var(--font-size);
+    background: linear-gradient(90deg, #ff6b6b, #f7d794, #1dd1a1, #5f27cd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 300% 300%;
+    animation: gradientFlow 2s linear infinite;
+}
+
+.r-text:hover {
+    animation: gradientFlow 0.5s linear infinite;
+}
+
+/* 流光字描邊 */
+.r-stroke-text {
+    font-size: var(--font-size);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: var(--stroke-width) var(--stroke-color);
+    /* background: linear-gradient(120deg, red, orange, green, blue); */
+    background: linear-gradient(45deg,
+            red 0%,
+            yellow 25%,
+            blue 50%,
+            yellow 75%,
+            red 100%);
+    background-size: 20% 20%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradientFlow 5s ease infinite;
+}
+
+/* 描邊流光 */
+.stroke-r-text {
+    font-size: var(--font-size);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: var(--stroke-width) var(--stroke-color);
+    background: var(--fill-color1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: strokeFlow 0.5s linear infinite;
+}
+
+/* 齊流光 */
+.all-r-text {
+    font-size: var(--font-size);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: var(--stroke-width) var(--stroke-color);
+    background: linear-gradient(45deg,
+            red 0%,
+            yellow 25%,
+            blue 50%,
+            yellow 75%,
+            red 100%);
+    background-size: 20% 20%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation:
+        gradientFlow 5s linear infinite,
+        strokeFlow 0.5s linear infinite;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 變換描邊顏色，模擬流光 */
+@keyframes strokeFlow {
+    0% {
+        --stroke-color: var(--stroke-color1);
+    }
+
+    20% {
+        --stroke-color: var(--stroke-color2);
+    }
+
+    40% {
+        --stroke-color: var(--stroke-color3);
+    }
+
+    80% {
+        --stroke-color: var(--stroke-color2);
+    }
+
+    100% {
+        --stroke-color: var(--stroke-color1);
+    }
+}
+
+/*end 流光 */
+
+/* 鏡面反光 */
+.mirror-b-text {
+    font-size: var(--font-size);
+    color: var(--font-color);
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.mirror-b-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+    transform: skewX(-25deg);
+    animation: mirror-move 2s infinite;
+}
+
+.mirror-b-text:hover::after {
+    animation: mirror-move 1s infinite;
+}
+
+@keyframes mirror-move {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+/* start 漸層 gradient */
+/* 字漸層 */
+.g-text {
+    position: relative;
+    font-size: var(--font-size);
+    font-weight: 900;
+    color: transparent;
+}
+
+.g-text::before {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, var(--start-color), var(--stop-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.g-text::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    -webkit-text-stroke: var(--stroke-width) var(--stroke-color);
+}
+
+/* 陰影漸層 stroke gradient */
+.shadow-g-text {
+    position: relative;
+    font-size: 100px;
+    font-weight: 900;
+    color: transparent;
+}
+
+/* 下層：用偏移 + blur 製造陰影 */
+.shadow-g-text::before {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    padding: 12px;
+    /* 控制陰影粗細，取代 stroke-width */
+    background: linear-gradient(90deg, var(--start-color), var(--stop-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: blur(4px);
+    /* 讓陰影更圓 */
+    z-index: -1;
+}
+
+/* 上層：主文字 */
+.shadow-g-text::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: var(--font-color);
+}
+
+/* start 漸層 gradient */
+
+/* 霓虹字 */
+.neon-text {
+    font-size: var(--font-size);
+    font-weight: 900;
+    color: var(--neon-color);
+    text-shadow: 0 0 calc(var(--font-size)/4) var(--neon-back);
+    /* , 0 0 5px var(--neon-back), 0 0 10px var(--neon-back); */
+    position: relative;
+    overflow: hidden;
+}
+
+.neon-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(120deg, transparent 0%, white 50%, transparent 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    animation: neon-shine 2.2s infinite linear;
+    background-size: 200% 100%;
+    background-position: -100% 0;
+}
+
+@keyframes neon-shine {
+    to {
+        background-position: 200% 0;
+    }
+}
+
+/* 空心字 */
+/* hollow 使用-webkit-text-stroke:*/
+.hollow-text {
+    font-size: var(--font-size);
+    color: var(--fill-color1);
+    /* 文字填滿透明 = 空心效果 */
+    -webkit-text-stroke: var(--stroke-width) var(--stroke-color1);
+    /* 線條寬度、顏色 */
+    font-weight: 900;
+}
+
+.hollow-text:hover {
+    color: var(--fill-color2);
+}
+
+/* hollow-text1 */
+.hollowt-text1 {
+    font-size: 60px;
+    color: white;
+    text-shadow:
+        2px 2px 0 #2e8b57,
+        -2px 2px 0 #2e8b57,
+        2px -2px 0 #2e8b57,
+        -2px -2px 0 #2e8b57;
+}
+
+.hollow-text1:hover {
+    color: var(--fill-hover);
+}
+
+/* srart 反射光影 3-layer*/
+.d-reflects {
+    width: 100%;
+    min-height: calc(var(--font-size)*3);
+    /* min-height: 100vh; */
+    /* inside frame must be abolute */
+    position: relative;
+    background: transparent;
+}
+
+.d-reflectm {
+    /* inside frame must be relative */
+    position: absolute;
+    /* transform: translate(-50%, -50%); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.d-reflecte {
+    position: relative;
+    font-size: var(--font-size);
+    font-weight: 900;
+    color: var(--font-color);
+    text-shadow: 0px 0px 5px var(--font-color), 0px 0px 20px var(--font-color);
+    margin: 3px;
+    transition: ease 0.3s;
+}
+
+.d-reflecte::before {
+    content: "";
+    position: absolute;
+    top: 80%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--font-color);
+    transform: perspective(10px) rotateX(10deg) scale(1, 0.2);
+    filter: blur(1em);
+    opacity: 0.5;
+}
+
+.d-reflecte:hover {
+    color: var(--font-back);
+    text-shadow: 0px 0px 10px var(--font-back), 0px 0px 20px var(--font-back);
+}
+
+.d-reflecte:hover::before {
+    opacity: 1;
+    background: var(--font-back);
+}
+
+/* end 反射光影 */

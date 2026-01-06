@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制台</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/table-rwd.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/spa_show.css">
+    <link rel="stylesheet" href="css/fonteffect.css">
+</head>
+
+<body class="bg-sliver">
+    <!--****************** s02 ***************************-->
+    <section id="s02">
+        <nav class="navbar navbar-expand-lg bg-darkslategrey navbar-dark">
+            <div class="container">
+                <a class="navbar-brand wow animate__rollIn p-0 m-0" data-wow-duration="3s" data-wow-delay="0s"
+                    href="javascript:void(0);" onclick="nothing()">
+                    <img src="images/KTV/home_icon_t.png" width="60" alt="開口唱KTV" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="20251125-SPA(ontinue)_api.html"><i
+                                    class="fa-solid fa-house me-1 text-info h4"></i>首頁</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <span class="text-01 h4 me-2 d-none" id="s02-member-span">會員: <span
+                                class="text-03 fw-900 h5">xxx</span></span>
+                        <button class="btn btn-danger d-none me-2" id="s02-logout-btn"><i
+                                class="fa-solid fa-right-from-bracket"></i>登出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- admin專屬的會員列表 -->
+    <section id="adminPanel" class="d-none m-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed bg-02" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    會員列表
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse bg-04" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="card mt-5">
+                                        <div class="card-header h2 fw-900 text-bg-primary">會員列表</div>
+                                        <div class="card-body bg-sliver">
+                                            <table class="table table-rwd bg-04">
+                                                <thead>
+                                                    <tr>
+                                                        <th>會員編號</th>
+                                                        <th>會員帳號</th>
+                                                        <th>會員等級</th>
+                                                        <th>註冊時間</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="userstbody">
+                                                    <tr>
+                                                        <td data-th="編號">xx</td>
+                                                        <td data-th="帳號">xx</td>
+                                                        <td data-th="等級">xx</td>
+                                                        <td data-th="時間">xx</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination mt-4 justify-content-center" id="myuserPagination">
+                                            <li class="page-item"><a class="page-link" href="#">&lt;</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">&gt;</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- xxxx專屬的報表 -->
+    <section class="mt-5">
+        <div class="container">
+            <div class="row d-none"  id="xxchart">
+                <div class="col-md-8">
+                    <div class="h1 ">會員等級分布圖</div>
+                    <canvas id="myChartL"></canvas>
+                </div>
+                <div class="col-md-4">
+                    <div class="h1">會員學歷分布圖</div>
+                    <canvas id="myChartE"></canvas>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="h1">會員居住地分布圖</div>
+                    <canvas id="myChartC"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/chart.js"></script>
+    <script>
+        let myChartL = null;
+        let myChartE = null;
+        let myChartC = null;
+        const API_URL = "http://192.168.10.2:5000";
+        $(function () {
+            checkLoginStatus();
+            //登出按鈕監聽
+            $("#s02-logout-btn").on("click", function () {
+                //清除localstorage
+                localStorage.removeItem("uid");
+                window.location.href = "20251125-SPA(ontinue)_api.html";
+
+            });
+
+            //監聽 頁碼 myuserPagination
+            $("#myuserPagination").on("click", ".page-link", function () {
+                //console.log($(this).data("id"));
+                if ($(this).data("id") == 10000 || $(this).data("id") == 20000) {
+                    if ($(this).data("id") == 10000 && currentPage > 0) currentPage--;
+                    if ($(this).data("id") == 20000 && currentPage < maxPage) currentPage++;
+                } else currentPage = $(this).data("id");
+                //產生該頁碼的table資料
+                renderUserTable(currentPage);
+            });
+        });
+
+        function checkLoginStatus() {
+            let token = localStorage.getItem("uid");
+            if (!token) {
+                Swal.fire({
+                    title: "請先登入會員",
+                    confirmButtonText: "確認",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "20251125-SPA(ontinue)_api.html";
+                    }
+                });
+                return;
+            }
+
+            //驗證token
+            axios.get(`${API_URL}/api/me`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+                .then(function (response) {
+                    //token驗證成功
+                    if (response.data.status) {
+                        setControlPanelUI(response.data.username)
+                        //判斷是否為admin, 如果為admin就顯示專屬的會員列表
+                        if (response.data.level == 'admin') {
+                            $("#adminPanel").removeClass('d-none');
+                            $("#xxchart").removeClass('d-none');
+                            //產生會員列表
+                            loadAllUsers();
+                            //產生會員等級分布圖表
+                            darwChartLevel();
+                            darwChartedu();
+                        } else {
+                            $("#adminPanel").addClass('d-none');
+                            $("#xxchart").addClass('d-none');
+                        }
+                        darwChartcity()
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+
+                });
+        }
+
+        function setControlPanelUI(username) {
+            //顯示登入會員訊息
+            $("#s02-member-span").removeClass("d-none");
+            $("#s02-member-span").html(`會員: <span class="text-info fw-900 h5">${username}</span>`);
+
+            //顯示登出按鈕
+            $("#s02-logout-btn").removeClass("d-none");
+
+            //顯示內頁區塊
+
+        }
+
+        let maxPage = 0;
+        let currentPage = 0;
+        let usersData = [];
+        function loadAllUsers() {
+            token = localStorage.getItem("uid");
+            if (!token) {
+                return;
+            }
+
+            axios.get(`${API_URL}/api/admin/users`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+                .then(function (response) {
+                    usersData = groupByChunk(response.data.users, 20);
+                    //console.log(usersData);
+                    renderUserTable(currentPage);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+        }
+
+        function darwChartLevel() {
+            token = localStorage.getItem("uid");
+            if (!token) {
+                return;
+            }
+
+            axios.get(`${API_URL}/api/admin/level`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+                .then(function (response) {
+                    const labels = response.data.data.map(arr => arr.level);
+                    const data = response.data.data.map(arr => arr.count);
+                    drawChart(myChartL, 'myChartL', labels, data, 'line', '會員等級分布圖');
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+        }
+
+        function darwChartedu() {
+            token = localStorage.getItem("uid");
+            if (!token) {
+                return;
+            }
+
+            axios.get(`${API_URL}/api/admin/edu`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+                .then(function (response) {
+                    const labels = response.data.data.map(arr => arr.edu);
+                    const data = response.data.data.map(arr => arr.count);
+                    drawChart(myChartE, 'myChartE', labels, data, 'pie');
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+        }
+
+        function darwChartcity() {
+            token = localStorage.getItem("uid");
+            if (!token) {
+                return;
+            }
+
+            axios.get(`${API_URL}/api/admin/city`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+                .then(function (response) {
+                    const labels = response.data.data.map(arr => arr.city);
+                    const data = response.data.data.map(arr => arr.count);
+                    drawChart(myChartC, 'myChartC', labels, data, 'bar', '會員居住地分布圖');
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+        }
+
+        function drawChart(myChart, chartPlace, labels, data, type = 'bar', label = '統計圖') {
+            const ctx = document.getElementById(chartPlace);
+            if (type == 'pie') showXY = false;
+            else showXY = true;
+            //避免記憶體爆掉
+            if (myChart) {
+                myChart.destroy();
+            }
+            myChart = new Chart(ctx, {
+                type: type, //bar, line, pie
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        borderWidth: 1,
+                        backgroundColor: [
+                            '#264653',
+                            '#2A9D8F',
+                            '#E9C46A',
+                            '#F4A261',
+                            '#E76F51',
+                            '#6A4C93',
+                            '#118AB2'
+                        ],
+                        borderColor: 'blue',
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            display: showXY,
+                            ticks: { color: 'red' }
+                        },
+                        y: {
+                            display: showXY,
+                            beginAtZero: true,
+                            ticks: { color: 'darkgreen' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function groupByChunk(users, chunkSize = 20) {
+            const result = [];
+            users.forEach(user => {
+                // 若尚未建立第一組，或最後一組已滿 chunkSize，就新增新組
+                if (
+                    result.length == 0 ||
+                    result[result.length - 1].length >= chunkSize
+                ) {
+                    result.push([]);
+                }
+
+                // 放入最後一組
+                result[result.length - 1].push(user);
+            });
+            maxPage = result.length;
+            return result;
+        }
+
+        function renderUserTable(page) {
+            //console.log(usersData[page]);
+            $("#userstbody").empty();
+            usersData[page].forEach((item) => {
+                let strHTML = `<tr>
+                                        <td data-th="編號">${item.id}</td>
+                                        <td data-th="帳號">${item.username}</td>
+                                        <td data-th="等級">${item.level}</td>
+                                        <td data-th="時間">${item.created_at}</td>
+                                    </tr>`;
+                $("#userstbody").append(strHTML);
+            });
+            $("#myuserPagination").empty();
+            $("#myuserPagination").append(`<li class="page-item"><a class="page-link" data-id="10000"><</a></li>`);
+            usersData.forEach((item, key) => {
+                let strHTML = `<li class="page-item"><a class="page-link `;
+                if (key == page) strHTML += `active`;
+                strHTML += `" href="javascript:void(0);" onclick="nothing()" data-id="${key}">${key + 1}</a></li>`;
+                $("#myuserPagination").append(strHTML);
+            });
+            $("#myuserPagination").append(`<li class="page-item"><a class="page-link" data-id="20000">></a></li>`);
+        }
+
+        function nothing() { };
+    </script>
+</body>
+
+</html>

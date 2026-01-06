@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品管理系統 - 產品列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+    <link rel="stylesheet" href="css/table-rwd.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="product-20251128-add.html">產品新增</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="product-20251128-table.html" target="_blank">產品列表</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-rwd">
+                            <thead>
+                                <tr>
+                                    <th>產品編號</th>
+                                    <th>產品名稱</th>
+                                    <th>產品價格</th>
+                                    <th>產品數量</th>
+                                    <th>產品描述</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mytbody">
+                                <tr>
+                                    <td data-th="產品編號">xxx</td>
+                                    <td data-th="產品名稱">xxx</td>
+                                    <td data-th="產品價格">xxx</td>
+                                    <td data-th="產品數量">xxx</td>
+                                    <td data-th="產品描述">xxx</td>
+                                    <td>
+                                        <button class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#updateModal">更新</button>
+                                        <button class="btn btn-danger">刪除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination mt-4 justify-content-center" id="mypagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- updateModal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-warning">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">產品更新</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="" class="form-label">產品編號</label>
+                        <input type="text" class="form-control" id="p_id" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">產品名稱</label>
+                        <input type="text" list="p_list" class="form-control" id="p_name" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">產品價格</label>
+                        <input type="number" min="1" max="100" class="form-control is-valid" placeholder="產品價格 1~100"
+                            id="p_price">
+                        <div class="valid-feedback">產品價格符合規定</div>
+                        <div class="invalid-feedback">產品價格不符合規定</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">產品數量</label>
+                        <input type="number" min="1" max="100" class="form-control is-valid" placeholder="產品數量 1~100"
+                            id="p_qty">
+                        <div class="valid-feedback">產品數量符合規定</div>
+                        <div class="invalid-feedback">產品數量不符合規定</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">產品描述</label>
+                        <input type="text" class="form-control is-valid" placeholder="產品描述 2~10" id="p_note">
+                        <div class="valid-feedback">產品描述符合規定</div>
+                        <div class="invalid-feedback">產品描述不符合規定</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="update_ok_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let alldata = [];
+        let flag_p_price = true;
+        let flag_p_qty = true;
+        let flag_p_note = true;
+        let currentPage = 0;
+        let maxPage = 0;
+        $(function () {
+            getAllItem();
+
+            //監聽 更新按鈕 .btn-update
+            $("#mytbody").on("click", ".btn-update", function () {
+                console.log($(this).data("id"));
+                console.log($(this).data("name"));
+                console.log($(this).data("price"));
+                console.log($(this).data("qty"));
+                console.log($(this).data("note"));
+
+                //塞到Modal
+                $("#p_id").val($(this).data("id"));
+                $("#p_name").val($(this).data("name"));
+                $("#p_price").val($(this).data("price"));
+                $("#p_qty").val($(this).data("qty"));
+                $("#p_note").val($(this).data("note"));
+            });
+
+            //監聽 刪除按鈕 .btn-update
+            $("#mytbody").on("click", ".btn-delete", function () {
+                //詢問確認刪除?
+                Swal.fire({
+                    title: "確認刪除?",
+                    icon: "question",
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: "確認",
+                    denyButtonText: "取消"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        //執行刪除行為
+                        console.log($(this).data("id"));
+                        let id = $(this).data("id");
+                        axios.delete(`http://localhost:3000/products/${id}`)
+                            .then(function (response) {
+                                console.log(response);
+                                if (response.status == 200) {
+                                    //刪除成功
+                                    Swal.fire({
+                                        title: "刪除成功",
+                                        icon: "success",
+                                        showDenyButton: false,
+                                        showCancelButton: false,
+                                        confirmButtonText: "確認",
+                                        denyButtonText: `Don't save`
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // location.href = "product-20251128-table.html";
+                                            getAllItem();
+                                        }
+                                    });
+                                } else {
+                                    //刪除失敗
+                                    Swal.fire({
+                                        title: "刪除失敗",
+                                        icon: "error",
+                                        showDenyButton: false,
+                                        showCancelButton: false,
+                                        confirmButtonText: "確認",
+                                        denyButtonText: `Don't save`
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            return;
+                                        }
+                                    });
+                                }
+
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            })
+                            .finally(function () {
+                                // always executed
+                            });
+
+                    }
+                });
+            });
+
+            //監聽 頁碼 mypagination
+            $("#mypagination").on("click", ".page-link", function () {
+                //console.log($(this).data("id"));
+                //prev next
+                if ($(this).data("id") == 10000 || $(this).data("id") == 20000) {
+                    if ($(this).data("id") == 10000 && currentPage > 0) currentPage--;
+                    if ($(this).data("id") == 20000 && currentPage < maxPage) currentPage++;
+                } else currentPage = $(this).data("id");
+                //產生該頁碼的table資料
+                renderTable(currentPage);
+                renderPagination(currentPage)
+            });
+
+            //即時監聽#p_price
+            $("#p_price").on("input", function () {
+                if ($(this).val() > 0 && $(this).val() < 101) {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_price = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_price = false;
+                }
+            });
+
+            //即時監聽#p_qty
+            $("#p_qty").on("input", function () {
+                if ($(this).val() > 0 && $(this).val() < 101) {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_qty = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_qty = false;
+                }
+            });
+
+            //即時監聽#p_note
+            $("#p_note").on("input", function () {
+                console.log($(this).val().length);
+                if ($(this).val().length > 1 && $(this).val().length < 11) {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_note = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_note = false;
+                }
+            });
+
+            //按鈕監聽 #update_ok_btn
+            $("#update_ok_btn").on("click", function () {
+                if (flag_p_price && flag_p_qty && flag_p_note) {
+                    //更新輸入符合規定
+
+                    //整理傳遞給後端API所需的資料
+                    let id = $("#p_id").val();
+
+                    let jsonDATA = {};
+                    jsonDATA["name"] = $("#p_name").val();
+                    jsonDATA["price"] = $("#p_price").val();
+                    jsonDATA["qty"] = $("#p_qty").val();
+                    jsonDATA["note"] = $("#p_note").val();
+                    console.log(JSON.stringify(jsonDATA));
+
+                    //傳遞至後端API 執行更新
+                    axios.put(`http://localhost:3000/products/${id}`, JSON.stringify(jsonDATA))
+                        .then(function (response) {
+                            console.log(response);
+                            if (response.status == 200) {
+                                Swal.fire({
+                                    title: "更新成功",
+                                    icon: "success",
+                                    showDenyButton: false,
+                                    showCancelButton: false,
+                                    confirmButtonText: "確認",
+                                    denyButtonText: `Don't save`
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // location.href = "product-20251128-table.html";
+
+                                        //關閉modal所有的功能
+                                        bootstrap.Modal.getOrCreateInstance("#updateModal").hide();
+                                        getAllItem();
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "更新失敗",
+                                    icon: "error",
+                                    showDenyButton: false,
+                                    showCancelButton: false,
+                                    confirmButtonText: "確認",
+                                    denyButtonText: `Don't save`
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        return;
+                                    }
+                                });
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .finally(function () {
+                            // always executed
+                        });
+
+                } else {
+                    //更新輸入不符合規定
+                    Swal.fire({
+                        title: "欄位有錯誤!",
+                        icon: "error",
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        confirmButtonText: "確認",
+                        denyButtonText: `Don't save`
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            return;
+                        }
+                    });
+                }
+            });
+
+            console.log(alldata);
+        })
+
+
+        //取得所有資料
+        function getAllItem() {
+            axios.get('http://localhost:3000/products')
+                .then(function (response) {
+                    console.log(response.data);
+                    //  alldata = response.data;
+
+                    //資料重構
+                    alldata = [];
+                    response.data.forEach((item, key) => {
+                        if (key % 10 == 0) {
+                            alldata.push([]);
+                        }
+                        page = parseInt(key / 10);
+                        alldata[page].push(item);
+                    });
+                    maxPage = alldata.length -1;
+                    console.log(alldata);
+
+                    renderTable(currentPage);
+                    renderPagination(currentPage);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+        }
+
+        function renderTable(page = 0) {
+            //產生table
+            $("#mytbody").empty();
+            alldata[page].forEach((item) => {
+                let strHTML = `<tr>
+                                    <td data-th="產品編號">${item.id}</td>
+                                    <td data-th="產品名稱">${item.name}</td>
+                                    <td data-th="產品價格">${item.price}</td>
+                                    <td data-th="產品數量">${item.qty}</td>
+                                    <td data-th="產品描述">${item.note}</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-update" data-bs-toggle="modal"
+                                            data-bs-target="#updateModal" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-qty="${item.qty}" data-note="${item.note}">更新</button>
+                                        <button class="btn btn-danger btn-delete" data-id="${item.id}">刪除</button>
+                                    </td>
+                                </tr>`;
+                $("#mytbody").append(strHTML);
+            });
+        }
+
+        function renderPagination(page = 0) {
+            $("#mypagination").empty();
+            $("#mypagination").append(`<li class="page-item"><a class="page-link" data-id="10000"><</a></li>`);
+            alldata.forEach((item, key) => {
+                let strHTML
+                if (key == page) {
+                    strHTML = `<li class="page-item"><a class="page-link active" href="#" data-id="${key}">${key + 1}</a></li>`;
+                } else {
+                    strHTML = `<li class="page-item"><a class="page-link" href="#" data-id="${key}">${key + 1}</a></li>`;
+                }
+                $("#mypagination").append(strHTML);
+            });
+            $("#mypagination").append(`<li class="page-item"><a class="page-link" data-id="20000">></a></li>`);
+        }
+
+    </script>
+</body>
+
+</html>

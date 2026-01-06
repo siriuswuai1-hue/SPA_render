@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅館民宿 - 觀光資訊資料庫</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/table-rwd.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/my.css">
+</head>
+
+<body>
+    <section class="bg-cover" style="background-image: url(images/landscape01.avif); height: 280px;">
+        <div class="display-2 fw-900 text-white p-5">旅館民宿 - 觀光資訊資料庫</div>
+    </section>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <select name="" id="citySelect" class="form-select form-select-lg" style="margin-top: -20px;">
+                    <option value="" selected disabled>---選擇縣市名稱---</option>
+                    <option value="">南投縣</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-12">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>旅館編號</th>
+                                    <th>名稱</th>
+                                    <th>電話</th>
+                                    <th>地址</th>
+                                    <th>簡介</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hotel_tbody">
+                                <tr>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>xx</td>
+                                    <td>xx</td>
+                                    <td>xx</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination mt-3 justify-content-center" id="mypagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let regionTitle = [];
+        let counter = [];
+        let regionData = [];
+        let regionData1 = [];
+        let currentPage;
+        let maxPage;
+
+
+        async function init() {
+            await getAllData();
+        }
+
+        $(async function () {
+            //等待資料載完
+            await init();
+
+            //產生縣市選單
+            renderCityOption();
+
+            //監聽選單citySelect
+            $("#citySelect").on("change", function () {
+                //console.log($(this).val());
+                currentCity = $(this).val();
+                const hotels = regionData1[counter[currentCity]];
+                //console.log(hotels);
+                maxPage = hotels.length - 1;
+                currentPage = 0;
+                renderTable(hotels[currentPage]);
+                renderPagination(currentCity, currentPage);
+            })
+
+            //監聽 頁碼 mypagination
+            $("#mypagination").on("click", ".page-link", function () {
+                //console.log($(this).data("id"));
+                //prev next
+                if ($(this).data("id") == 10000 || $(this).data("id") == 20000) {
+                    if ($(this).data("id") == 10000 && currentPage > 0) currentPage--;
+                    if ($(this).data("id") == 20000 && currentPage < maxPage) currentPage++;
+                } else currentPage = $(this).data("id");
+                //console.log(currentPage);
+                //產生該頁碼的table資料
+                renderTable(regionData1[counter[currentCity]][currentPage]);
+                renderPagination(currentCity, currentPage);
+            });
+            // console.log(regionTitle);
+            // console.log(counter);
+            // console.log(regionData1);
+        })
+
+        //取得旅館民宿 - 觀光資訊資料庫 and 資料重構
+        function getAllData() {
+            return axios.get('js/json/HotelList.json')
+                .then(function (response) {
+                    // console.log(response.data.Hotels);
+                    // console.log(response.data.Hotels[0].PostalAddress.City);
+                    // console.log(response.data.Hotels[1].PostalAddress.City);
+
+
+                    // 假設原始資料為 response
+                    const hotels = response.data.Hotels;
+
+                    const rebuilt = hotels.reduce((acc, hotel) => {
+                        const city = hotel.PostalAddress.City;
+                        const town = hotel.PostalAddress.Town;
+
+                        // 若該城市尚未建立，先建立空物件
+                        if (!acc[city]) {
+                            acc[city] = {};
+                        }
+
+                        // 若該城市下的鄉鎮尚未建立，先建立空陣列
+                        if (!acc[city][town]) {
+                            acc[city][town] = [];
+                        }
+
+                        // 加入飯店資料
+                        acc[city][town].push(hotel);
+
+                        return acc;
+                    }, {});
+
+                    console.log(rebuilt);
+
+                    // const result = {};
+
+                    // for (const hotel of response) {
+                    //     const city = hotel.PostalAddress.City;
+                    //     const town = hotel.PostalAddress.Town;
+
+                    //     if (!result[city]) result[city] = {};
+                    //     if (!result[city][town]) result[city][town] = [];
+
+                    //     result[city][town].push(hotel);
+                    // }
+                    // console.log(result);
+
+                    // 假設原始資料為 response.data
+                    // const hotels = response.data.Hotels;
+
+                    // const rebuilt = hotels.reduce((acc, hotel) => {
+                    //     const city = hotel.PostalAddress.City;
+                    //     const town = hotel.PostalAddress.Town;
+
+                    //     // 若該城市尚未建立，先建立空物件
+                    //     if (!acc[city]) {
+                    //         acc[city] = {};
+                    //     }
+
+                    //     // 若該城市下的鄉鎮尚未建立，先建立空陣列
+                    //     if (!acc[city][town]) {
+                    //         acc[city][town] = [];
+                    //     }
+
+                    //     // 加入飯店資料
+                    //     acc[city][town].push(hotel);
+
+                    //     return acc;
+                    // }, {});
+
+                    // console.log(rebuilt);
+
+
+                    // for (const hotel of response.data) {
+                    //     const city = hotel.PostalAddress.City;
+                    //     const town = hotel.PostalAddress.Town;
+
+                    //     if (!regionData[city]) regionData[city] = {};
+                    //     if (!regionData[city][town]) regionData[city][town] = [];
+
+                    //     regionData[city][town].push(hotel);
+                    // }
+
+
+                    //資料重構
+                    response.data.Hotels.forEach((item) => {
+                        let city = item.PostalAddress.City;
+
+                        if (counter[city] == undefined) {
+                            counter[city] = regionData.length;
+                            regionData.push(new Array());
+                            regionTitle[counter[city]] = city;
+                        }
+                        regionData[counter[city]].push(item);
+                    });
+
+                    //二次重構
+                    regionData.forEach((item, key) => {
+                        //console.log(item);
+                        regionData1.push(new Array());
+                        item.forEach((i, k) => {
+                            let k1 = parseInt(k / 50);
+                            if (k % 50 == 0) regionData1[key].push(new Array());
+                            regionData1[key][k1].push(item[k]);
+                        });
+                    });
+
+                    
+
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+        };
+
+        //產生縣市選單
+        function renderCityOption() {
+            $("#citySelect").empty();
+            $("#citySelect").append(`<option value="" selected disabled>---選擇縣市名稱---</option>`);
+            regionTitle.forEach((item) => {
+                var strHTML = `<option value="${item}">${item}</option>`;
+                $("#citySelect").append(strHTML);
+            });
+        }
+
+        function renderTable(hotels) {
+            $("#hotel_tbody").empty();
+            //console.log(hotels);
+            hotels.forEach((item) => {
+                //擷取0-30字
+                description = item.Description.substring(0, 30);
+                const number = item.HotelID.substring(item.HotelID.length - 6, item.HotelID.length);
+                let myName;
+                if (item.WebsiteURL == "") myName = item.HotelName;
+                else myName = `<a href="${item.WebsiteURL}" target="_blank" />${item.HotelName}`;
+                let strHTML = `<tr>
+                                <td>${number}</td>
+                                <td>${myName}</td>
+                                <td>${item.Telephones[0].Tel}</td>
+                                <td>${item.PostalAddress.City} ${item.PostalAddress.Town} ${item.PostalAddress.StreetAddress}</td>
+                                <td>${description}</td>
+                            </tr>`;
+                $("#hotel_tbody").append(strHTML)
+            });
+        }
+
+        function renderPagination(city, page = 0) {
+            $("#mypagination").empty();
+            $("#mypagination").append(`<li class="page-item"><a class="page-link" data-id="10000"><</a></li>`);
+            regionData1[counter[city]].forEach((item, key) => {
+                let strHTML
+                if (key == page) {
+                    strHTML = `<li class="page-item"><a class="page-link active" href="#" data-id="${key}">${key + 1}</a></li>`;
+                } else {
+                    strHTML = `<li class="page-item"><a class="page-link" href="#" data-id="${key}">${key + 1}</a></li>`;
+                }
+                $("#mypagination").append(strHTML);
+            });
+            $("#mypagination").append(`<li class="page-item"><a class="page-link" data-id="20000">></a></li>`);
+        }
+    </script>
+</body>
+
+</html>

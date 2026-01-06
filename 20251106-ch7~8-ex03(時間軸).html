@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch7~8. 時間軸排版練習</title>
+    <link rel="stylesheet" href="css/waterfont.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+    <link rel="stylesheet" href="css/roller-box.css">
+
+    <style>
+
+        /* 畫中線 */
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            background-color: var(--color01);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 畫圓點 */
+        .timeline-section-pointer {
+            position: relative;
+        }
+
+        .timeline-section-pointer::before {
+            position: absolute;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: var(--color02);
+            top: 10px;
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid var(--color04);
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .timeline-section::before,
+            .timeline-section-pointer::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="fw-900 display-3 waterfont" text="＊時間軸排版練習＊">＊時間軸排版練習＊</h1>
+        <div class="timeline-section">
+            <div class="row align-items-center timeline-section-pointer roller-box-t">
+                <div class="col-md-6 my-3">
+                    <div style="background-image: url(images/cake001.jpg); height: 260px;" class="bg-cover"></div>
+                </div>
+                <div class="col-md-6 my-3">
+                    <div class="roller">
+                        <button class="btn btn-warning"><a href="#">詳細資料</a></button>
+                    </div>
+                    <div class="h2 text-center">法式生乳草莓蛋糕</div>
+                    <p>手中道理，特別是科技擔任安全暴力網頁班言論博士規律一路中間購買衛生，收費小心留下本文失望，街道協調，報名實現就在影視收購，一系列春天女人數量那是不限更是禁止寫。</p>
+                    <p>原料：日本低筋麵粉、發酵奶油、鮮奶油、放牧雞蛋、新鮮草莓、自製草莓果醬、香草莢糖漿。保存：冷藏 2 日內、冷凍 7 日內（解凍後請當日食用）。過敏原：奶、蛋、麩質（小麥）。</p>
+                </div>
+            </div>
+
+            <div class="row align-items-center flex-row-reverse timeline-section-pointer roller-box-b">
+                <div class="col-md-6 my-3">
+                    <div style="background-image: url(images/cake002.jpg); height: 260px;" class="bg-cover"></div>
+                </div>
+                <div class="col-md-6 my-3">
+                    <div class="roller">
+                        <button class="btn btn-warning"><a href="#">詳細資料</a></button>
+                    </div>
+                    <div class="h2 text-center">濃可可生巧克力蛋糕</div>
+                    <p>手中道理，特別是科技擔任安全暴力網頁班言論博士規律一路中間購買衛生，收費小心留下本文失望，街道協調，報名實現就在影視收購，一系列春天女人數量那是不限更是禁止寫。</p>
+                    <p>玩具聽說深深相關內容，版權所有工程師預計心裡篇文章，之家具有工資衛生不在旅遊騎士，描述這場，次數電影知識付款完了給我們特別是文件大小，一點介紹傳統，記住怎麼會感覺奇蹟，女士兩位，當地進口原則，商城平。</p>
+                </div>
+            </div>
+
+            <div class="row align-items-center timeline-section-pointer roller-box-l">
+                <div class="col-md-6 my-3">
+                    <div style="background-image: url(images/cake003.jpg); height: 260px;" class="bg-cover"></div>
+                </div>
+                <div class="col-md-6 my-3">
+                    <div class="roller">
+                        <button class="btn btn-warning"><a href="#">詳細資料</a></button>
+                    </div>
+                    <div class="h2 text-center">四季水果卡士達塔</div>
+                    <p>手中道理，特別是科技擔任安全暴力網頁班言論博士規律一路中間購買衛生，收費小心留下本文失望，街道協調，報名實現就在影視收購，一系列春天女人數量那是不限更是禁止寫。</p>
+                    <p>玩具聽說深深相關內容，版權所有工程師預計心裡篇文章，之家具有工資衛生不在旅遊騎士，描述這場，次數電影知識付款完了給我們特別是文件大小，一點介紹傳統，記住怎麼會感覺奇蹟，女士兩位，當地進口原則，商城平。</p>
+                </div>
+            </div>
+
+            <div class="row align-items-center flex-row-reverse timeline-section-pointer roller-box-r">
+                <div class="col-md-6 mt-3">
+                    <div style="background-image: url(images/cake004.jpg); height: 260px;" class="bg-cover"></div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="roller">
+                        <button class="btn btn-warning"><a href="#">詳細資料</a></button>
+                    </div>
+                    <div class="h2 text-center">焙茶黑芝麻乳酪</div>
+                    <p>手中道理，特別是科技擔任安全暴力網頁班言論博士規律一路中間購買衛生，收費小心留下本文失望，街道協調，報名實現就在影視收購，一系列春天女人數量那是不限更是禁止寫。</p>
+                    <p>玩具聽說深深相關內容，版權所有工程師預計心裡篇文章，之家具有工資衛生不在旅遊騎士，描述這場，次數電影知識付款完了給我們特別是文件大小，一點介紹傳統，記住怎麼會感覺奇蹟，女士兩位，當地進口原則，商城平。</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    </script>
+</body>
+
+</html>

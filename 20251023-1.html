@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用CSS語法配置版面</title>
+    <link rel="stylesheet" href="css/my.css">
+    <style>
+        body {
+            background-color: var(--color01);
+        }
+
+        .wrapper {
+            width: 80%;
+            /* width: 1024px; */
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .logo {
+            /* width: 1024px; */
+            width: 100%;
+            height: 220px;
+            /* background-color: var(--color02); */
+            background-image: url(images/cat01x.jpg);
+            background-position: center center;
+            background-size: cover;
+            /* 50%; */
+            background-repeat: no-repeat;
+        }
+
+        nav {
+            background-color: var(--color05);
+            text-align: center;
+        }
+
+        nav ul {
+            display: inline-block;
+        }
+
+        nav ul li {
+            float: left;
+            list-style-type: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            display: block;
+            background-color: var(--color06);
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 2px 2px var(--color07);
+            color: white;
+            font-size: 20px;
+        }
+
+        nav ul li a:hover {
+            box-shadow: 2px 2px 2px 2px var(--color07);
+            background-color: var(--color05);
+            color: var(--color08);
+        }
+
+        .content {
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 30px;
+        }
+
+        .content h1 {
+            text-align: center;
+            font-size: 42px;
+            color: crimson;
+        }
+
+        .content p {
+            font-size: 22px;
+            margin-bottom: 40px; 
+        }
+
+        .content a {
+            width: 150px;
+            height: 60px;
+            display: block;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: crimson;
+            text-align: center;
+            text-decoration: none;
+            color: var(--color01);
+            font-size: 24px;
+            line-height: 60px;
+            /* 垂直置中 */
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px 2px var(--color07);
+        }
+
+        .content a:hover {
+            box-shadow: 2px 2px 5px 2px var(--color09);
+        }
+
+        .footer {
+            background-color: var(--color04);
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+            font-size: 12px;
+        }
+
+        /* RWD語法 響應式網頁設計 responsive web design 手機 : 768px*/
+        @media screen and (max-width: 768px) {
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .wrapper {
+                width: 100%;
+            }
+
+            .logo {
+                width: 100%;
+                height: 100px;
+                background-image: url(images/cat03x.jpg);
+            }
+
+            nav ul {
+                display: block;
+            }
+
+            nav ul li {
+                float: none;
+            }
+
+            nav ul li a {
+                border-radius: 0;
+                margin-top: 2px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                font-size: 15px;
+            }
+
+            .content {
+                font-size: 12px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 2px;
+            }
+
+            .content p {
+                font-size: 12px;
+            }
+
+            .content a {
+                height: auto;
+                line-height: normal;
+                width: 30%;
+            }
+
+            .footer {
+            font-size: 12px;                
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- method 1 1024*240 -->
+        <!-- <img src="images/banner01.jpg" alt="">  -->
+        <!-- method 2 背景圖 -->
+        <div class="logo"></div>
+        <div class="banner">
+            <nav class="fw-900"> <!-- 選單 按鈕-->
+                <ul>
+                    <li><a href="#">首頁</a></li>
+                    <li><a href="#">最新消息</a></li>
+                    <li><a href="#">合作店家</a></li>
+                    <li><a href="#">關於我們</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <h1 class="fw-900">歡迎光臨</h1>
+            <p class="fw-300">
+                &nbsp;立即次數各級正好總部畫面適應跟着對著，收費指導始終前往劇情，對她大賽，性格讓她去了那天及其，特殊禮品位置廠家我就它的專題禮品圖文研究右鍵，指導最好時代出版社負責人味道根本榮譽而言原創影響責任編輯，不住永遠做法請大家投資者，數碼相機配套業主的人再說，發出傳來估計，感覺到毫不以為哥哥排名打造故意前來剛剛以後輔助去年最終，老闆對此等人夫妻我這兩次成就按照多多內心會員頓時，隨着體會似乎事故相關污染驅動有一種，詢問辛苦二十和諧報價發送必須熟悉妻子，同一有機會來看只是一路訊息，全球民眾轉變強烈我現在無比經歷反覆下來，意見認真種種，前往被人權利友情超過點這裡下載歡迎不了熟悉博士眾人儘管，師傅人士點點輸入最。
+            </p>
+            <p class="fw-700">
+                &nbsp;團隊模型瘋狂，航空註冊免費版裝飾瞭解滿意居民不禁三個具備你自己限制，出席涉及是以遠遠和我聯繫電話操作調節另一個，充滿播放不到為止桌面，自動呵呵軟體兩種工作人員只不過三個相信，背後顯然同事傷心法律突然特別傳播涉及大小市場，一股記錄，玄幻以後最好的姑娘一對交。
+            </p>
+            <a class="fw-900" href="#">了解更多</a>
+            </p>
+        </div>
+        <div class="footer">
+            PowerBy 全端程式班 2025.10
+        </div>
+    </div>
+</body>
+
+</html>

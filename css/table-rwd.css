@@ -1,0 +1,39 @@
+:root{
+    --rwd-title-width : 25%;
+ }
+
+@media screen and (max-width: 768px) {
+    .table-rwd thead {
+        display: none;
+    }
+
+    .table-rwd tbody tr {
+        display: block;
+        border: 1px solid var(--color07);
+        margin-top: 15px;
+        border-radius: 10px;
+        box-shadow: 1px 2px 4px 2px var(--color07);
+    }
+
+    .table-rwd tbody tr td {
+        display: block;
+        overflow: hidden;
+    }
+
+    .table-rwd tbody tr td::before {
+        content: attr(data-th) " : ";
+        color: darkred;
+        font-weight: 900;
+        font-size: 18px;
+        display: block;
+        float: left;
+        width: var(--rwd-title-width);
+        text-align: right;
+        padding-right: 15px;
+    }
+
+    /* .table-rwd tbody tr td{
+        display: block;
+        float: left;
+    } */
+}

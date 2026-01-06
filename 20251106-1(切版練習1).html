@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>切版練習使用opendata</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+    <link rel="stylesheet" href="css/roller-box.css">
+    <link rel="stylesheet" href="css/fonteffect.css">
+    <style>
+        .box {
+            border: 1px solid var(--color01);
+            padding: 5px;
+            box-shadow: 2px 2px 2px 4px var(--color01);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .mytitle {
+            margin-top: 15px;
+        }
+
+        .roller {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roller-box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            transform: translateY(-100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .roller:hover .roller-box {
+            transform: translateY(0);
+            transition: transform 1.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="fw-900 display-3 text-center"><span class="mirror-b-text text-blue">切版練習</span></div>
+        <div class="row" id="mydata">
+            <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="box roller">
+                    <div class="roller-box">
+                        <a href="#" class="btn btn-primary">詳細內容</a>
+                    </div>
+                    <div
+                        style="background-image: url(images/landscape01.avif); height: 140px; background-position: center center; background-size: cover;">
+                    </div>
+                    <div class="h4 text-center fw-900 mytitle">店家名稱</div>
+                    <div class="h5">電話: XXX</div>
+                    <div class="h5">地址: XXXX</div>
+                    <div class="row  flex-nowrap">
+                        <div class="col-auto h5">簡介:</div>
+                        <div class="col-9">文檔物品以便壓力家電寂寞體制的人皮膚都要出發不管不僅，好了。</div>
+                    </div>
+                    <!-- <p><span class="h5">簡介:</span> 文檔物品以便壓力家電寂寞體制的人皮膚都要出發不管不僅，好了。</p>                     -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "js/json/ODwsvTravelFood.json",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    console.log("連線錯誤!--js/json/ODwsvTravelFood.json");
+                }
+            });
+        });
+        function showdata(data) {
+            //console.log(data);
+
+            $("#mydata").empty();
+            data.forEach(function (item, key) {
+                if (key < 20) {
+                    let strHTML = `<div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="box roller-box-t">
+                                        <div class="roller">
+                                            <a href="${item.Url}" target="_blank" class="btn btn-primary">詳細內容</a>
+                                        </div>
+                                        <div style="background-image: url('${item.PicURL}'); height: 140px; background-position: center center; background-size: cover;"></div>
+                                        <div class="h4 text-center fw-900 mytitle">${item.Name}</div>
+                                        <div class="h5">電話: ${item.Tel}</div>
+                                        <div class="h5">地址: ${item.Address}</div>
+                                        <div class="row  flex-nowrap">
+                                            <div class="col-auto h5">簡介:</div>
+                                            <div class="col-9">${item.HostWords}</div>
+                                        </div>
+                                    </div>
+                                </div>`;
+                    $("#mydata").append(strHTML);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

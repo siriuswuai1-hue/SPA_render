@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自行車道</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+    <link rel="stylesheet" href="css/waterfont.css">
+    <style>
+        .banner {
+            height: 600px;
+            width: 100%;
+            background-image: url(images/bike01.avif);
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: var(--color14);
+        }
+
+        .R-img:hover {
+            transform: scale(2) translateX(30%) rotate(360deg);
+            transition: transform 1s;
+            position: relative;
+            z-index: 999;
+        }
+
+        @media screen and (max-width: 768px) {
+            .R-img:hover {
+                position: relative;
+                transform: scale(1.5) translateX(-10%) rotate(360deg);
+            }
+
+            .table-rwd thead {
+                display: none;
+            }
+
+            .table-rwd tbody tr {
+                display: block;
+                border: 1px solid var(--color07);
+                margin-top: 15px;
+                border-radius: 5px;
+                box-shadow: 1px 2px 4px 2px var(--color07);
+            }
+
+            .table-rwd tbody tr td {
+                display: block;
+                overflow: hidden;
+            }
+
+            .table-rwd tbody tr td::before {
+                content: attr(data-th) " : ";
+                color: var(--color07);
+                font-weight: 900;
+                font-size: 14px;
+                display: block;
+                float: left;
+                width: 25%;
+                text-align: right;
+                padding-right: 15px;
+            }
+
+            .table-rwd tbody tr td span {
+                display: block;
+                float: left;
+                width: 75%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="banner bg-cover rounded-5"></div>
+        <h1 class="fw-900 text-info waterfont display-1" text="自行車道">自行車道</h1>
+        <table class="table table-rwd table-bordered table-striped">
+            <thead class="table-danger">
+                <tr>
+                    <th width="13%">車道名稱</th>
+                    <th width="35%">精彩圖片</th>
+                    <th width="8%">車道長度</th>
+                    <th width="10%">管理處電話</th>
+                    <th width="17%">地址/交通</th>
+                    <th width="27%">說明</th>
+                </tr>
+            </thead>
+            <tbody id="mybody">
+                <tr>
+                    <td data-th="車道名稱"><span class="fw-900">001</span></td>
+                    <td data-th="精彩圖片" class="R-img">
+                        <span><img src="images/cat04x.jpg" alt="" class="img-fluid img-thumbnail"></span>
+                    </td>
+                    <td data-th="車道長度"><span>long</span></td>
+                    <td data-th="管理處電話"><span>50</span></td>
+                    <td data-th="地址/交通"><span>20</span></td>
+                    <td data-th="說明">宜蘭</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+        //主程式
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "js/json/Bike_f.json",
+                dataType: "json",
+                success: showData,
+                error: function () {
+                    console.log("連線失敗!");
+                }
+            })
+        });
+
+        function showData(data) {
+            console.log(data);
+            // console.log(data[1]);
+            // console.log(data[6]);
+            //console.log(data[6].Picture1);
+            //方法二
+            $("#mybody").empty();
+            data.forEach((item, key) => {
+                // console.log(key);
+                // console.log(item);
+
+                let noSupply = '未提供',
+                    myWeb = item.Website,
+                    myTel = item.Tel,
+                    myWords = item.Description,
+                    myPic = item.Picture1,
+                    myAdd = item.Add,
+                    myPlace = item.S_PlaceDec,
+                    myLen = item.Bike_length,
+                    myBTN = "前往官網",
+                    myUrl = item.Url;
+
+                if (item.Description == "") myWords = noSupply;
+                if (item.HostTel == "") myWords = noSupply;
+                if (item.Picture1 == "") myPic = 'images/未提供2.png';
+                if (item.HostWords == "") myWords = noSupply;
+                if (item.Add == "") myAdd = noSupply;
+                if (item.Website == "") {
+                    myWeb = "#" + item.Id;
+                    myBTN = noSupply;
+                }
+
+                let strHTML =
+                    `<tr>
+                        <td id="${item.Id}" data-th="車道名稱" class="roller-box-t">
+                            <span class="fw-900">${item.S_PlaceDes + "<br>" + item.Name}</span>
+                            <div class="roller btn btn-secondary">
+                                <a href="${myWeb}" target="_blank" class="btn btn-success fs-6">${myBTN}</a>
+                            </div>
+                        </td>
+                        <td data-th="精彩圖片" class="R-img">
+                            <span>
+                                <img src="${myPic}" alt=""  class="img-fluid img-thumbnail">
+                            <span>
+                        </td>
+                        <td data-th="車道長度"><span>${myLen + "m"}</span></td>
+                        <td data-th="管理處電話"><span>${item.Tel}</span></td>
+                        <td data-th="地址/交通"><span>${myAdd + "<br><br>" + item.Travellinginfo}</span></td>
+                        <td data-th="溫馨提示"><span>${myWords}</span></td>
+                    </tr>`;
+                $("#mybody").append(strHTML);
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>

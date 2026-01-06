@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛孩幸福日</title>
+    <link rel="stylesheet" href="css/my.css">
+    <style>
+        :root {
+            --color10: #F2F8FF;   /* 背景主色：淡藍白 */
+            --color11: #5CA9E6;   /* 導覽列底色：天空藍 */
+            --color12: #7BC4FF;   /* 滑過變化色：亮藍 */
+            --color13: #274C77;   /* 陰影與深藍強調 */
+            --color14: #3B7DD8;   /* 標題藍 */
+            --color15: #5596E6;   /* 按鈕主色 */
+            --color04: #E6F2FF;   /* 卡片背景淡藍 */
+            --textcolor01: #FFFFFF; /* 白色文字 */
+            --textcolor02: #1E2A3A; /* 深藍灰文字 */
+        }
+
+        body {
+            background-color: var(--color10);
+            margin: 0;
+        }
+
+        .wrapper {
+            width: 1024px;
+            margin: 0 auto;
+        }
+
+        .banner img {
+            width: 100%;
+        }
+
+        nav {
+            background-color: var(--color11);
+            text-align: center;
+        }
+
+        nav ul {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            float: left;
+            list-style-type: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            display: block;
+            color: var(--textcolor01);
+            font-size: 18px;
+            padding: 15px 20px;
+            box-shadow: 2px 2px 5px 2px var(--color13);
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--color12);
+            color: var(--color13);
+        }
+
+        .content {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px 0;
+        }
+
+        .content h1 {
+            color: var(--color14);
+            font-size: 30px;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .content a {
+            display: block;
+            width: 160px;
+            height: 45px;
+            background-color: var(--color15);
+            margin: 12px auto 0;
+            color: var(--textcolor01);
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 45px;
+            box-shadow: 2px 2px 5px 2px var(--color13);
+            border-radius: 20px;
+            cursor: grab;
+            transition: all 0.3s ease;
+        }
+
+        .content a:hover {
+            color: var(--textcolor02);
+            background-color: var(--color12);
+        }
+
+        .card-container {
+            text-align: center;
+            padding: 20px 0;
+            overflow: hidden;
+        }
+
+        .card-container a {
+            background-color: var(--color04);
+        }
+
+        .card {
+            float: left;
+            width: 30%;
+            margin-right: 5%;
+        }
+
+        .card-last {
+            margin-right: 0;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .roller {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roller-box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            transform: translateY(-100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .roller:hover .roller-box {
+            transform: translateY(0);
+            transition: transform 1s;
+        }
+
+        .footer {
+            background-color: var(--color13);
+            text-align: center;
+            margin-top: 5px;
+            padding: 10px 0;
+            font-size: 12px;
+            color: var(--textcolor01);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="banner">
+            <img src="images/cat03x.jpg" alt="可愛狗狗與貓咪">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="fw-900">關於我們</a></li>
+                <li><a href="#" class="fw-900">寵物照護</a></li>
+                <li><a href="#" class="fw-900">領養活動</a></li>
+                <li><a href="#" class="fw-900">聯絡我們</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>2025 毛孩幸福日</h1>
+            <p>用愛讓每隻毛孩都有一個溫暖的家。</p>
+            <p>加入我們的「毛孩幸福日」，一起參加免費講座、領養活動與公益市集！</p>
+            <a href="#THIS" class="fw-900">立即參加</a>
+
+            <!-- 三格子 -->
+            <div class="card-container" id="THIS">
+                <div class="card roller">
+                    <div class="roller-box">
+                        <a href="#THIS" class="fw-900">了解更多</a>
+                    </div>
+                    <img src="images/pet01.png" alt="寵物照護課程">
+                    <h2>寵物照護課程</h2>
+                    <p>學習基礎照護、營養與行為訓練，讓毛孩更健康。</p>
+                </div>
+                <div class="card roller">
+                    <div class="roller-box">
+                        <a href="#THIS" class="fw-900">了解更多</a>
+                    </div>
+                    <img src="images/pet02.png" alt="領養活動">
+                    <h2>領養日活動</h2>
+                    <p>讓無家可歸的毛孩找到新家庭，創造幸福延續。</p>
+                </div>
+                <div class="card card-last roller">
+                    <div class="roller-box">
+                        <a href="#THIS" class="fw-900">了解更多</a>
+                    </div>
+                    <img src="/images/pet_supply.png" alt="寵物市集">
+                    <h2>毛孩市集</h2>
+                    <p>精選寵物用品、手作零食與公益攤位，歡迎共襄盛舉！</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            主辦單位：毛孩幸福協會 | 聯絡電話：02-9876-5432 | Email：info@happy-paws.tw
+        </div>
+    </div>
+</body>
+
+</html>

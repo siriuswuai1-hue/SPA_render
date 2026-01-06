@@ -1,0 +1,148 @@
+{
+  "songs": [
+    {
+      "id": "1",
+      "no": "10001",
+      "singedTimes": 900,
+      "backingVocals": "left",
+      "name": "晚霞",
+      "singerName": "蔡琴",
+      "sex": "女",
+      "language": "國語",
+      "location": "videos/蔡琴-晚霞.mp4",
+      "createTime": "2025-12-01 09:27:47"
+    },
+    {
+      "id": "2",
+      "no": "10002",
+      "singedTimes": 1000,
+      "backingVocals": "left",
+      "name": "後來",
+      "singerName": "劉若英",
+      "sex": "女",
+      "language": "國語",
+      "location": "videos/劉若英-後來.mp4",
+      "createTime": "2025-12-01 09:27:50"
+    },
+    {
+      "id": "3",
+      "no": "10003",
+      "singedTimes": 1500,
+      "backingVocals": "left",
+      "name": "童話",
+      "singerName": "光良",
+      "sex": "男",
+      "language": "國語",
+      "location": "videos/光良-童話.mp4",
+      "createTime": "2025-12-01 09:25:47"
+    },
+    {
+      "id": "4",
+      "no": "20001",
+      "singedTimes": 1000,
+      "backingVocals": "left",
+      "name": "風吹風吹",
+      "singerName": "江蕙",
+      "sex": "女",
+      "language": "台語",
+      "location": "videos/江蕙-風吹風吹.mp4",
+      "createTime": "2025-12-01 10:27:47"
+    },
+    {
+      "id": "5",
+      "no": "10004",
+      "singedTimes": 800,
+      "backingVocals": "left",
+      "name": "是不是這樣的夜晚你才會這樣的想起我",
+      "singerName": "吳宗憲",
+      "sex": "男",
+      "language": "國語",
+      "location": "videos/吳宗憲-是不是這樣的夜晚 你才會這樣的想起我.mp4",
+      "createTime": "2025-12-01 10:27:47"
+    },
+    {
+      "id": "6",
+      "no": "10005",
+      "singedTimes": 700,
+      "backingVocals": "left",
+      "name": "小城故事",
+      "singerName": "鄧麗君",
+      "sex": "女",
+      "language": "國語",
+      "location": "videos/鄧麗君-小城故事.mp4",
+      "createTime": "2025-12-01 10:27:47"
+    },
+    {
+      "id": "7",
+      "no": "10006",
+      "singedTimes": 500,
+      "backingVocals": "left",
+      "name": "小城故事",
+      "singerName": "費玉清",
+      "sex": "男",
+      "language": "國語",
+      "location": "videos/費玉清-小城故事.mp4",
+      "createTime": "2025-12-01 10:27:47"
+    },
+    {
+      "id": "8",
+      "no": "20002",
+      "singedTimes": 550,
+      "backingVocals": "left",
+      "name": "愛到才知痛",
+      "singerName": "黃乙玲",
+      "sex": "女",
+      "language": "台語",
+      "location": "videos/黃乙玲-愛到才知痛.mp4",
+      "createTime": "2025-12-01 10:27:47"
+    },
+    {
+      "id": "9",
+      "no": "10007",
+      "singedTimes": 1100,
+      "backingVocals": "left",
+      "name": "晚霞",
+      "singerName": "鳳飛飛",
+      "sex": "女",
+      "language": "國語",
+      "location": "videos/鳳飛飛-晚霞.mp4",
+      "createTime": "2025-12-01 09:27:47"
+    },
+    {
+      "id": "10",
+      "no": "30001",
+      "singedTimes": 800,
+      "backingVocals": "left",
+      "name": "Let It Go",
+      "singerName": "Idina Menzel",
+      "sex": "女",
+      "language": "英語",
+      "location": "videos/Idina Menzel-Let It Go.mp4",
+      "createTime": "2025-12-01 09:27:47"
+    },
+    {
+      "id": "11",
+      "no": "20003",
+      "singedTimes": 1150,
+      "backingVocals": "left",
+      "name": "酒後的心聲",
+      "singerName": "江蕙",
+      "sex": "女",
+      "language": "台語",
+      "location": "videos/江蕙-酒後的心聲.mp4",
+      "createTime": "2025-12-01 09:29:47"
+    }
+  ],
+  "user": [
+    {
+      "id": "1",
+      "username": "owner01",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "username": "owner02",
+      "password": "123456"
+    }
+  ]
+}

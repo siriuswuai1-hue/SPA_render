@@ -1,0 +1,140 @@
+﻿{
+  "UpdateTime": "2025-12-04T02:32:44+08:00",
+  "UpdateInterval": 86400,
+  "Language": "Zh_tw",
+  "ProviderID": "A15010000H",
+  "Hotels": [
+    {
+      "HotelID": "Hotel_A15010000H_000008",
+      "HotelName": "思源居民宿",
+      "AlternateNames": [],
+      "Description": "位於南投縣的民宿  位於南投埔里131縣道 3.5公里處的一棟木造建築  周邊樹木林立 如同森林中的小屋",
+      "PositionLat": 23.935199,
+      "PositionLon": 120.970365,
+      "Geometry": null,
+      "HotelClasses": [
+        4
+      ],
+      "HotelStars": 0,
+      "TaiwanHost": 0,
+      "PostalAddress": {
+        "City": "南投縣",
+        "CityCode": "10008",
+        "Town": "埔里鎮",
+        "TownCode": "10008020",
+        "ZipCode": "545",
+        "StreetAddress": "水頭里水頭路1號"
+      },
+      "Telephones": [
+        {
+          "Tel": "(049)2927101"
+        }
+      ],
+      "Images": [],
+      "Organizations": [
+        {
+          "Name": "思源居民宿",
+          "Class": "Operator",
+          "TaxCode": "45337991",
+          "AgencyCode": null,
+          "URL": null,
+          "Telephones": null,
+          "MobilePhones": null,
+          "Faxes": null,
+          "Email": null
+        }
+      ],
+      "ServiceTimeInfo": "",
+      "TrafficInfo": "",
+      "ParkingInfo": "車位:小客車0輛、機車0輛、大客車0輛",
+      "Facilities": [],
+      "ServiceStatus": 1,
+      "PaymentMethods": [],
+      "LocatedCities": [],
+      "WebsiteURL": "",
+      "ReservationURLs": [],
+      "MapURLs": [],
+      "SameAsURLs": [],
+      "SocialMediaURLs": [],
+      "RoomInfo": "",
+      "ServiceInfo": "無線網路,,,,,自行車友善旅宿",
+      "TotalRooms": 3,
+      "LowestPrice": 2200,
+      "CeilingPrice": 3600,
+      "TotalCapacity": 10,
+      "AccessibleRooms": 0,
+      "Toilets": 0,
+      "LiftingEquipments": 0,
+      "ParkingSpaces": 0,
+      "CheckTimes": null,
+      "Remarks": "",
+      "UpdateTime": "2025-04-28T16:11:27+08:00"
+    },
+    {
+      "HotelID": "Hotel_A15010000H_000015",
+      "HotelName": "凱旋新宿商旅",
+      "AlternateNames": [],
+      "Description": "位於臺東市中心的商旅，鄰近鐵花村與台東市中心商圈，備有平面停車場（步行約3分鐘)，是來台東遊玩及出差的好選擇",
+      "PositionLat": 22.7514713,
+      "PositionLon": 121.1515864,
+      "Geometry": null,
+      "HotelClasses": [
+        3
+      ],
+      "HotelStars": 0,
+      "TaiwanHost": 0,
+      "PostalAddress": {
+        "City": "臺東縣",
+        "CityCode": "10014",
+        "Town": "臺東市",
+        "TownCode": "10014010",
+        "ZipCode": "950",
+        "StreetAddress": "復興里福建路243號1-5樓"
+      },
+      "Telephones": [
+        {
+          "Tel": "(089)311777"
+        }
+      ],
+      "Images": [],
+      "Organizations": [
+        {
+          "Name": "凱旋新宿商旅股份有限公司",
+          "Class": "Operator",
+          "TaxCode": "42960233",
+          "AgencyCode": null,
+          "URL": null,
+          "Telephones": null,
+          "MobilePhones": null,
+          "Faxes": null,
+          "Email": null
+        }
+      ],
+      "ServiceTimeInfo": "",
+      "TrafficInfo": "",
+      "ParkingInfo": "車位:小客車0輛、機車0輛、大客車0輛",
+      "Facilities": [],
+      "ServiceStatus": 1,
+      "PaymentMethods": [],
+      "LocatedCities": [],
+      "WebsiteURL": "",
+      "ReservationURLs": [],
+      "MapURLs": [],
+      "SameAsURLs": [],
+      "SocialMediaURLs": [],
+      "RoomInfo": "",
+      "ServiceInfo": "餐廳,無線網路,國民旅遊卡,停車場,,,,郵電服務,商務旅遊中心,自行車租借,AED,,,自行車友善旅宿",
+      "TotalRooms": 40,
+      "LowestPrice": 4500,
+      "CeilingPrice": 8000,
+      "TotalCapacity": 104,
+      "AccessibleRooms": 0,
+      "Toilets": 0,
+      "LiftingEquipments": 0,
+      "ParkingSpaces": 0,
+      "CheckTimes": null,
+      "Remarks": "",
+      "UpdateTime": "2025-02-27T10:48:30+08:00"
+    }
+  ]
+}

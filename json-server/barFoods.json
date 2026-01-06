@@ -1,0 +1,354 @@
+{
+  "barFoods": [
+    {
+      "name": "炸雞塊",
+      "price": "60",
+      "qty": "30",
+      "downTime": "14:50",
+      "id": "5"
+    },
+    {
+      "name": "洋蔥圈",
+      "price": "45",
+      "qty": "20",
+      "downTime": "06:50",
+      "id": "6"
+    },
+    {
+      "name": "雞米花",
+      "price": "55",
+      "qty": "22",
+      "downTime": "21:00",
+      "id": "7"
+    },
+    {
+      "name": "沙拉",
+      "price": "35",
+      "qty": "15",
+      "downTime": "none",
+      "id": "8"
+    },
+    {
+      "name": "鹽酥雞",
+      "price": "60",
+      "qty": "25",
+      "downTime": "12:56",
+      "id": "9"
+    },
+    {
+      "name": "雞翅",
+      "price": "70",
+      "qty": "28",
+      "downTime": "20:00",
+      "id": "10"
+    },
+    {
+      "name": "水餃",
+      "price": "40",
+      "qty": "35",
+      "downTime": "none",
+      "id": "11"
+    },
+    {
+      "name": "煎餃",
+      "price": "45",
+      "qty": "26",
+      "downTime": "19:50",
+      "id": "12"
+    },
+    {
+      "name": "炒飯",
+      "price": "65",
+      "qty": "20",
+      "downTime": "21:30",
+      "id": "13"
+    },
+    {
+      "name": "炒麵",
+      "price": "60",
+      "qty": "20",
+      "downTime": "12:56",
+      "id": "14"
+    },
+    {
+      "name": "雞排",
+      "price": "80",
+      "qty": "14",
+      "downTime": "20:45",
+      "id": "15"
+    },
+    {
+      "name": "薯餅",
+      "price": "20",
+      "qty": "40",
+      "downTime": "none",
+      "id": "16"
+    },
+    {
+      "name": "熱狗",
+      "price": "25",
+      "qty": "50",
+      "downTime": "20:10",
+      "id": "17"
+    },
+    {
+      "name": "花枝丸",
+      "price": "35",
+      "qty": "25",
+      "downTime": "none",
+      "id": "18"
+    },
+    {
+      "name": "甜不辣",
+      "price": "30",
+      "qty": "32",
+      "downTime": "19:40",
+      "id": "19"
+    },
+    {
+      "name": "豆干",
+      "price": "15",
+      "qty": "60",
+      "downTime": "none",
+      "id": "20"
+    },
+    {
+      "name": "海帶絲",
+      "price": "20",
+      "qty": "55",
+      "downTime": "none",
+      "id": "21"
+    },
+    {
+      "name": "滷蛋",
+      "price": "10",
+      "qty": "100",
+      "downTime": "none",
+      "id": "22"
+    },
+    {
+      "name": "涼麵",
+      "price": "45",
+      "qty": "24",
+      "downTime": "20:50",
+      "id": "23"
+    },
+    {
+      "name": "黑輪",
+      "price": "20",
+      "qty": "30",
+      "downTime": "none",
+      "id": "24"
+    },
+    {
+      "name": "關東煮組合",
+      "price": "55",
+      "qty": "14",
+      "downTime": "21:10",
+      "id": "25"
+    },
+    {
+      "name": "味噌湯",
+      "price": "20",
+      "qty": "40",
+      "downTime": "none",
+      "id": "26"
+    },
+    {
+      "name": "玉米濃湯",
+      "price": "25",
+      "qty": "38",
+      "downTime": "none",
+      "id": "27"
+    },
+    {
+      "name": "泡麵",
+      "price": "35",
+      "qty": "90",
+      "downTime": "none",
+      "id": "28"
+    },
+    {
+      "name": "牛肉麵",
+      "price": "90",
+      "qty": "15",
+      "downTime": "21:20",
+      "id": "29"
+    },
+    {
+      "name": "雞絲麵",
+      "price": "60",
+      "qty": "20",
+      "downTime": "none",
+      "id": "30"
+    },
+    {
+      "name": "貢丸湯",
+      "price": "30",
+      "qty": "25",
+      "downTime": "20:20",
+      "id": "31"
+    },
+    {
+      "name": "魚丸湯",
+      "price": "30",
+      "qty": "25",
+      "downTime": "none",
+      "id": "32"
+    },
+    {
+      "name": "蒸餃",
+      "price": "50",
+      "qty": "22",
+      "downTime": "19:45",
+      "id": "33"
+    },
+    {
+      "name": "珍奶",
+      "price": "50",
+      "qty": "35",
+      "downTime": "none",
+      "id": "34"
+    },
+    {
+      "name": "冬瓜茶",
+      "price": "30",
+      "qty": "45",
+      "downTime": "none",
+      "id": "35"
+    },
+    {
+      "name": "綠茶",
+      "price": "25",
+      "qty": "55",
+      "downTime": "none",
+      "id": "36"
+    },
+    {
+      "name": "紅茶",
+      "price": "25",
+      "qty": "60",
+      "downTime": "none",
+      "id": "37"
+    },
+    {
+      "name": "蘋果汁",
+      "price": "40",
+      "qty": "30",
+      "downTime": "none",
+      "id": "38"
+    },
+    {
+      "name": "柳橙汁",
+      "price": "40",
+      "qty": "35",
+      "downTime": "none",
+      "id": "39"
+    },
+    {
+      "name": "礦泉水",
+      "price": "20",
+      "qty": "100",
+      "downTime": "none",
+      "id": "40"
+    },
+    {
+      "name": "運動飲料",
+      "price": "35",
+      "qty": "50",
+      "downTime": "none",
+      "id": "41"
+    },
+    {
+      "name": "能量飲",
+      "price": "45",
+      "qty": "25",
+      "downTime": "none",
+      "id": "42"
+    },
+    {
+      "name": "水果拼盤",
+      "price": "80",
+      "qty": "10",
+      "downTime": "20:55",
+      "id": "43"
+    },
+    {
+      "name": "葡萄",
+      "price": "40",
+      "qty": "18",
+      "downTime": "none",
+      "id": "44"
+    },
+    {
+      "name": "香蕉",
+      "price": "20",
+      "qty": "30",
+      "downTime": "none",
+      "id": "45"
+    },
+    {
+      "name": "蘋果",
+      "price": "25",
+      "qty": "25",
+      "downTime": "none",
+      "id": "46"
+    },
+    {
+      "name": "西瓜片",
+      "price": "35",
+      "qty": "15",
+      "downTime": "20:40",
+      "id": "47"
+    },
+    {
+      "name": "番茄",
+      "price": "20",
+      "qty": "20",
+      "downTime": "none",
+      "id": "48"
+    },
+    {
+      "name": "水煮蛋",
+      "price": "15",
+      "qty": "40",
+      "downTime": "none",
+      "id": "49"
+    },
+    {
+      "name": "雞肉捲",
+      "price": "55",
+      "qty": "12",
+      "downTime": "21:15",
+      "id": "50"
+    },
+    {
+      "name": "培根蛋餅",
+      "price": "45",
+      "qty": "18",
+      "downTime": "none",
+      "id": "51"
+    },
+    {
+      "name": "蔥抓餅",
+      "price": "35",
+      "qty": "20",
+      "downTime": "none",
+      "id": "52"
+    },
+    {
+      "name": "煎蛋",
+      "price": "15",
+      "qty": "20",
+      "downTime": "none",
+      "id": "53"
+    },
+    {
+      "name": "礦泉水",
+      "price": "18",
+      "qty": "10",
+      "downTime": "none",
+      "id": "6343"
+    }
+  ]
+}

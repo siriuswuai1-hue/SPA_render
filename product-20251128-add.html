@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品管理系統 - 產品新增</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="product-20251128-add.html"
+                            target="_blank">產品新增</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product-20251128-table.html" target="_blank">產品列表</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">產品名稱</label>
+                            <input type="text" list="p_list" class="form-control is-invalid" placeholder="產品名稱字數2~8字"
+                                id="p_name">
+                            <datalist id="p_list">
+                                <option value="隨身碟128G"></option>
+                                <option value="隨身碟256G"></option>
+                                <option value="隨身碟128G512"></option>
+                            </datalist>
+                            <div class="valid-feedback" id="valid-feedback-p_name">產品名稱符合規定</div>
+                            <div class="invalid-feedback" id="invalid-feedback-p_name">產品名稱不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">產品價格</label>
+                            <input type="number" min="1" max="100" class="form-control is-invalid"
+                                placeholder="產品價格 1~100" id="p_price">
+                            <div class="valid-feedback">產品價格符合規定</div>
+                            <div class="invalid-feedback">產品價格不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">產品數量</label>
+                            <input type="number" min="1" max="100" class="form-control is-invalid"
+                                placeholder="產品數量 1~100" id="p_qty">
+                            <div class="valid-feedback">產品數量符合規定</div>
+                            <div class="invalid-feedback">產品數量不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">產品描述</label>
+                            <input type="text" class="form-control is-invalid" placeholder="產品描述 2~10" id="p_note">
+                            <div class="valid-feedback">產品描述符合規定</div>
+                            <div class="invalid-feedback">產品描述不符合規定</div>
+                        </div>
+                        <div class="text-center mt-5">
+                            <button class="btn btn-warning">取消</button>
+                            <button class="btn btn-primary" id="ok_btn">送出</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let flag_p_name = false;
+        let flag_p_price = false;
+        let flag_p_qty = false;
+        let flag_p_note = false;
+        $(function () {
+            //#p_name
+            $("#p_name").on("input", function () {
+                console.log($(this).val().length);
+                if ($(this).val().length > 1 && $(this).val().length < 9) {
+                    //傳遞至後端判斷此筆名稱是否已經存在
+                    let name = $(this).val();
+
+                    axios.get(`http://192.168.10.2:3000/products?name=${name}`)
+                        .then(function (response) {
+                            console.log(response);
+                            if (response.data.length > 0) {
+                                //此筆名稱已經存在, 不可以使用
+                                $("#invalid-feedback-p_name").text("此筆名稱已經存在, 不可以使用!");
+                                $("#p_name").removeClass("is-valid");
+                                $("#p_name").addClass("is-invalid");
+                                flag_p_name = false;
+                            } else {
+                                //此筆名稱不存在, 可以使用
+                                $("#valid-feedback-p_name").text("此筆名稱不存在, 可以使用!");
+                                $("#p_name").removeClass("is-invalid");
+                                $("#p_name").addClass("is-valid");
+                                flag_p_name = true;
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .finally(function () {
+                            // always executed
+                        });
+                } else {
+                    $("#invalid-feedback-p_name").text("名稱不合規定!");
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_name = false;
+                }
+            });
+
+            //#p_price
+            $("#p_price").on("input", function () {
+                if ($(this).val() > 0 && $(this).val() < 101) {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_price = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_price = false;
+                }
+            });
+
+            //#p_qty
+            $("#p_qty").on("input", function () {
+                if ($(this).val() > 0 && $(this).val() < 101) {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_qty = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_qty = false;
+                }
+            });
+
+            //#p_note
+            $("#p_note").on("input", function () {
+                console.log($(this).val().length);
+                if ($(this).val().length > 1 && $(this).val().length < 11) {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_p_note = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_p_note = false;
+                }
+            });
+
+            //#ok_btn 按鈕監聽
+            $("#ok_btn").on("click", function () {
+                if (flag_p_name && flag_p_note && flag_p_qty && flag_p_price) {
+                    //內容都符合規定
+                    //收集資料並轉呈json格式
+                    let jsonDATA = {};
+                    jsonDATA["name"] = $("#p_name").val();
+                    jsonDATA["price"] = $("#p_price").val();
+                    jsonDATA["qty"] = $("#p_qty").val();
+                    jsonDATA["note"] = $("#p_note").val();
+
+                    console.log(JSON.stringify(jsonDATA));
+
+                    //傳遞至後端API 執行新增
+                    axios.post('http://192.168.10.2:3000/products', JSON.stringify(jsonDATA))
+                        .then(function (response) {
+                            console.log(response);
+                            if (response.status == 201) {
+                                //新增成功
+                                Swal.fire({
+                                    title: "新增成功!",
+                                    icon: "success",
+                                    showDenyButton: false,
+                                    showCancelButton: false,
+                                    confirmButtonText: "確認",
+                                    denyButtonText: `Don't save`
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.href = "product-20251128-add.html";
+                                    }
+                                });
+                            } else {
+                                //回報錯誤
+                                Swal.fire({
+                                    title: response.statusText,
+                                    icon: "error",
+                                    showDenyButton: false,
+                                    showCancelButton: false,
+                                    confirmButtonText: "確認",
+                                    denyButtonText: `Don't save`
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        return;
+                                    }
+                                });
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .finally(function () {
+                            // always executed
+                        });
+
+                } else {
+                    //內容不符合規定
+                    Swal.fire({
+                        title: "欄位有錯誤!",
+                        icon: "error",
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        confirmButtonText: "確認",
+                        denyButtonText: `Don't save`
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            return;
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

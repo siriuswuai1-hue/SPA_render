@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣小道</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+    <link rel="stylesheet" href="css/waterfont.css">
+    <style>
+        @media screen and (max-width: 768px) {
+            .table-rwd thead {
+                display: none;
+            }
+
+            .table-rwd tbody tr {
+                display: block;
+                border: 1px solid var(--color07);
+                margin-top: 15px;
+                border-radius: 5px;
+                box-shadow: 1px 2px 4px 2px var(--color07);
+            }
+
+            .table-rwd tbody tr td {
+                display: block;
+                overflow: hidden;
+            }
+
+            .table-rwd tbody tr td::before {
+                content: attr(data-th) " : ";
+                color: var(--color07);
+                font-weight: 900;
+                font-size: 14px;
+                display: block;
+                float: left;
+                width: 25%;
+                text-align: right;
+                padding-right: 15px;
+            }
+
+            .table-rwd tbody tr td span {
+                display: block;
+                float: left;
+                width: 75%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="fw-900 waterfont text-success display-1" text="台灣小道">台灣小道</h1>
+        <table class="table table-rwd table-bordered table-striped table-hover">
+            <thead class="table-danger">
+                <tr>
+                    <th width="10%">編號</th>
+                    <th width="15%">步道名稱</th>
+                    <th width="20%">步道種類</th>
+                    <th width="15%">步道長度與用時</th>
+                    <th width="10%">管理處電話</th>
+                    <th width="10%">行政區</th>
+                    <th width="20%">步道系統</th>
+                </tr>
+            </thead>
+            <tbody id="mybody">
+                <tr>
+                    <td data-th="編號"><span>001</span></td>
+                    <td data-th="步道名稱"><span>奶油蛋糕</span></td>
+                    <td data-th="步道種類"><span>long</span></td>
+                    <td data-th="步道長度與用時"><span>50</span></td>
+                    <td data-th="管理處電話"><span>20</span></td>
+                    <td data-th="行政區">宜蘭</span>
+                    <td data-th="步道系統">宜蘭</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script>
+        //主程式
+        $(function () {
+            //console.log("hello world!");
+
+            //抓取外部檔案
+            $.ajax({
+                type: "GET",
+                // url: "https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvTravelFood.aspx?IsTransData=1&UnitId=193",
+                //url: "https://media.taiwan.net.tw/XMLReleaseALL_public/Walk_f.json",
+                url: "js/json/path1.json",
+                dataType: "json",
+                success: showData,
+                error: function () {
+                    console.log("連線失敗!");
+                }
+            })
+        });
+
+        //副程式
+        function showData(data) {
+            //console.log(data);
+            $("#mybody").empty();
+            for (let i = 0; i < data.length; i++) {
+                // console.log(i + " : " + data[i].TRAILID);
+                // console.log(i + " : " + data[i].TR_CNAME);
+                // console.log(i + " : " + data[i].TR_LENGTH + " " + data[i].TR_TOUR);
+                // console.log(i + " : " + data[i].TR_MAIN_SYS);
+                // console.log(i + " : " + data[i].TR_PAVE);
+                // console.log(i + " : " + data[i].TR_POSITION);
+                // console.log(i + " : " + data[i].TR_ADMIN_PHONE);
+
+                let strHTML = `<tr>
+                    <td data-th="編號"><span>${data[i].TRAILID}</span></td>
+                    <td data-th="步道名稱"><span>${data[i].TR_CNAME}</span></td>
+                    <td data-th="步道種類"><span>${data[i].TR_PAVE}</span></td>
+                    <td data-th="長度與用時"><span>${data[i].TR_LENGTH + "/" + data[i].TR_TOUR}</span></td>
+                    <td data-th="管理處電話"><span>${data[i].TR_ADMIN_PHONE}</span></td>
+                    <td data-th="行政區">${data[i].TR_POSITION}</span>
+                    <td data-th="步道系統">${data[i].TR_MAIN_SYS}</span>
+                    </td>
+                </tr>`
+                $("#mybody").append(strHTML);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

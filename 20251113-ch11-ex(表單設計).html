@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch11 表單練習 - 客製化便當點餐系統</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+</head>
+
+<body class="vh-100 bg-02">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg my-3">
+                    <div class="card-header h3 fw-900 text-bg-success">客製化便當點餐系統</div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">餐點名稱</label>
+                            <input type="text" class="form-control is-invalid" placeholder="餐點名稱字數2~8字" id="p_name" autofocus
+                                list="foodlist">
+                            <datalist id="foodlist">
+                                <option value="滷排骨"></option>
+                                <option value="雞腿便當"></option>
+                                <option value="燒肉便當"></option>
+                                <option value="香腸便當"></option>
+                            </datalist>
+                            <div class="valid-feedback">餐點名稱符合規定!</div>
+                            <div class="invalid-feedback">餐點名稱不符合規定!</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">餐點價格(元)</label>
+                            <input type="number" min="60" max="200" class="form-control is-invalid"
+                                placeholder="產品價格60~200" id="p_price">
+                            <div class="valid-feedback">餐點價格符合規定!</div>
+                            <div class="invalid-feedback">餐點價格不符合規定!</div>
+                        </div>
+                        <div class="mb-3">
+                            <select name="" id="p_size" class="form-select is-invalid">
+                                <option value="" selected disabled>---主食(必選)---</option>
+                                <option value="白飯">白飯</option>
+                                <option value="糙米飯">糙米飯</option>
+                                <option value="麵">麵 </option>
+                            </select>
+                            <div class="valid-feedback">已選擇主食!</div>
+                            <div class="invalid-feedback">未選擇主食!</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="form-label h4">數量: <span class="h2 fw-900"
+                                    id="range01_text">10</span>個</label>
+                            <input type="range" class="form-range" name="" id="range01" min="1" max="100" value="10">
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="h4">加購配料:</div>
+                            <div class="form-check">
+                                <input type="checkbox" name="chk01" class="form-check-input" value="滷蛋">
+                                <label for="" class="form-check-label">滷蛋</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="chk01" class="form-check-input" value="豆干">
+                                <label for="" class="form-check-label">豆干</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="chk01" class="form-check-input" value="高麗菜">
+                                <label for="" class="form-check-label">高麗菜</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="chk01" class="form-check-input" value="玉米">
+                                <label for="" class="form-check-label">玉米</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="h4">取餐方式:</div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="radio01" id="" class="form-check-input" value="自取" checked>
+                                <label for="" class="form-check-label">自取</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="radio01" id="" class="form-check-input" value="外送">
+                                <label for="" class="form-check-label">外送</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="radio01" id="" class="form-check-input" value="Uber">
+                                <label for="" class="form-check-label">Uber</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="h4">是否加辣</div>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" name="" id="switch01" class="form-check-input">
+                                <label for="" class="form-check-label">不辣</label>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <button class="btn btn-secondary">取消</button>
+                            <button class="btn btn-primary" id="ok_btn">確認</button>
+                        </div>
+                        <div class="mt-3">
+                            <div class="h4">找一找</div>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="" id="group01">
+                                <button class="btn btn-primary" id="search_btn">搜尋</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 顯示資料區 -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mb-5">
+                    <div class="card-header h3 fw-900 text-bg-success" id="printout">點餐內容</div>
+                    <div class="card-body" id="my-card-body">
+                        <div class="h4"><span class="h3 fw-900">餐點名稱:</span> XXXXX</div>
+                        <div class="h4"><span class="h3 fw-900">餐點價格:</span> XXXXX</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="/js/sweetalert2.all.min.js"></script>
+    <script>
+        let flag_p_name = false;
+        let flag_p_price = false;
+        let flag_p_size = false;
+
+        let switch01 = '下架';
+        $(function () {
+            //監聽#p_name
+            $("#p_name").on("input", function () {
+                // console.log($(this).val().length);
+                if ($(this).val().length > 1 && $(this).val().length < 9) {
+                    //符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_p_name = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_p_name = false;
+                }
+            });
+
+            $("#p_name").on("click", function () {
+                document.getElementById("p_name").value = "";
+            });
+
+            //監聽#p_price
+            $("#p_price").on("input", function () {
+                // console.log($(this).val());
+                if ($(this).val() >= 60 && $(this).val() <= 200) {
+                    //符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_p_price = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_p_price = false;
+                }
+            });
+
+            //監聽p_size
+            $("#p_size").on("change", function () {
+                // console.log($(this).val());
+                //符合規定
+                $(this).removeClass('is-invalid');
+                $(this).addClass('is-valid');
+                flag_p_size = true;
+            });
+
+            //監聽switch01
+            $("#switch01").on("change", function () {
+                //console.log($(this).is(':checked'));
+                switch01 = $(this).is(':checked') ? "加辣" : "不辣";
+                $(this).next().text(switch01);
+            });
+
+            //監聽range01
+            $("#range01").on("input", function () {
+                // console.log($(this).val());
+                $("#range01_text").text($(this).val());
+            });
+
+            //按鈕監聽 #search_btn
+            $("#search_btn").on("click", function () {
+                //console.log($("#group01").val());
+                strsearch = $("#group01").val() == "" ? "無" : $("#group01").val();
+                $("#printout").html('搜尋結果');
+                $("#my-card-body").html(`<div class="h4"><span class="h3 fw-900">搜尋資料: </span>${strsearch}</div>`);
+            });
+
+            //按鈕監聽 #ok_btn
+            $("#ok_btn").on("click", function () {
+                if (flag_p_name && flag_p_price && flag_p_size) {
+                    // console.log($("#p_name").val());
+                    // console.log($("#p_price").val());
+
+                    //收集加購配料
+                    let chk01 = [];
+                    $.each($("input[name='chk01']:checked"), function () {
+                        chk01.push($(this).val());
+                    });
+                    if (chk01[0] == null) {
+                        chk01[0] = "無"
+                    }
+
+                    //收集取餐方式
+                    let radio01 = '';
+                    $.each($("input[name='radio01']:checked"), function () {
+                        radio01 = $(this).val();
+                    })
+
+                    p_pname = $("#p_name").val();
+                    p_price = $("#p_price").val();
+                    p_size = $("#p_size").val();
+                    p_chk01 = chk01.join('/ ');
+                    p_radio01 = radio01;
+                    p_range01 = $("#range01").val();
+
+                    $("#printout").html('點餐內容');
+                    let strHTML = `<div class="h4"><span class="h3 fw-900">餐點名稱: </span> ${p_pname}</div>
+                                    <div class="h4"><span class="h3 fw-900">餐點價格: </span> ${p_price}</div>
+                                    <div class="h4"><span class="h3 fw-900">主食選擇: </span> ${p_size}</div>
+                                    <div class="h4"><span class="h3 fw-900">加購配料: </span> ${p_chk01}</div>
+                                    <div class="h4"><span class="h3 fw-900">取餐方式: </span> ${p_radio01}</div>
+                                    <div class="h4"><span class="h3 fw-900">是否加辣: </span> ${switch01}</div>
+                                    <div class="h4"><span class="h3 fw-900">餐點數量: </span> ${p_range01}</div>`;
+
+                    $("#my-card-body").html(strHTML);
+
+                } else {
+                    // alert("欄位有錯誤, 請修正!");
+                    Swal.fire({
+                        title: "錯誤",
+                        text: "欄位有錯誤, 請修正!",
+                        icon: "error"
+                    });
+                    $("#my-card-body").html('');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

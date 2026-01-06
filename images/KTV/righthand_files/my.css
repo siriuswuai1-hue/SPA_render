@@ -1,0 +1,561 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+/* ----------------------------------------------------- */
+/* 全域樣式 */
+:root {
+    /* 廣泛用途 */
+    --color01: #D3B7D8;
+    /* 淡紫粉 - 柔和背景 */
+    --color02: #A13E97;
+    /* 品紅紫 - 視覺主色 */
+    --color03: #20e693;
+    /* 深紫 - 文字與重點強調 */
+    --color04: #280E3B;
+    /* 夜紫 - 背景或底層區塊 */
+    --color05: #F4E9F9;
+    /* 亮粉霧白 - 區塊底色或Hover */
+    --color06: #E7C7F5;
+    /* 柔紫米色 - 補助色 */
+    --color07: #8C5FB4;
+    /* 紫羅蘭 - 標題或連結色 */
+    --color08: #B583D3;
+    /* 亮紫 - 次要強調 */
+    --color09: #EFE1F2;
+    /* 淺霧粉 - 內文區塊背景 */
+    --color10: #1E0129;
+    /* 暗夜紫 - Footer或對比底 */
+
+    --color11: #2874A6;
+    --color12: #AED6F1;
+    --color13: #154360;
+    --color14: #1B4F72;
+    --color15: #1F618D;
+    --color16: #fbfbfc;
+
+
+    /* 背景色 */
+    --bgcolor01: #B583D3;
+    --bgcolor02: #deeb91;
+    --bgcolor03: #b56cd6;
+
+
+    /* 文字顏色 */
+    --textcolor01: #ecebeb;
+    --textcolor02: #0c0c0c;
+}
+
+body {
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+
+/* ---------------------------------------------------- */
+/* 字體顏色 */
+.text-01 {
+    color: var(--color01);
+}
+
+.text-02 {
+    color: var(--color02);
+}
+
+.text-03 {
+    color: var(--color03);
+}
+
+/* ---------------------------------------------------- */
+/* 字體粗細 */
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+
+/* ---------------------------------------------------- */
+/* 背景色 */
+/* bg-01：主色亮紫漸層＋玻璃效果 */
+.bg-01 {
+    background: linear-gradient(90deg, rgba(245, 224, 206, 0.6), rgba(216, 124, 20, 0.6));
+    /* border: 1px solid rgba(255, 255, 255, 0.15); */
+    box-shadow: 0 8px 20px rgba(140, 95, 180, 0.3);
+    border-radius: 15px;
+    color: var(--textcolor01);
+}
+
+.bg-02 {
+    background-color: var(--bgcolor02);
+}
+
+.bg-03 {
+    background-color: var(--bgcolor03);
+}
+
+/* ---------------------------------------------------- */
+/* 背景圖相關 background-image position and size */
+.bg-cover {
+    background-position: center center;
+    background-size: cover;
+}
+
+
+/* ---------------------------------------------------- */
+/* 自訂按鈕 button (user defined) */
+.button-01 {
+    background-color: var(--color15);
+    color: var(--textcolor01);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* ---------------------------------------------------- */
+/* 自訂 BootStrap 卡片.圖片寬度 */
+/* card-img-top == 確保圖片寬度適應卡片 */
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+/* ---------------------------------------------------- */
+/* carousel 輪播廣告列 */
+/* for v1
+        .carousel-caption-text {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 2px 2px 6px 2px #ccc;
+        } */
+
+/* s03 v2 */
+.carousel-item {
+    padding: auto;
+    position: relative;
+
+    /* height: 80vh; */
+    /* 如果你的螢幕高度是 1000px：
+    - 100vh = 1000px（整個螢幕）
+    - 80vh = 800px（螢幕的 80%）
+    - 50vh = 500px（螢幕的 50%）
+    - 10vh = 100px（螢幕的 10%） */
+
+    /* min-height: 400px; */
+    /* min-height: 400px; == 最小高度 400 像素 */
+
+
+}
+
+.carousel-item::before {
+    position: absolute;
+    content: "";
+    /* top: 0; bottom: 0; left: 0; right: 0; */
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.3));
+}
+
+.carousel-caption-box {
+    position: absolute;
+    left: 20%;
+    bottom: 15%;
+    max-width: 400px;
+}
+
+.carousel-badge {
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    border-radius: 999px;
+    padding: 15px 15px;
+    font-size: 1.5rem;
+    /* font-size: 0.85rem; */
+    letter-spacing: 0.2rem;
+    display: inline-block;
+}
+
+/* ----------------------------------------------------- */
+/* carouselExampleControls 控制按鈕 */
+/* 完全自訂按鈕外觀 */
+#carouselExampleControls .carousel-control-prev,
+#carouselExampleControls .carousel-control-next {
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: all 0.3s;
+}
+
+#carouselExampleControls .carousel-control-prev {
+    left: 10px;
+}
+
+#carouselExampleControls .carousel-control-next {
+    right: 10px;
+}
+
+#carouselExampleControls .carousel-control-prev:hover,
+#carouselExampleControls .carousel-control-next:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+#carouselExampleControls .carousel-control-prev-icon,
+#carouselExampleControls .carousel-control-next-icon {
+    filter: brightness(0) invert(1);
+    /* 變成白色 */
+}
+
+/* ----------------------------------------------------- */
+/* roller-box-bottom-to-top == 捲窗簾(下到上) roll from bottom slide up to top */
+/* see example = 20251028-roller.html; */
+.roller-box-bottom-to-top {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-bottom-to-top .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(141, 219, 67, 0.5);
+    transform: translateY(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-bottom-to-top:hover .roller {
+    transform: translateY(0);
+    /* 修正：應該是 translateY(0) 而不是 translateX(0) */
+    transition: transform 1.5s;
+}
+
+/* ----------------------------------------------------- */
+/* roller-box-top-to-bottom == 捲窗簾(上到下) roll from top slide down to bottom */
+/* see example = 20251028-roller.html; */
+.roller-box-top-to-bottom {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-top-to-bottom .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(141, 219, 67, 0.5);
+    transform: translateY(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-top-to-bottom:hover .roller {
+    transform: translateY(0);
+    /* 修正：應該是 translateY(0) 而不是 translateX(0) */
+    transition: transform 1.5s;
+}
+
+
+/* ----------------------------------------------------- */
+/* timeline */
+/* 新增的 CSS */
+.timeline-row {
+    display: flex;
+    /* 使用 flexbox 排列左右區塊 */
+    position: relative;
+    margin-bottom: 20px;
+    /* 每列之間的間距 */
+}
+
+.timeline-content {
+    width: 50%;
+    /* 每個區塊佔 50% 寬度 */
+    padding: 10px;
+    /* 內距 */
+}
+
+.left-content {
+    text-align: right;
+    /* 左側內容靠右對齊 */
+    padding-right: 20px;
+    /* 與中線保持距離 */
+}
+
+.right-content {
+    text-align: left;
+    /* 右側內容靠左對齊 */
+    padding-left: 20px;
+    /* 與中線保持距離 */
+}
+
+
+/* 1. 父容器設定 - 保持不變 */
+/* 2. 繪製第一條垂直線 (::before) */
+.timeline-block-single-line {
+    position: relative;
+}
+
+.timeline-block-single-line::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    /* width: 第一條線寬 */
+    background-color: #aaa;
+    /* 較淺的灰色，確保在白色或黑色背景上都可見 */
+    left: 50%;
+    /* left: 50% == 定位：放在中心點的左側 */
+    transform: translateX(-50%);
+    /* 向左移動，與中心點間隔 3px */
+}
+
+
+/* 1. 父容器設定 - 保持不變 */
+/* 2. 繪製第一條垂直線 (::before) */
+.timeline-block-double-line {
+    position: relative;
+}
+
+.timeline-block-double-line::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    /* width: 第一條線寬 */
+    background-color: #aaa;
+    /* 較淺的灰色，確保在白色或黑色背景上都可見 */
+    left: 50%;
+    /* left: 50% == 定位：放在中心點的左側 */
+    transform: translateX(calc(-50% - 3px));
+    /* 向左移動，與中心點間隔 3px */
+}
+
+/* 3. 繪製第二條垂直線 (::after) */
+.timeline-block-double-line::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    /* width: 第二條線寬 */
+    background-color: #aaa;
+    /* 較淺的灰色，確保在白色或黑色背景上都可見 */
+    left: 50%;
+    /* left: 50% == 定位：放在中心點的左側 */
+    transform: translateX(calc(-50% + 3px));
+    /* 向右移動，與中心點間隔 3px */
+}
+
+/* ----------------------------------------------------- */
+/* 滑鼠懸停，微微放大 mouse hover resize enlarge 110% */
+a {
+    transition: transform 0.3s ease;
+    /* smooth animation */
+}
+
+a:hover {
+    transform: scale(1.1);
+    /* enlarge to 110% of original size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+button {
+    transition: transform 0.3s ease;
+    /* smooth animation */
+}
+
+button:hover {
+    transform: scale(1.1);
+    /* enlarge to 110% of original size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+i {
+    transition: transform 0.3s ease;
+    /* smooth animation */
+}
+
+i:hover {
+    transform: scale(1.1);
+    /* enlarge to 110% of original size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+img {
+    transition: transform 0.3s ease;
+    /* smooth animation */
+}
+
+img:hover {
+    transform: scale(1.1);
+    /* enlarge to 110% of original size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+p {
+    transition: transform 0.3s ease;
+    /* smooth animation */
+}
+
+p:hover {
+    transform: scale(1.1);
+    /* enlarge to 110% of original size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+span {
+    transition: transform 0.3s ease;
+    /* smooth animation */
+}
+
+span:hover {
+    transform: scale(1.1);
+    /* enlarge to 110% of original size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ----------------------------------------------------- */
+/* 產品廣告卡 = 限制每張圖片的高度 並保持其原始寬高比 */
+.product-card {
+    height: 200px;
+    /* Set your desired height */
+    overflow: hidden;
+}
+
+.product-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* or 'cover' depending on your needs */
+}
+
+/* ----------------------------------------------------- */
+/* 更新按鈕.適用於 Dark Reader is ON */
+/* Force radios to be visible in dark mode */
+.update-radio {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #0250C4;
+    /* Bootstrap primary blue */
+    filter: none !important;
+    /* Prevent Dark Reader from modifying */
+}
+
+/* Alternative: Add visible border */
+.update-radio {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: 2px solid #0250C4 !important;
+    background-color: #999 !important;
+}
+/* ----------------------------------------------------- */
+/* 刪除按鈕.適用於 Dark Reader is ON */
+/* Force checkboxes to be visible in dark mode */
+.delete-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #f00;
+    /* Bootstrap primary blue */
+    filter: none !important;
+    /* Prevent Dark Reader from modifying */
+}
+
+/* Alternative: Add visible border */
+.delete-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: 2px solid #f00 !important;
+    background-color: #999 !important;
+}
+
+/* ----------------------------------------------------- */
+/* 翻轉卡片 flip-card */
+.flip-card {
+    background-color: transparent;
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1.5s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+
+}
+
+/* ----------------------------------------------------- */
+/* 水平線.適用於 Dark Reader is ON */
+/* 3D Horizontal Line that can be visible in dark mode */
+.line-3d-stable {
+    height: 6px;
+    border: none;
+    border-top: 3px groove #888;
+    opacity: 1;
+}

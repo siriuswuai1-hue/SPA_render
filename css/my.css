@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+:root {
+    /* 廣泛用途 */
+    --color01: #D3B7D8;
+    /* 淡紫粉 - 柔和背景 */
+    --color02: #A13E97;
+    /* 品紅紫 - 視覺主色 */
+    --color03: #632A7E;
+    /* 深紫 - 文字與重點強調 */
+    --color04: #280E3B;
+    /* 夜紫 - 背景或底層區塊 */
+    --color05: #F4E9F9;
+    /* 亮粉霧白 - 區塊底色或Hover */
+    --color06: #E7C7F5;
+    /* 柔紫米色 - 補助色 */
+    --color07: #8C5FB4;
+    /* 紫羅蘭 - 標題或連結色 */
+    --color08: #B583D3;
+    /* 亮紫 - 次要強調 */
+    --color09: #EFE1F2;
+    /* 淺霧粉 - 內文區塊背景 */
+    --color10: #1E0129;
+    /* 暗夜紫 - Footer或對比底 */
+
+    --color11: #2874A6;
+    --color12: #AED6F1;
+    --color13: #154360;
+    --color14: #1B4F72;
+    --color15: #1F618D;
+    --color16: #fbfbfc;
+
+
+    /* 背景色 */
+    --bgcolor01: #B583D3;
+    --bgcolor02: #deeb91;
+    --bgcolor03: #b56cd6;
+
+
+    /* 文字顏色 */
+    --textcolor01: #ecebeb;
+    --textcolor02: #0c0c0c;
+}
+
+body {
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+
+/* 字體顏色 */
+.text-01 {
+    color: var(--color01);
+}
+
+.text-02 {
+    color: var(--color02);
+}
+
+.text-03 {
+    color: var(--color03);
+}
+
+/* 字體粗細 */
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+
+/* 背景色 */
+/* bg-01：主色亮紫漸層＋玻璃效果 */
+.bg-01 {
+    background: linear-gradient(90deg, rgba(245, 224, 206, 0.6), rgba(216, 124, 20, 0.6));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(140, 95, 180, 0.3);
+    border-radius: 15px;
+    padding: 5px;
+    height: 100%;
+}
+
+.bg-02 {
+    background-color: var(--bgcolor02);
+}
+
+.bg-03 {
+    background-color: var(--bgcolor03);
+}
+
+
+/* 背景圖相關 */
+.bg-cover {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* roller 相關應用 */
+.roller-box-t {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-t .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(141, 219, 67, 0.5);
+    transform: translateY(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-t:hover .roller {
+    transform: translateX(0);
+    transition: transform 1.5s;
+}
+
+.roller-box-b {
+    position: relative;
+    overflow: hidden;
+}
+
+.roller-box-b .roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(141, 219, 67, 0.5);
+    transform: translateY(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-box-b:hover .roller {
+    transform: translateX(0);
+    transition: transform 1.5s;
+}
