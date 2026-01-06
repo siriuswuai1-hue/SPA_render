@@ -83,7 +83,7 @@ $(async function () {
             flag_l_name = flag_l_pass = false;
 
             //傳遞至後端執行登入驗證
-            axios.post(`http://${dataHost}/api/login`, {
+            axios.post(`https://${dataHost}/api/login`, {
                 username: $("#l_name").val(),
                 password: $("#l_pass").val()
             })
@@ -181,7 +181,7 @@ $(async function () {
             if (inputJudge("#r_name", "text", 2, 30)) {
                 let username = $(this).val();
                 //傳遞至後端驗證帳號是否已存在
-                axios.post(`http://${dataHost}/api/checkuni`, {
+                axios.post(`https://${dataHost}/api/checkuni`, {
                     username: username
                 })
                     .then(function (response) {
@@ -264,7 +264,7 @@ $(async function () {
                     username: $("#r_name").val(),
                     password: $("#r_pass01").val()
                 }
-                axios.post(`http://${dataHost}/api/register`, jsonDATA)
+                axios.post(`https://${dataHost}/api/register`, jsonDATA)
                     .then(function (response) {
                         console.log(response);
                         if (response.request.status == 200) {
@@ -481,7 +481,7 @@ $(async function () {
                 //執行刪除行為
                 //console.log($(this).data("id"));
                 let id = $(this).data("id");
-                axios.delete(`http://${dataHost}:3002/barFoods/${id}`)
+                axios.delete(`https://${dataHost}:3002/barFoods/${id}`)
                     .then(function (response) {
                         //console.log(response);
                         if (response.status == 200) {
@@ -573,7 +573,7 @@ $(async function () {
             jsonDATA["qty"] = $("#p_qty").val();
             jsonDATA["downTime"] = $("#p_dtime").val();
             //傳遞至後端API 執行新增
-            axios.post(`http://${dataHost}:3002/barFoods`, JSON.stringify(jsonDATA))
+            axios.post(`https://${dataHost}:3002/barFoods`, JSON.stringify(jsonDATA))
                 .then(function (response) {
                     if (response.status == 201) {
                         //新增成功
@@ -614,7 +614,7 @@ $(async function () {
             jsonDATA["downTime"] = $("#p_dtime").val();
 
             //傳遞至後端API 執行更新
-            axios.put(`http://${dataHost}:3002/barFoods/${id}`, JSON.stringify(jsonDATA))
+            axios.put(`https://${dataHost}:3002/barFoods/${id}`, JSON.stringify(jsonDATA))
                 .then(function (response) {
                     //console.log(response);
                     if (response.status == 200) {
@@ -801,7 +801,7 @@ function showdTravelFood(data) {
 let songData = [];
 let songRanking = new Map;
 function getAllSongs() {
-    return axios.get(`http://${dataHost}:3001/songs`)
+    return axios.get(`https://${dataHost}:3001/songs`)
         .then(function (response) {
             songData = response.data;
             sortSong("點歌次數");
@@ -1035,7 +1035,7 @@ let currentBarPage = 0;
 let maxFoodPage = 0;
 //取得所有資料
 function getBarItem() {
-    return axios.get(`http://${dataHost}:3002/barFoods`)
+    return axios.get(`https://${dataHost}:3002/barFoods`)
         .then(function (response) {
             //資料重構
             foodsData = [];
@@ -1215,7 +1215,7 @@ async function checkLoginStatus() {
         clearLoginUI();
         announceModal();
     } else {
-        axios.get(`http://${dataHost}/api/me`, {
+        axios.get(`https://${dataHost}/api/me`, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(function (response) {
