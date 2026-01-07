@@ -104,15 +104,15 @@
 
             //取得口罩藥局資料
             maskData = await getMaskData();
-            console.log(maskData);
+            //console.log(maskData);
 
             cityData = groupByCityTown(maskData);
-            console.log(cityData);
+            //console.log(cityData);
             showOptionData("#cityOption", Object.keys(cityData), "選擇縣市名稱");
 
             //監聽縣市選單
             $("#cityOption").on("change", function () {
-                console.log($(this).val());
+                //console.log($(this).val());
                 selectedCity = $(this).val();
 
                 //打開鄉鎮區選單
