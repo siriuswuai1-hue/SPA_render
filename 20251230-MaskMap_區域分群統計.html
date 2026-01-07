@@ -18,6 +18,7 @@
         .list-group {
             height: 85vh;
             overflow: scroll;
+            scrollbar-color: #555 #f1f1f1;
         }
 
         .marker-cluster-small {
@@ -54,7 +55,7 @@
 <body>
     <div class="container-fluid">
         <div class="row vh-100">
-            <div class="col-md-4 bg-03">
+            <div class="col-md-3 bg-03">
                 <select name="" id="cityOption" class="form-select form-select-lg mt-3">
                     <option value="" selected disabled class="fw-900">--- 請先選擇縣市名稱 ---</option>
                     <option value="臺中市">臺中市</option>
@@ -67,15 +68,15 @@
                 </select>
                 <ul class="list-group mt-3">
                     <li class="list-group-item">
-                        <div class="h4 fw-900">藥局名稱</div>
-                        <div class="h4 fw-900">地址:XXXXXX</div>
-                        <div class="h4 fw-900 mb-0">電話: XXXXXXX</div>
-                        <div class="h4 fw-900 mb-0">成人口罩: <span class="fw-900 h1 text-danger">99</span> 個</div>
-                        <div class="h4 fw-900">兒童口罩: <span class="fw-900 h1 text-danger">99</span> 個</div>
+                        <div class="h5 fw-900">藥局名稱</div>
+                        <div class="h5 fw-900">地址:XXXXXX</div>
+                        <div class="h5 fw-900 mb-0">電話: XXXXXXX</div>
+                        <div class="h5 fw-900 mb-0">成人口罩: <span class="fw-900 h3 text-danger">99</span> 個</div>
+                        <div class="h5 fw-900">兒童口罩: <span class="fw-900 h3 text-danger">99</span> 個</div>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-8 bg-02 p-0">
+            <div class="col-md-9 bg-02 p-0">
                 <div id="map" class="w-100 h-100"></div>
             </div>
         </div>
@@ -101,25 +102,12 @@
             //產生地圖
             initMap();
 
-            //取得縣市資料
-            // cityData = await getCityData();
-            // console.log(cityData);
-
             //取得口罩藥局資料
             maskData = await getMaskData();
             console.log(maskData);
 
             cityData = groupByCityTown(maskData);
             console.log(cityData);
-            // 先提取 county，再去除重複
-            // cityData = [...new Set(
-            //     maskData.features
-            //         .filter(city => city?.properties?.county)
-            //         .map(city => city.properties.county)
-            // )];
-
-            //產生縣市選單
-            //renderCityOption(cityData);
             showOptionData("#cityOption", Object.keys(cityData), "選擇縣市名稱");
 
             //監聽縣市選單
@@ -129,30 +117,14 @@
 
                 //打開鄉鎮區選單
                 $("#areaOption").prop("disabled", false)
-
                 showOptionData("#areaOption", Object.keys(cityData[selectedCity]), "選擇區域名稱");
-
-                // if (item[0] == selectedCity) {
-                //     //產生該縣市的鄉鎮區選單
-                //     //renderAreaOption(item[0])
-                // }
-                //});
             });
 
             //監聽鄉鎮區選單
             $("#areaOption").on("change", function () {
-                console.log($(this).val());
                 selectedArea = $(this).val();
-
-                console.log(cityData[selectedCity]);
                 //過濾口罩藥局
                 let filterData = cityData[selectedCity][selectedArea];
-                // filterData = maskData.features.filter(item => {
-                //     return item.properties.county == selectedCity && item.properties.town == selectedArea
-                //});
-
-
-                console.log(filterData);
 
                 //產生藥局列表
                 renderMaskList(filterData);
@@ -208,28 +180,6 @@
                 url: "js/json/points.json",
                 dataType: "json"
             });
-            // cityData = maskData.map(city => city[0]);
-            //console.log(maskData);
-        }
-
-        //產生縣市選單
-        // function renderCityOption(data) {
-        //     $("#cityOption").empty();
-        //     $("#cityOption").append(`<option value="" selected disabled class="fw-900">--- 請先選擇縣市名稱 ---</option>`);
-        //     data.forEach((item) => {
-        //         let strHTML = `<option value="${item.CityName}">${item.CityName}</option>`;
-        //         $("#cityOption").append(strHTML);
-        //     });
-        // }
-
-        //產生鄉鎮區選單
-        function renderAreaOption(data) {
-            $("#areaOption").empty();
-            $("#areaOption").append(`<option value="" selected disabled class="fw-900">--- 選擇鄉鎮區名稱 ---</option>`);
-            data.forEach((item) => {
-                let strHTML = `<option value="${item.AreaName}">${item.AreaName}</option>`;
-                $("#areaOption").append(strHTML);
-            });
         }
 
         //產生口罩藥局列表
@@ -246,12 +196,12 @@
 
             //有資料才渲染
             data.forEach((item, key) => {
-                let strHTML = `<li class="list-group-item mask-item" data-key="${key}">
-                        <div class="h4 fw-900">${item.properties.name}</div>
-                        <div class="h4 fw-900">地址:${item.properties.address}</div>
-                        <div class="h4 fw-900 mb-0">電話: ${item.properties.phone}</div>
-                        <div class="h4 fw-900 mb-0">成人口罩: <span class="fw-900 h1 text-danger">${item.properties.mask_adult}</span> 個</div>
-                        <div class="h4 fw-900">兒童口罩: <span class="fw-900 h1 text-danger">${item.properties.mask_child}</span> 個</div>
+                let strHTML = `<li class="list-group-item mask-item mt-2 me-2" data-key="${key}">
+                        <div class="h5 fw-900">${item.properties.name}</div>
+                        <div class="h5 fw-900">地址:${item.properties.address}</div>
+                        <div class="h5 fw-900 mb-0">電話: ${item.properties.phone}</div>
+                        <div class="h5 fw-900 mb-0">成人口罩: <span class="fw-900 h3 text-danger">${item.properties.mask_adult}</span> 個</div>
+                        <div class="h5 fw-900">兒童口罩: <span class="fw-900 h3 text-danger">${item.properties.mask_child}</span> 個</div>
                     </li>`;
                 $(".list-group").append(strHTML);
             });
