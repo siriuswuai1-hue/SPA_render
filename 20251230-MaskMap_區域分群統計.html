@@ -258,8 +258,10 @@
         function groupByCityTown(datas) {
             const result = {};
             datas.features.forEach(data => {
-                const city = data.properties.county == "" ? "無區域資料" : data.properties.county;
-                const town = data.properties.town == "" ? "緯度_" + String(Math.round(data.geometry.coordinates[1] * 10) / 10) : data.properties.town;
+                const city = data.properties.county == "" ? data.properties.address.substring(0, 3) : data.properties.county;
+                const town = data.properties.town == "" ? data.properties.address.substring(3, 6) : data.properties.town;
+                // const town = data.properties.town == "" ? "緯度_" + String(Math.round(data.geometry.coordinates[1] * 10) / 10) : data.properties.town;
+
                 // 初始化 City
                 if (!result[city]) {
                     result[city] = {};
