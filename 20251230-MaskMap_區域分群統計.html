@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>口罩藥局地圖</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/table-rwd.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- <link rel="stylesheet" href="css/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="" /> -->
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+    <link rel="stylesheet" href="css/my.css">
+    <style>
+        .list-group {
+            height: 85vh;
+            overflow: scroll;
+        }
+
+        .marker-cluster-small {
+            background-color: rgba(181, 226, 140, 0.6);
+        }
+
+        .marker-cluster-small div {
+            background-color: rgba(110, 204, 57, 0.6);
+        }
+
+        .marker-cluster-medium {
+            background-color: rgba(241, 210, 87, 0.6);
+        }
+
+        .marker-cluster-medium div {
+            background-color: rgba(240, 194, 12, 0.6);
+        }
+
+        .marker-cluster div {
+            width: 30px;
+            height: 30px;
+            margin-left: 5px;
+            margin-right: 5px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .marker-cluster span {
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <div class="col-md-4 bg-03">
+                <select name="" id="cityOption" class="form-select form-select-lg mt-3">
+                    <option value="" selected disabled class="fw-900">--- 請先選擇縣市名稱 ---</option>
+                    <option value="臺中市">臺中市</option>
+                    <option value="臺北市">臺北市</option>
+                </select>
+                <select name="" id="areaOption" class="form-select form-select-lg mt-3" disabled>
+                    <option value="" selected disabled class="fw-900">--- 選擇鄉鎮區名稱 ---</option>
+                    <option value="西屯區">西屯區</option>
+                    <option value="南屯區">南屯區</option>
+                </select>
+                <ul class="list-group mt-3">
+                    <li class="list-group-item">
+                        <div class="h4 fw-900">藥局名稱</div>
+                        <div class="h4 fw-900">地址:XXXXXX</div>
+                        <div class="h4 fw-900 mb-0">電話: XXXXXXX</div>
+                        <div class="h4 fw-900 mb-0">成人口罩: <span class="fw-900 h1 text-danger">99</span> 個</div>
+                        <div class="h4 fw-900">兒童口罩: <span class="fw-900 h1 text-danger">99</span> 個</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8 bg-02 p-0">
+                <div id="map" class="w-100 h-100"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <!-- <script src="js/leaflet.js"></script> -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/leaflet.markercluster.js"></script>
+    <script>
+        let map; //儲存地圖
+        let markerMap = {}; //marker 索引
+        let markersCluster; //
+
+        let cityData; //儲存縣市資料
+        let maskData; //儲存口罩藥局資料
+        let selectedCity; //儲存以選取的縣市名稱
+        let selectedArea; //儲存以選取的鄉鎮區名稱
+        $(async function () {
+            //產生地圖
+            initMap();
+
+            //取得縣市資料
+            // cityData = await getCityData();
+            // console.log(cityData);
+
+            //取得口罩藥局資料
+            maskData = await getMaskData();
+            console.log(maskData);
+
+            cityData = groupByCityTown(maskData);
+            console.log(cityData);
+            // 先提取 county，再去除重複
+            // cityData = [...new Set(
+            //     maskData.features
+            //         .filter(city => city?.properties?.county)
+            //         .map(city => city.properties.county)
+            // )];
+
+            //產生縣市選單
+            //renderCityOption(cityData);
+            showOptionData("#cityOption", Object.keys(cityData), "選擇縣市名稱");
+
+            //監聽縣市選單
+            $("#cityOption").on("change", function () {
+                console.log($(this).val());
+                selectedCity = $(this).val();
+
+                //打開鄉鎮區選單
+                $("#areaOption").prop("disabled", false)
+
+                showOptionData("#areaOption", Object.keys(cityData[selectedCity]), "選擇區域名稱");
+
+                // if (item[0] == selectedCity) {
+                //     //產生該縣市的鄉鎮區選單
+                //     //renderAreaOption(item[0])
+                // }
+                //});
+            });
+
+            //監聽鄉鎮區選單
+            $("#areaOption").on("change", function () {
+                console.log($(this).val());
+                selectedArea = $(this).val();
+
+                console.log(cityData[selectedCity]);
+                //過濾口罩藥局
+                let filterData = cityData[selectedCity][selectedArea];
+                // filterData = maskData.features.filter(item => {
+                //     return item.properties.county == selectedCity && item.properties.town == selectedArea
+                //});
+
+
+                console.log(filterData);
+
+                //產生藥局列表
+                renderMaskList(filterData);
+
+                //清除所有的marker
+                removeMarker();
+
+                //產生markers
+                renderMarkers(filterData);
+
+            });
+
+            //監聽mask-item 口罩藥局列表
+            $(document).on("click", ".mask-item", function () {
+                const key = $(this).data("key");
+                const marker = markerMap[key];
+                // map.panTo(marker.getLatLng());
+                // marker.openPopup();
+                markersCluster.zoomToShowLayer(marker, function () {
+                    map.panTo(marker.getLatLng());
+                    marker.openPopup();
+                });
+            });
+        });
+
+        //產生地圖
+        function initMap() {
+            map = L.map('map').setView([24.171425, 120.609670], 13);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([24.171425, 120.609670]).addTo(map)
+                .bindPopup('中分署')
+                .openPopup();
+            markersCluster = new L.markerClusterGroup().addTo(map)
+        }
+
+        //取得縣市資料
+        function getCityData() {
+            return $.ajax({
+                type: "GET",
+                url: "js/json/CityCountyData.json",
+                dataType: "json"
+            });
+        }
+
+        //取得口罩藥局資料
+        function getMaskData() {
+            return $.ajax({
+                type: "GET",
+                url: "js/json/points.json",
+                dataType: "json"
+            });
+            // cityData = maskData.map(city => city[0]);
+            //console.log(maskData);
+        }
+
+        //產生縣市選單
+        // function renderCityOption(data) {
+        //     $("#cityOption").empty();
+        //     $("#cityOption").append(`<option value="" selected disabled class="fw-900">--- 請先選擇縣市名稱 ---</option>`);
+        //     data.forEach((item) => {
+        //         let strHTML = `<option value="${item.CityName}">${item.CityName}</option>`;
+        //         $("#cityOption").append(strHTML);
+        //     });
+        // }
+
+        //產生鄉鎮區選單
+        function renderAreaOption(data) {
+            $("#areaOption").empty();
+            $("#areaOption").append(`<option value="" selected disabled class="fw-900">--- 選擇鄉鎮區名稱 ---</option>`);
+            data.forEach((item) => {
+                let strHTML = `<option value="${item.AreaName}">${item.AreaName}</option>`;
+                $("#areaOption").append(strHTML);
+            });
+        }
+
+        //產生口罩藥局列表
+        function renderMaskList(data) {
+            $(".list-group").empty();
+
+            //沒有資料的狀況
+            if (data.length == 0) {
+                $(".list-group").append(`<li class="list-group-item">
+                    <div class="h1 fw-900 text-muted">該區域沒配售藥局!</div>
+                    </li>`);
+                return;
+            }
+
+            //有資料才渲染
+            data.forEach((item, key) => {
+                let strHTML = `<li class="list-group-item mask-item" data-key="${key}">
+                        <div class="h4 fw-900">${item.properties.name}</div>
+                        <div class="h4 fw-900">地址:${item.properties.address}</div>
+                        <div class="h4 fw-900 mb-0">電話: ${item.properties.phone}</div>
+                        <div class="h4 fw-900 mb-0">成人口罩: <span class="fw-900 h1 text-danger">${item.properties.mask_adult}</span> 個</div>
+                        <div class="h4 fw-900">兒童口罩: <span class="fw-900 h1 text-danger">${item.properties.mask_child}</span> 個</div>
+                    </li>`;
+                $(".list-group").append(strHTML);
+            });
+        }
+
+
+        //產生marker列表佈局
+        function renderMarkers(data) {
+            //沒有資料
+            if (data.length == 0) {
+                return;
+            }
+
+            //清空索引表 給 list-item 呼叫
+            markerMap = {};
+
+            data.forEach((item, key) => {
+                const lat = item.geometry.coordinates[1];
+                const lng = item.geometry.coordinates[0];
+                if (key == 0) {
+                    map.panTo([lat, lng]);
+                }
+                let popupHTML = `<div class="card">
+                        <div class="card-body">
+                            <div class="h4 fw-900">${item.properties.name}</div>
+                            <div class="h4 fw-900">地址:${item.properties.address}</div>
+                            <div class="h4 fw-900 mb-0">電話: ${item.properties.phone}</div>
+                            <div class="h4 fw-900 mb-0">成人口罩: <span class="fw-900 h1 text-danger">${item.properties.mask_adult}</span> 個</div>
+                            <div class="h4 fw-900">兒童口罩: <span class="fw-900 h1 text-danger">${item.properties.mask_child}</span> 個</div>
+                        </div>
+                    </div>`;
+                const marker = L.marker([lat, lng]).bindPopup(popupHTML);
+
+                markersCluster.addLayer(marker);
+
+
+                //產生索引表 給 list-item 呼叫
+                markerMap[key] = marker;
+            });
+        }
+
+        //清除所有的marker
+        function removeMarker() {
+            // map.eachLayer(function (layer) {
+            //     if (layer instanceof L.Marker) {
+            //         map.removeLayer(layer)
+            //     }
+            // });
+            markersCluster.clearLayers();
+            markerMap = {};
+        }
+
+
+        function groupByCityTown(datas) {
+            const result = {};
+            datas.features.forEach(data => {
+                const city = data.properties.county == "" ? "無區域資料" : data.properties.county;
+                const town = data.properties.town == "" ? "緯度_" + String(Math.round(data.geometry.coordinates[1] * 10) / 10) : data.properties.town;
+                // 初始化 City
+                if (!result[city]) {
+                    result[city] = {};
+                }
+
+                // 初始化 Town
+                if (!result[city][town]) {
+                    result[city][town] = [];
+                }
+
+                // 放入最後一組
+                result[city][town].push(data);
+            });
+            return result;
+        }
+
+        function showOptionData(id, data, def) {
+            $(id).empty();
+            $(id).append(`<option value="" disabled selected>---${def}---</option>`);
+            data.forEach(function (item) {
+                $(id).append(`<option value="${item}">${item}</option>`);
+            });
+        }
+    </script>
+</body>
+
+</html>

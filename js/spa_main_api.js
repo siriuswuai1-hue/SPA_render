@@ -48,20 +48,32 @@ let flag_r_name = false,
     timer = null;
 
 async function init() {
+    //檢查toekn是否存在和合法
     await checkLoginStatus();
     await getTravelFoodItem();
     await getHotelData();
+    await initMap();
     //await getBarItem();
     //await getAllSongs();
-    //檢查toekn是否存在和合法
 }
 
 //main function start
 $(async function () {
-    initMap();
     //inContent();
     //等待資料載完
     await init();
+    S01Monitor(); //login logout monitor
+    s09Monitor(); //地址和基本資料詢問
+    s12Monitor(); //好吃報報
+    s13Monitor(); //點歌排行與歌曲搜尋
+    s14Monitor(); //上架餐飲管理
+    s15Monitor(); //各地民宿介紹
+});
+//main function end
+
+
+//s01 login logout monitor start
+function S01Monitor() {
     //login start
     //監聽 l_nameb_select01
     $("#l_name").on("input", function () {
@@ -304,8 +316,13 @@ $(async function () {
         }
     });
     //register end
+}
+//s01 login logout monitor end
 
-    //s09 start預約基本資料
+//s09 monitor start 預約基本資料
+function s09Monitor() {
+    mapMonitor();
+
     //監聽 b_name
     $("#b_name").on("input", function () {
         flag_b_name = inputJudge("#b_name", "text", 2, 30)
@@ -328,12 +345,6 @@ $(async function () {
     $("#b_room").on("change", function () {
         flag_b_room = true;
     });
-    $("#b_city").on("change", function () {
-        flag_b_city = true;
-    });
-    $("#b_county").on("change", function () {
-        flag_b_county = true;
-    });
 
     //監聽 ok_btn_b_data
     $("#ok_btn_b_data").on("click", function () {
@@ -348,28 +359,14 @@ $(async function () {
         ) {
             $("#print_data_modal").modal("show");
             strHTML = `
-                    <div class="fw-900"><span class="h3">姓名: </span>${$(
-                "#b_name"
-            ).val()}</div>
-        <div class="fw-900"><span class="h3">日期: </span>${$(
-                "#b_date"
-            ).val()}</div>
-                    <div class="fw-900"><span class="h3">人數: </span>${$(
-                "#b_people"
-            ).val()}</div>
-                    <div class="fw-900"><span class="h3">電話: </span>${$(
-                "#b_phone"
-            ).val()}</div>
-                    <div class="fw-900"><span class="h3">包廂: </span>${$(
-                "#b_room option:selected"
-            ).text()}</div>
-                    <div class="fw-900"><span class="h3">城市: </span>${$(
-                "#b_city option:selected"
-            ).text()}</div>
-                    <div class="fw-900"><span class="h3">地區: </span>${$(
-                "#b_county option:selected"
-            ).text()}</div>
-                        `;
+                    <div class="fw-900"><span class="h3">姓名: </span>${$("#b_name").val()}</div>
+                    <div class="fw-900"><span class="h3">日期: </span>${$("#b_date").val()}</div>
+                    <div class="fw-900"><span class="h3">人數: </span>${$("#b_people").val()}</div>
+                    <div class="fw-900"><span class="h3">電話: </span>${$("#b_phone").val()}</div>
+                    <div class="fw-900"><span class="h3">包廂: </span>${$("#b_room option:selected").text()}</div>
+                    <div class="fw-900"><span class="h3">城市: </span>${$("#b_city option:selected").text()}</div>
+                    <div class="fw-900"><span class="h3">地區: </span>${$("#b_county option:selected").text()}</div>
+                    `;
             $("#print_data").empty();
             $("#print_data").append(strHTML);
             $("#printModalLabel").empty();
@@ -391,18 +388,17 @@ $(async function () {
         resetFormInpit("#b_date");
         resetFormInpit("#b_people");
         resetFormInpit("#b_phone");
-        $("#b_city").empty();
-        $("#b_city").append(
-            `<option value="" disabled selected>---所在縣市---</option>`
-        );
-        $("#b_county").empty();
-        $("#b_county").append(
-            `<option value="" disabled selected>---所在地區---</option>`
-        );
+        if (selectedLayer) selectedLayer.setStyle(baseStyle);
+        selectedLayer = null;
+        $("#b_city, #b_county").val("");
+        $("#b_county").prop("disabled", true);
+        map.setView([23.7, 121], 7);
     });
-    //s09 end
+}
+//s09 monitor end
 
-    //start s12
+//s12 monitor start
+function s12Monitor() {
     //產生縣市選單
     // //監聽選單cityFoodSelect
     $("#cityFoodSelect").on("change", function () {
@@ -423,9 +419,11 @@ $(async function () {
             $("#food_tbody").append(strHTML)
         });
     })
-    //end s12
+}
+//s12 monitor end
 
-    //s13 start
+//s13 monitor start
+function s13Monitor() {
     //monitor #btn_search
     $("#btn_search").on("click", function () {
         //console.log($("#s_search").val());
@@ -447,10 +445,11 @@ $(async function () {
         $('#video_player').removeAttr('src');
         //document.getElementById("video_player").src = "";
     });
+}
+//s13 monitor end
 
-    //s13 end
-
-    //s14 start
+//s14 monitor start
+function s14Monitor() {
     //監聽 更新按鈕 #mybartbody.btn-update
     $("#mybartbody").on("click", ".btn-update", function () {
         flag_p_name = flag_p_dtime = flag_p_qty = flag_p_price = true;
@@ -644,17 +643,21 @@ $(async function () {
 
         } else alertSW("輸入錯誤!", "請檢查欄位!");
     });
-    //s14 end
+}
+//s15 monitor end
 
-    //s15 start
+//s15 monitor start
+function s15Monitor() {
     //產生縣市選單
-    renderCityOption();
+    showOptionData("#citySelect", Object.keys(regionData), "選擇縣市名稱");
     //監聽選單citySelect
     $("#citySelect").on("change", function () {
         //console.log($(this).val());
         currentCity = $(this).val();
         const towns = Object.keys(regionData[currentCity]);
-        renderTownOption(towns);
+        //產生區域選單
+        showOptionData("#townSelect", towns, "選擇區域名稱");
+        currentTown = towns[0];
         $("#hotel_tbody").empty();
         const hotels = regionData[currentCity][currentTown];
         maxPage = hotels.length - 1;
@@ -684,9 +687,8 @@ $(async function () {
         renderHotelTable(regionData[currentCity][currentTown][currentPage]);
         renderHotelPagination(currentTown, currentPage);
     });
-    //s15 end
-});
-//main function end
+}
+//s15 monitor end
 
 //star s12
 //read open data ODwsvTravelFood.json
@@ -701,17 +703,6 @@ function getTravelFoodItem() {
             console.log("連線錯誤! - js/json/ODwsvTravelFood.json");
         }
     });
-}
-
-//產生縣市選單
-function renderFoodCityOption() {
-    $("#cityFoodSelect").empty();
-    $("#cityFoodSelect").append(`<option class="fw-500" value="" selected disabled>---選擇縣市名稱---</option>`);
-
-    for (const item in travelFoodData) {
-        var strHTML = `<option class="fw-500" value="${item}">${item}</option>`;
-        $("#cityFoodSelect").append(strHTML);
-    };
 }
 
 function groupFoodCity(ress) {
@@ -730,8 +721,8 @@ function groupFoodCity(ress) {
 
 function showdTravelFood(data) {
     travelFoodData = groupFoodCity(data);
-    //console.log(travelFoodData);
-    renderFoodCityOption();
+    //產生縣市選單
+    showOptionData("#cityFoodSelect", Object.keys(travelFoodData), "選擇縣市名稱");
     item = [3];
     $("#picture-in").empty();
     data.forEach((item, i) => {
@@ -964,33 +955,6 @@ function groupByCityTownAndChunk(hotels, chunkSize = 20) {
     return result;
 }
 
-//產生縣市選單
-function renderCityOption() {
-    $("#citySelect").empty();
-    $("#citySelect").append(`<option class="fw-900" value="" selected disabled>---選擇縣市名稱---</option>`);
-
-    for (const item in regionData) {
-        var strHTML = `<option class="fw-900" value="${item}">${item}</option>`;
-        $("#citySelect").append(strHTML);
-    };
-
-    // regionTitle.forEach((item) => {
-    //     var strHTML = `<option value="${item}">${item}</option>`;
-    //     $("#citySelect").append(strHTML);
-    // });
-}
-
-//產生區域選單
-function renderTownOption(towns) {
-    $("#townSelect").empty();
-    $("#townSelect").append(`<option class="fw-900" value="" selected disabled>---選擇區域名稱---</option>`);
-    towns.forEach((item) => {
-        var strHTML = `<option class="fw-900" value="${item}">${item}</option>`;
-        $("#townSelect").append(strHTML);
-    });
-    currentTown = towns[0];
-}
-
 function renderHotelTable(hotels) {
     $("#hotel_tbody").empty();
     hotels.forEach((item) => {
@@ -1194,15 +1158,10 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 })
 
 function showOptionData(id, data, def) {
-    console.log(data);
-
     $(id).empty();
     $(id).append(`<option value="" disabled selected>---${def}---</option>`);
     data.forEach(function (item) {
-        console.log(item.CityName);
-
-        let strHTML = `<option value="">${item.CityName}</option>`;
-        $(id).append(strHTML);
+        $(id).append(`<option value="${item}">${item}</option>`);
     });
 }
 
@@ -1324,26 +1283,170 @@ function announceModal() {
 
 }
 
-function inContent() {
-    const template = document.querySelector('#my-ccontent');
-    const clone = template.content.cloneNode(true);
-    document.getElementById('containerShow').appendChild(clone);
+//產生地圖
+// let map; //儲存地圖
+// function initMap() {
+//     map = L.map('map').setView([24.171425, 120.609670], 13);
+
+//     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//     }).addTo(map);
+
+//     L.marker([24.171425, 120.609670]).addTo(map)
+//         .bindPopup('中分署')
+//         .openPopup();
+
+//     L.marker([24.1809457, 120.6016879]).addTo(map)
+//         .bindPopup('東海大學體育館')
+//         .openPopup();
+// }
+
+let map, geoLayer;
+let taiwanData = {};
+let selectedLayer = null;
+
+/* 樣式 */
+const baseStyle = {
+    color: "#333",          // 邊框顏色
+    weight: 1,              // 邊框寬度
+    fillOpacity: 0.3,       // 填充透明度
+    fillColor: "#000"    // 填充顏色為灰色
+};
+
+const activeStyle = {
+    color: "transparent",   // 邊框顏色為透明
+    weight: 3,              // 邊框寬度
+    fillOpacity: 0          // 填充透明度設為 0，使選中的區域無填充色
+};
+
+// 解析 GeoJSON 資料並填充選單
+let cities = {};
+let cityCenters = {}; // 存儲縣市中心緯度
+let districtCenters = {}; // 存儲鄉鎮區中心緯度
+async function initMap() {
+    /* 初始化地圖 */
+    map = L.map("map").setView([23.7, 121], 7);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+    /* 載入行政區 GeoJSON */
+    await $.getJSON("js/json/twTown1982.geo.json", geo => {
+        geoLayer = L.geoJSON(geo, {
+            style: baseStyle,  // 預設樣式為灰色填充
+            onEachFeature: (feature, layer) => {
+                layer.on("click", () => {
+                    // 點擊區域時切換樣式
+                    selectArea(
+                        feature.properties.COUNTYNAME,
+                        feature.properties.TOWNNAME,
+                        layer
+                    );
+
+                    // 點擊後，將該區域樣式切換為 activeStyle
+                    layer.setStyle(activeStyle);
+
+                    // 在選中的區域，再次點擊則恢復為預設樣式
+                    layer.on("dblclick", () => {
+                        layer.setStyle(baseStyle);
+                    });
+                });
+            }
+        }).addTo(map);
+
+        geo.features.forEach(feature => {
+            let city = feature.properties.COUNTYNAME;
+            let district = feature.properties.TOWNNAME;
+
+            if (!cities[city]) cities[city] = [];
+            if (!cities[city].includes(district)) {
+                cities[city].push(district);
+
+                // 計算並存儲中心點
+                let bounds = L.geoJSON(feature).getBounds();
+                let center = bounds.getCenter();
+
+                // 存儲縣市中心點（取平均緯度）
+                if (!cityCenters[city]) {
+                    cityCenters[city] = { lat: 0, count: 0 };
+                }
+                cityCenters[city].lat += center.lat;
+                cityCenters[city].count++;
+
+                // 存儲鄉鎮區中心點
+                if (!districtCenters[city]) districtCenters[city] = {};
+                districtCenters[city][district] = center.lat;
+            }
+        });
+    });
+    // 計算縣市平均緯度
+    for (let city in cityCenters) {
+        cityCenters[city].avgLat = cityCenters[city].lat / cityCenters[city].count;
+    }
+
+    // 按縣市緯度（由北到南，緯度由高到低）排序
+    const sortedCities = Object.keys(cities).sort((a, b) => {
+        return cityCenters[b].avgLat - cityCenters[a].avgLat; // 由高到低排序（北到南）
+    });
+
+    //填充縣市選單
+    showOptionData("#b_city", sortedCities, "所在縣市");
+    // $("#b_city").append(`<option value="" disabled selected>-- 請選擇縣市 --</option>`);
+    // sortedCities.forEach(city => {
+    //     $("#b_city").append(`<option value="${city}">${city}</option>`);
+    // });
 }
 
-//產生地圖
-let map; //儲存地圖
-function initMap() {
-    map = L.map('map').setView([24.171425, 120.609670], 13);
+function mapMonitor() {
+    // 監聽縣市選擇，更新鄉鎮區選單
+    $("#b_city").on("change", function () {
+        flag_b_city = true;
+        const city = this.value;
+        $("#b_county").prop("disabled", false);
+        if (!city) return;
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+        // 按鄉鎮區緯度（由北到南，緯度由高到低）排序
+        const sortedDistricts = cities[city].sort((a, b) => {
+            return districtCenters[city][b] - districtCenters[city][a]; // 由高到低排序（北到南）
+        });
 
-    L.marker([24.171425, 120.609670]).addTo(map)
-        .bindPopup('中分署')
-        .openPopup();
+        showOptionData("#b_county", sortedDistricts, "所在地區");
+    });
 
-    L.marker([24.1809457, 120.6016879]).addTo(map)
-        .bindPopup('東海大學體育館')
-        .openPopup();
+    /* 縣市選擇 */
+    $("#b_county").on("change", function () {
+        flag_b_county = true;
+        selectArea($("#b_city").val(), this.value);
+    });
+
+    /* 清除 */
+    // $("#clearBtn").on("click", () => {
+    //     if (selectedLayer) selectedLayer.setStyle(baseStyle);
+    //     selectedLayer = null;
+    //     $("#b_city, #b_county").val("");
+    //     $("#b_county").prop("disabled", true);
+    //     map.setView([23.7, 121], 7);
+    // });
+}
+
+/* 核心：選取行政區（地圖 / 選單 共用） */
+function selectArea(city, district, layerFromMap) {
+    if (!city || !district) return;
+
+    // reset
+    if (selectedLayer) selectedLayer.setStyle(baseStyle);
+
+    geoLayer.eachLayer(l => {
+        const p = l.feature.properties;
+        if (p.COUNTYNAME === city && p.TOWNNAME === district) {
+            selectedLayer = l;
+        }
+    });
+
+    if (!selectedLayer) return;
+
+    selectedLayer.setStyle(activeStyle);
+    map.fitBounds(selectedLayer.getBounds(), { padding: [30, 30] });
+
+    // 同步選單
+    $("#b_city").val(city).trigger("change");
+    $("#b_county").val(district);
 }

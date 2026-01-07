@@ -290,3 +290,15 @@ body {
 .product-section-title {
     letter-spacing: 0.2rem;
 }
+
+.sidebar {
+    height: 100vh;
+    background: #f9fafb;
+}
+
+.info-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}

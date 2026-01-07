@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>台灣行政區 GIS</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.7.1.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <script src="js/leaflet.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #map {
+            height: 100vh;
+        }
+
+        .sidebar {
+            height: 100vh;
+            background: #f9fafb;
+        }
+
+        .info-box {
+            background: #fff;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- 左側 -->
+            <div class="col-3 sidebar p-3 border-end">
+
+                <h5 class="mb-3">行政區選擇</h5>
+
+                <div class="mb-3">
+                    <label class="form-label">縣市</label>
+                    <select id="citySelect" class="form-select"></select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">鄉鎮區</label>
+                    <select id="districtSelect" class="form-select"></select>
+                </div>
+
+                <button id="clearBtn" class="btn btn-outline-secondary w-100 mb-3">
+                    清除選取
+                </button>
+
+                <!-- 資訊卡 -->
+                <div id="infoBox" class="info-box d-none">
+                    <h6 id="infoTitle"></h6>
+                    <ul class="list-unstyled small mb-0">
+                        <li>👥 人口：<span id="pop"></span></li>
+                        <li>🏠 平均房價：<span id="price"></span></li>
+                        <li>📊 密度：<span id="density"></span></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- 地圖 -->
+            <div class="col-9 p-0">
+                <div id="map"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let map, geoLayer;
+        let taiwanData = {};
+        let selectedLayer = null;
+
+        /* 範例統計資料（可換成真實來源） */
+        const stats = {
+            "臺北市中正區": { pop: 158000, price: "95 萬 / 坪", density: "23,000 /km²" },
+            "臺北市大同區": { pop: 129000, price: "85 萬 / 坪", density: "25,000 /km²" },
+            "臺北市中山區": { pop: 230000, price: "110 萬 / 坪", density: "19,000 /km²" }
+        };
+
+        /* 樣式 */
+        const baseStyle = {
+            color: "#333",          // 邊框顏色
+            weight: 1,              // 邊框寬度
+            fillOpacity: 0.3,       // 填充透明度
+            fillColor: "#000"    // 填充顏色為灰色
+        };
+
+        const activeStyle = {
+            color: "transparent",   // 邊框顏色為透明
+            weight: 3,              // 邊框寬度
+            fillOpacity: 0          // 填充透明度設為 0，使選中的區域無填充色
+        };
+
+        /* 初始化地圖 */
+        map = L.map("map").setView([23.7, 121], 8);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+        /* 載入行政區 GeoJSON */
+        $.getJSON("js/json/twTown1982.geo.json", geo => {
+            geoLayer = L.geoJSON(geo, {
+                style: baseStyle,  // 預設樣式為灰色填充
+                onEachFeature: (feature, layer) => {
+                    layer.on("click", () => {
+                        // 點擊區域時切換樣式
+                        selectArea(
+                            feature.properties.COUNTYNAME,
+                            feature.properties.TOWNNAME,
+                            layer
+                        );
+
+                        // 點擊後，將該區域樣式切換為 activeStyle
+                        layer.setStyle(activeStyle);
+
+                        // 在選中的區域，再次點擊則恢復為預設樣式
+                        layer.on("dblclick", () => {
+                            layer.setStyle(baseStyle);
+                        });
+                    });
+                }
+            }).addTo(map);
+
+            // 解析 GeoJSON 資料並填充選單
+            let cities = {};
+            let cityCenters = {}; // 存儲縣市中心緯度
+            let districtCenters = {}; // 存儲鄉鎮區中心緯度
+
+            geo.features.forEach(feature => {
+                let city = feature.properties.COUNTYNAME;
+                let district = feature.properties.TOWNNAME;
+
+                if (!cities[city]) cities[city] = [];
+                if (!cities[city].includes(district)) {
+                    cities[city].push(district);
+
+                    // 計算並存儲中心點
+                    let bounds = L.geoJSON(feature).getBounds();
+                    let center = bounds.getCenter();
+
+                    // 存儲縣市中心點（取平均緯度）
+                    if (!cityCenters[city]) {
+                        cityCenters[city] = { lat: 0, count: 0 };
+                    }
+                    cityCenters[city].lat += center.lat;
+                    cityCenters[city].count++;
+
+                    // 存儲鄉鎮區中心點
+                    if (!districtCenters[city]) districtCenters[city] = {};
+                    districtCenters[city][district] = center.lat;
+                }
+            });
+
+            // 計算縣市平均緯度
+            for (let city in cityCenters) {
+                cityCenters[city].avgLat = cityCenters[city].lat / cityCenters[city].count;
+            }
+
+            // 按縣市緯度（由北到南，緯度由高到低）排序
+            const sortedCities = Object.keys(cities).sort((a, b) => {
+                return cityCenters[b].avgLat - cityCenters[a].avgLat; // 由高到低排序（北到南）
+            });
+
+            // 填充縣市選單
+            $("#citySelect").append(`<option value="" disabled selected>請選擇縣市</option>`);
+            sortedCities.forEach(city => {
+                $("#citySelect").append(`<option value="${city}">${city}</option>`);
+            });
+
+            // 監聽縣市選擇，更新鄉鎮區選單
+            $("#citySelect").on("change", function () {
+                const city = this.value;
+                $("#districtSelect").html(`<option value="" disabled selected>請選擇鄉鎮區</option>`);
+                $("#districtSelect").prop("disabled", false);
+                if (!city) return;
+
+                // 按鄉鎮區緯度（由北到南，緯度由高到低）排序
+                const sortedDistricts = cities[city].sort((a, b) => {
+                    return districtCenters[city][b] - districtCenters[city][a]; // 由高到低排序（北到南）
+                });
+
+                sortedDistricts.forEach(district => {
+                    $("#districtSelect").append(`<option>${district}</option>`);
+                });
+            });
+        });
+
+        /* 縣市選擇 */
+        $("#districtSelect").on("change", function () {
+            selectArea($("#citySelect").val(), this.value);
+        });
+
+        /* 核心：選取行政區（地圖 / 選單 共用） */
+        function selectArea(city, district) {
+            if (!city || !district) return;
+
+            // reset
+            if (selectedLayer) selectedLayer.setStyle(baseStyle);
+
+            geoLayer.eachLayer(l => {
+                const p = l.feature.properties;
+                if (p.COUNTYNAME === city && p.TOWNNAME === district) {
+                    selectedLayer = l;
+                }
+            });
+
+            if (!selectedLayer) return;
+
+            selectedLayer.setStyle(activeStyle);
+            map.fitBounds(selectedLayer.getBounds(), { padding: [30, 30] });
+
+            // 同步選單
+            $("#citySelect").val(city).trigger("change");
+            $("#districtSelect").val(district);
+
+            // 顯示統計
+            const key = city + district;
+            if (stats[key]) {
+                $("#infoTitle").text(key);
+                $("#pop").text(stats[key].pop.toLocaleString());
+                $("#price").text(stats[key].price);
+                $("#density").text(stats[key].density);
+                $("#infoBox").removeClass("d-none");
+            }
+        }
+
+        /* 清除 */
+        $("#clearBtn").on("click", () => {
+            if (selectedLayer) selectedLayer.setStyle(baseStyle);
+            selectedLayer = null;
+            $("#citySelect, #districtSelect").val("");
+            $("#districtSelect").prop("disabled", true);
+            $("#infoBox").addClass("d-none");
+            map.setView([23.7, 121], 7);
+        });
+    </script>
+
+
+</body>
+
+</html>
