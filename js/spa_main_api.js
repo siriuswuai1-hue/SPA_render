@@ -90,9 +90,9 @@ function S01Monitor() {
     //監聽 ok_btn_log
     $("#ok_btn_log").on("click", function () {
         // console.log($('#b_select01 option:selected').text());
+        console.log(flag_l_name, flag_l_pass);
         if (flag_l_name && flag_l_pass) {
             flag_l_name = flag_l_pass = false;
-
             //傳遞至後端執行登入驗證
             axios.post(`https://${dataHost}/api/login`, {
                 username: $("#l_name").val(),
@@ -132,7 +132,6 @@ function S01Monitor() {
                                 clearLoginUI();
                             }
                         });
-
                     }
                 })
                 .catch(function (error) {
@@ -145,7 +144,9 @@ function S01Monitor() {
                     $("#l_pass").attr('type', 'password');
                     $('#loginModal').modal('hide');
                 });
-        } else alertSW("輸入錯誤!", "請檢查輸入欄位!")
+        } else {
+            alertSW("輸入錯誤!", "請檢查輸入欄位!");
+        }
     });
 
     $("#btn_l_show").on("click", function () {
