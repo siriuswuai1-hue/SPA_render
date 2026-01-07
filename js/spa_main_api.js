@@ -90,6 +90,8 @@ function S01Monitor() {
     //監聽 ok_btn_log
     $("#ok_btn_log").on("click", function () {
         // console.log($('#b_select01 option:selected').text());
+        flag_l_name = inputJudge("#l_name", "text", 2, 30);
+        flag_l_pass = inputJudge("#l_pass", "text", 6, 30);
         console.log(flag_l_name, flag_l_pass);
         if (flag_l_name && flag_l_pass) {
             flag_l_name = flag_l_pass = false;
