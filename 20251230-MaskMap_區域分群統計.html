@@ -226,11 +226,11 @@
                 }
                 let popupHTML = `<div class="card">
                         <div class="card-body">
-                            <div class="h4 fw-900">${item.properties.name}</div>
-                            <div class="h4 fw-900">地址:${item.properties.address}</div>
-                            <div class="h4 fw-900 mb-0">電話: ${item.properties.phone}</div>
-                            <div class="h4 fw-900 mb-0">成人口罩: <span class="fw-900 h1 text-danger">${item.properties.mask_adult}</span> 個</div>
-                            <div class="h4 fw-900">兒童口罩: <span class="fw-900 h1 text-danger">${item.properties.mask_child}</span> 個</div>
+                            <div class="h5 fw-900">${item.properties.name}</div>
+                            <div class="h5 fw-900">地址:${item.properties.address}</div>
+                            <div class="h5 fw-900 mb-0">電話: ${item.properties.phone}</div>
+                            <div class="h5 fw-900 mb-0">成人口罩: <span class="fw-900 h3 text-danger">${item.properties.mask_adult}</span> 個</div>
+                            <div class="h5 fw-900">兒童口罩: <span class="fw-900 h3 text-danger">${item.properties.mask_child}</span> 個</div>
                         </div>
                     </div>`;
                 const marker = L.marker([lat, lng]).bindPopup(popupHTML);
