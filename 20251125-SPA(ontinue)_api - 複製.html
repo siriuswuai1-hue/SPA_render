@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KTV 形象網 SPA</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/animate.min.css" />
+  <link rel="stylesheet" href="css/spa_show.css" />
+  <link rel="stylesheet" href="css/all.min.css" />
+  <link rel="stylesheet" href="css/fonteffect.css" />
+  <link rel="stylesheet" href="css/imgeffect.css" />
+  <link rel="stylesheet" href="css/TimeLine.css" />
+  <link rel="stylesheet" href="css/table-rwd.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+
+<body class="bg-sliver" id="containerShow">
+  <!--****************** s01 Header & login & logout***************************-->
+  <section id="s01" class="sticky-md-top">
+    <nav class="navbar navbar-expand-lg bg-darkslategrey navbar-dark p-0 m-0">
+      <div class="container py-1">
+        <a class="navbar-brand wow animate__rollIn p-0 m-0" data-wow-duration="3s" data-wow-delay="0s"
+          href="javascript:void(0);" onclick="nothing()">
+          <img src="images/KTV/home_icon_t.png" width="60" alt="開口唱KTV" />
+        </a>
+        <div class="fw-900 display-4 text-danger text-nowrap" id="topLogo">開口唱KTV</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse p-0 m-0" id="navbarSupportedContent">
+          <ul class="p-0 m-0">
+            <li class="fw-900 text-light ps-2" id="showTime" style="list-style-type:none;">
+            </li>
+            <li style="list-style-type:none;">
+              <ul class="navbar-nav small">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#s04"><i class="fa-regular fa-message"></i>成果展示</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#s05"><i class="fa-regular fa-message"></i>企業精神</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#s06"><i class="fa-regular fa-message"></i>特惠活動</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle active" href="#s01" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa-brands fa-servicestack me-1"></i>服務項目
+                  </a>
+                  <ul class="dropdown-menu w-25">
+                    <li><a class="dropdown-item" href="#s09">線上預約</a></li>
+                    <li>
+                      <a class="dropdown-item" href="20251218-SPA-member-control-panel-api.html">會員專區</a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="https://play.google.com/store/games?hl=zh_TW"
+                        target="_blank">APP下載</a></li>
+                  </ul>
+              </ul>
+            </li>
+          </ul>
+          <div class="btn-group d-flex ms-lg-auto text-nowrap" role="group" aria-label="Basic mixed styles example">
+            <span class="text-01 h4 me-2 d-none" id="member-span">會員: <span class="text-light fw-900 h5
+              ">xxx</span></span>
+            <button class="btn btn-warning me-2 d-none" data-bs-toggle="modal" data-bs-target="#loginModal"
+              id="login-btn"><i class="fa-solid fa-user"></i>登入</button>
+            <button class="btn btn-success d-none" data-bs-toggle="modal" data-bs-target="#registerModal"
+              id="register-btn">
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>註冊</button>
+            <button class="btn btn-danger d-none me-2" id="logout-btn"><i
+                class="fa-solid fa-right-from-bracket"></i>登出</button>
+            <button class="btn btn-primary d-none" id="control-panel-btn"><i
+                class="fa-solid fa-solar-panel"></i>控制台</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!--****************** s02 out connection***************************-->
+  <section id="s02" class="bg-01">
+    <div class="container py-0">
+      <div class="text-end wow animate__slideInLeft" data-wow-duration="2s" data-wow-delay="0s" data-wow-iteration="2s">
+        <a href="#s02"><i class="fa-brands fa-square-facebook text-primary fa-2x"></i></a>
+        <a href="#s02"><i class="fa-brands fa-line text-success fa-2x"></i></a>
+        <a href="#s02"><i class="fa-regular fa-message text-primary fa-2x"></i></a>
+        <a href="#s02"><i class="fa-brands fa-square-x-twitter text-primary fa-2x"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!--****************** s03 輪播 v2***************************-->
+  <section id="s03">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-pause="hover">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="active"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner d-block mx-auto" style="height: 90vh; width: 90%;">
+        <div class="carousel-item bg-cover c-item2" style="
+              background-image: url(images/KTV/合唱.jpg);
+            ">
+          <div class="carousel-caption carousel-caption-box bg-dark bg-opacity-50 p-4 rounded-3 shadow-lg">
+            <div class="carousel-badge">
+              <i class="fa-solid fa-briefcase"></i>專屬方案
+            </div>
+            <div class="h1 fw-900 my-3">春酒同樂會</div>
+            <p class="mb-3 text-white-75">
+              新春就該把壓力通通丟進太空。
+              凝聚公司同仁向心力，增強跨部門交流互動。
+              以輕鬆、娛樂方式迎接新年度，提升團隊士氣。
+              藉由歡唱、抽獎、遊戲環節打造難忘的年度聚會。
+            </p>
+            <div class="carousel-list mb-3">
+              <div class="mb-1">
+                <i class="fa-solid fa-circle-check text-warning me-2"></i>客製化主持 × 氛圍營造全包
+              </div>
+              <div class="mb-1">
+                <i class="fa-solid fa-circle-check text-warning me-2"></i>互動式關卡 · 團隊挑戰儀式
+              </div>
+              <div class="mb-1">
+                <i class="fa-solid fa-circle-check text-warning me-2"></i>抽獎舞台視覺與影音整合
+              </div>
+            </div>
+            <div>
+              <button class="btn btn-warning">
+                <i class="fa-solid fa-calendar-check"></i>預約活動
+              </button>
+              <button class="btn btn-outline-light">
+                <i class="fa-solid fa-cloud-arrow-down"></i>方案簡介
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item bg-cover c-item2" style="
+              background-image: url(images/KTV/event_S.webp);
+            ">
+          <div class="carousel-caption carousel-caption-box bg-dark bg-opacity-50 p-4 rounded-3 shadow-lg">
+            <div class="carousel-badge">
+              <i class="fa-solid fa-briefcase me-1"></i>學生專屬企劃
+            </div>
+            <div class="h1 fw-900 my-3">畢業舞會 · 青春終章</div>
+            <p class="mb-3">
+              你說青春不能重來？
+              那更應該把這一晚辦到讓自己十年後回想都還會微笑。
+              我們替你們打造一場真正「屬於這一屆」的舞會──
+              氣氛、燈光、音樂，全都跟你們的故事同步跳動。
+            </p>
+            <div class="carousel-list mb-3">
+              <div class="mb-1">
+                <i class="fa-solid fa-circle-check text-warning me-2"></i>入場儀式 × 主題式佈景打造
+              </div>
+              <div class="mb-1">
+                <i class="fa-solid fa-circle-check text-warning me-2"></i>DJ／主持互動 全程帶嗨
+              </div>
+              <div class="mb-1">
+                <i class="fa-solid fa-circle-check text-warning me-2"></i>專業攝錄影 捕捉青春高光瞬間
+              </div>
+            </div>
+            <div>
+              <button class="btn btn-warning">
+                <i class="fa-solid fa-calendar-check"></i>預約活動
+              </button>
+              <button class="btn btn-outline-light">
+                <i class="fa-solid fa-cloud-arrow-down"></i>方案簡介
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item active bg-cover c-item2" style="
+              background-image: url(images/KTV/kalaok05.jpg);
+            ">
+          <div
+            class="carousel-caption carousel-caption-box bg-dark bg-opacity-50 p-4 rounded-3 shadow-lg wow animate__fadeInLeft c-caption01"
+            data-wow-duration="2s" data-wow-delay="0s" data-wow-iteration="2s">
+            <div class="carousel-badge">
+              <i class="fa-solid fa-briefcase me-1"></i>全新企劃
+            </div>
+            <div class="h2 fw-900 my-3">KTV 歌唱比賽</div>
+            <p class="mb-3">
+              年度最受期待的 KTV 歌唱大賽 隆重登場！
+              無論你是浴室歌神、情歌王子、搖滾女神，只要敢唱、愛唱，這個舞台就屬於你！
+              快帶上你的氣場、魅力與最強代表曲，站上舞台讓全場為你歡呼！
+            </p>
+            <div class="carousel-list mb-3">
+              <div class="mb-1">
+                <i class="fa-solid fa-circle-check text-warning me-2"></i>唱出你的主場，舞台為你發光！
+              </div>
+              <div class="mb-1">
+                <i class="fa-solid fa-circle-check text-warning me-2"></i>音浪開啟，讓你的聲音成為主角！
+              </div>
+              <div class="mb-1">
+                <i class="fa-solid fa-circle-check text-warning me-2"></i>K 歌霸主，你就是下一位！
+              </div>
+            </div>
+            <div>
+              <button class="btn btn-warning">
+                <i class="fa-solid fa-calendar-check"></i>預約活動
+              </button>
+              <button class="btn btn-outline-light">
+                <i class="fa-solid fa-cloud-arrow-down"></i>方案簡介
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev dir-text bgb-text f-round bg-cover" type="button"
+        data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">&gt;</span>
+      </button>
+      <button class="carousel-control-next dir-text bgb-text f-round bg-cover" type="button"
+        data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">&lt;;</span>
+      </button>
+    </div>
+  </section>
+
+  <!--****************** s04 countup ***************************-->
+  <section id="s04" class="mt-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-5 d-none d-md-block wow animate__rollOut" data-wow-duration="2s" data-wow-delay="1s"
+          data-wow-iteration="1">
+          <button class="bg-cover turnaround" style="
+              background-image: url(images/KTV/enka01S.jpg);
+              width: 80%;
+              aspect-ratio: 1;
+              opacity: 100%;
+              border-radius: 50%;
+            " onclick="reloadPage()"></button>
+        </div>
+        <div class="col-md-7 p-5 text-center">
+          <div class="h2 b-text">
+            西元2025年
+            <span class="h1 text-darkblue fw-900">全球最後一家</span><br />團隊優勢
+          </div>
+          <p class="mb-1">
+            專業服務團隊：具備豐富現場管理與客戶接待經驗。高效運營能力：完善流程，縮短等待時間，提高包廂周轉率。創意行銷企劃：不斷推出創新活動，吸引不同族群客群。技術維運完善：音響、燈光、系統皆由專業工程師定期維護。跨部門協作順暢：餐飲、櫃台、外場密切配合，提高顧客體驗。
+          </p>
+          <div class="row mt-5">
+            <div class="col-md-3 text-center">
+              <div class="h6">年均服務人次</div>
+              <div class="h4 fw-900 text-red counter01">
+                12345 <span class="h6">/人</span>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div class="h6">版權歌曲數目</div>
+              <div class="h4 fw-900 text-orange counter02">
+                23456 <span class="h6">/首</span>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div class="h6">點歌次數>500</div>
+              <div class="h4 fw-900 text-green counter03">
+                123 <span class="h6">/首</span>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div class="h6">公司據點</div>
+              <div class="h4 fw-900 text-blue counter04">
+                6 <span class="h6">/個</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--****************** s05 企業精神標語***************************-->
+  <section id="s05" class="mt-5 bg-cover"
+    style="background-image: url(images//KTV/karaok02-o.jpg); background-attachment: fixed; background-repeat: no-repeat;">
+    <div class="container py-5">
+      <div class="row d-flex flex-nowrap">
+        <div class="col-md-4 text-center bgb-text  mx-2 wow animate__zoomInDown" data-wow-duration="2s"
+          data-wow-delay="1s" data-wow-iteration="1">
+          <i class="fa-solid fa-heart turnaround" style="font-size: 80px; color: red"></i>
+          <div class="h3 fw-900 text-warning mt-3">服務用心，歡唱放心。</div>
+          <p class="mt-3 text-light text-center d-none d-md-block">
+            創造讓顧客放鬆、盡情享受的空間，提供超越期待的貼心服務，鼓勵員工以熱情與創意活化現場。
+          </p>
+        </div>
+        <div class="col-md-4 text-center bgb-text mx-2 wow animate__zoomInDown" data-wow-duration="3s"
+          data-wow-delay="1s" data-wow-iteration="1">
+          <i class="fa-solid fa-microphone turnaround" style="font-size: 80px; color: darkgreen"></i>
+          <div class="h3 fw-900 text-warning mt-3">唱出快樂，玩出精彩！</div>
+          <p class="mt-3 text-light text-center d-none d-md-block">
+            打造時尚、互動感強的 KTV
+            體驗，與潮流同步，讓每次到店都是新鮮感，讓每位顧客都能成為舞台主角。
+          </p>
+        </div>
+        <div class="col-md-4 text-center bgb-text mx-2 wow animate__zoomInDown" data-wow-duration="4s"
+          data-wow-delay="1s" data-wow-iteration="1">
+          <i class="fa-solid fa-music turnaround" style="font-size: 80px; color: darkblue"></i>
+          <div class="h3 fw-900 text-warning mt-3">音樂無界，歡樂無限</div>
+          <p class="mt-3 text-light text-center d-none d-md-block">
+            以音樂跨越界限，連結每一份感動，以創新打造無限歡樂，致力帶給大眾最真摯而自由的娛樂體驗。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--****************** s06 特惠活動***************************-->
+  <section id="s06" style="position: relative" class="mt-5">
+    <div class="col-md-5 bg-cover" style="
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          background-image: url(images/party005.jpg);
+          border-radius: 20px;
+        "></div>
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-md-7 s06-text">
+          <div class="h1 text-bg-danger fw-900 text-center my-3 wow animate__bounceOutDown" data-wow-duration="2s"
+            data-wow-delay="0s" data-wow-iteration="1">
+            特惠活動
+          </div>
+          <h4 class="text-danger">下午茶歡唱時段</h4>
+          <p>
+            平日 13:00–17:00，2 人同行歡唱 4
+            小時，每人優惠價。加贈小點心或飲料。
+          </p>
+          <h4 class="text-danger">夜唱 / 深夜特價</h4>
+          <p>
+            平日深夜（例如 22:00 之後）推出學生或年輕人夜唱價。8
+            小時歡唱優惠方案。
+          </p>
+          <div class="text-center">
+            <button class="btn btn-outline-primary fw-900" data-bs-toggle="tooltip" data-bs-placement="bottom"
+              title="查看更多優惠!" type="button">查看更多</button>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="h4 text-bg-warning fw-900 text-center my-3 wow animate__bounceOutLeft" data-wow-duration="2s"
+                data-wow-delay="0s" data-wow-iteration="1">
+                壽星專案
+              </div>
+              <h5 class="text-warning">
+                適用對象:當月壽星，需至少 2 人同行。
+              </h5>
+              <p>
+                當月壽星 免費 1 小時歡唱<br />
+                同行者以原價或當期優惠價計算。<br />
+                若全天消費達NT$1,000，可再加贈額外 1 小時。
+              </p>
+            </div>
+            <div class="col-md-6" data-wow-iteration="1">
+              <div class="h4 text-bg-warning fw-900 text-center my-3 wow animate__bounceOutRight" data-wow-duration="2s"
+                data-wow-delay="0s" data-wow-iteration="1">
+                學生專屬折扣
+              </div>
+              <h5 class="text-warning">
+                適用對象:在學學生，團體至少 2 人以上
+              </h5>
+              <p>
+                週一～週五 12:00–18:00<br />
+                學生限定：每人 199～299 元／3～4 小時<br />
+                可再加50 元升級無酒精飲料無限續杯。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--*************** s07 駐點 DJ 介紹 ***********************-->
+  <section id="s07" class="my-5">
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <div class="col-7 mt-3 bg-cyan d-flex justify-content-center" style="border-radius: 20px">
+          <span class="fw-900 r-text f-line my-2" style="font-size: 48px">
+            專業DJ介紹
+          </span>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-md-6 mt-1">
+          <div class="d-flex align-items-center">
+            <div class="round-square bg-cover me-3 col-4 wow animate__rollIn" data-wow-duration="1s" data-wow-delay="2s"
+              style="background-image: url(images/03.jpg)"></div>
+            <div class="bg-01">
+              <div class="h4 text-danger fw-900 my-3 text-center">
+                《聲控魔法師》<br />Lena
+              </div>
+              <p>
+                Lena
+                熟悉音效、燈光與舞台節奏，她能用最細膩的感受調整每一段演出，讓每位客人都像巨星般登場。她擁有專業沉穩的魅力，是舞台幕前幕後的靈魂工程師。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-1">
+          <div class="d-flex align-items-center">
+            <div class="round-square bg-cover me-3 col-4 wow animate__rollIn" data-wow-duration="1.5s"
+              data-wow-delay="0s" style="background-image: url(images/01.jpg)"></div>
+            <div class="bg-01">
+              <div class="h4 text-danger fw-900 my-3 text-center">
+                《星光主持》<br />小夏
+              </div>
+              <p>
+                小夏擁有自然不做作的主持風格，幽默又輕鬆，最擅長陪客人聊天、暖場與引導流程。她讓舞台不再有距離感，讓每位上台的人都能享受專屬自己的舞台時刻。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center mt-1">
+        <div class="col-md-6">
+          <div class="d-flex align-items-center">
+            <div class="round-square bg-cover me-3 col-4 wow animate__rollIn" data-wow-duration="2s" data-wow-delay="0s"
+              style="background-image: url(images/02.jpg)"></div>
+            <div class="bg-01">
+              <div class="h4 text-danger fw-900 my-3 text-center">
+                《溫柔系歌姫》<br />蘿拉
+              </div>
+              <p>
+                嗓音柔美，舞台風格典雅迷人，是大廳裡最具療癒氣質的主持人。她細緻的介紹讓賓客如沐春風，而當她開口唱歌時總能讓人瞬間沉浸。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-1">
+          <div class="d-flex align-items-center">
+            <div class="round-square bg-cover me-3 col-4 wow animate__rollIn" data-wow-duration="3s" data-wow-delay="0s"
+              style="background-image: url(images/04.jpg)"></div>
+            <div class="bg-01">
+              <div class="h4 text-danger fw-900 my-3 text-center">
+                《舞台靈魂》<br />阿亮
+              </div>
+              <p>
+                用最熟悉的笑容與招牌熱情迎接每一位來賓。阿亮擅長營造 KTV
+                最溫暖、最放鬆的氛圍，無論你是來盡情高歌，還是靜靜聆聽，他都是最可靠的氣氛掌舵者。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--*************** s08 包廂價格介紹 ***********************-->
+  <section id="s08 mt-5" style="position: relative">
+    <!-- <div
+        class="fw-900 text-center b-text mt-3"
+        style="color: blue; font-size: 48px">
+        🎤 KTV 包廂介紹
+      </div> -->
+    <div class="container my-2">
+      <div class="row">
+        <div class="col-md-7 py-1 s06-text">
+          <div class="my-3 bg-pink d-flex justify-content-center align-content-center border"
+            style="border-radius: 20px">
+            <span class="fw-900 b-text f-line my-2" style="color: blue; font-size: 48px">
+              🎤 KTV 包廂介紹
+            </span>
+          </div>
+          <dl class="row">
+            <dt class="col-sm-3 text-primary">小型包廂(1–5人)</dt>
+            <dd class="col-sm-9">
+              <p>
+                以簡約舒適為設計核心，提供輕鬆自在的獨立環境。配備高畫質顯示器與精準音場設定，讓您無論是練歌、約會或小型聚會，都能以最舒適的方式享受歌唱樂趣。
+              </p>
+              <p class="fw-900 text-primary wow animate__bounceIn" data-wow-duration="2s" data-wow-delay="2s">
+                平日：NT 350–600 / 小時, 假日：NT 500–800 / 小時
+              </p>
+            </dd>
+            <dt class="col-sm-3 text-danger">中型包廂(5–10人)</dt>
+            <dd class="col-sm-9">
+              <p>
+                兼具空間與音效表現，是聚餐、慶生與團體唱歌最常選擇。
+                提供雙麥克風與動態燈光，營造更豐富的互動氛圍。
+              </p>
+              <p class="fw-900 text-danger wow animate__bounceIn" data-wow-duration="3s" data-wow-delay="0s">
+                平日：NT 500–900 / 小時, 假日：NT 700–1200 / 小時
+              </p>
+            </dd>
+            <dt class="col-sm-3 text-greenyellow">大型包廂(10–20人)</dt>
+            <dd class="col-sm-9">
+              <p>
+                擁有更寬敞的環境與大尺寸影像設備，適合多人聚會與活動。
+                強化音場與大型螢幕讓每位來賓都能享受到沉浸式體驗。
+              </p>
+              <p class="fw-900 text-greenyellow wow animate__bounceIn" data-wow-duration="4s" data-wow-delay="0s">
+                平日：NT 800–1500 / 小時, 假日：NT 1200–2000 / 小時
+              </p>
+            </dd>
+            <dt class="col-sm-3 text-blue">Party Hall 宴會包廂(20–100人)</dt>
+            <dd class="col-sm-9">
+              <p>
+                可支援舞台活動、表演、簡報或派對。
+                提供舞台、專業燈光、多麥克風與大型投影，適合大型聚會
+              </p>
+              <p class="fw-900 text-blue wow animate__bounceIn" data-wow-duration="5s" data-wow-delay="0s">
+                平日：NT 3000–8000 / 小時, 假日：NT 5000–12000 / 小時
+              </p>
+            </dd>
+
+            <!-- 示範巢狀 -->
+            <dt class="col-sm-3 text-warning">服務可追加項目</dt>
+            <dd class="col-sm-9">
+              <dl class="row">
+                <dt class="col-sm-4">
+                  <p>選項多元</p>
+                </dt>
+                <dd class="col-sm-8">
+                  <ul>
+                    <li>
+                      <p>專業錄音 / KTV影片錄製</p>
+                    </li>
+                    <li>
+                      <p>專業點歌DJ / 舞台主持人</p>
+                    </li>
+                    <li>
+                      <p>豪華飲食吧</p>
+                    </li>
+                  </ul>
+                </dd>
+              </dl>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-md-5 bg-cover" style="
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            background-image: url(images/party006.jpg);
+            z-index: -100;
+            border-radius: 20px;
+          "></div>
+    </div>
+  </section>
+
+  <!--*************** s09 地址和基本資料詢問 ***********************-->
+  <section id="s09" class="mt-5">
+    <div class="container pt-3">
+      <div class="row">
+        <div class="col-md-6 wow animate__wobble" data-wow-duration="2s" data-wow-delay="1s" id="map">
+
+        </div>
+        <form class="col-md-6">
+          <div class="text-center bgb-text">
+            <span class="spinner-border text-success" role="status"></span>
+            <span class="display-6 fw-900 text-darkslategrey">線上預約</span>
+            <span class="spinner-border text-success" role="status" style="animation-direction: reverse;"></span>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label class="form-label">姓名
+                <input id="b_name" type="text" class="form-control form-control-lg" placeholder="姓名字數2~30字" required>
+                <div class="valid-feedback">輸入符合規定</div>
+                <div class="invalid-feedback">輸入不符合規定</div>
+              </label>
+            </div>
+            <div class="col-6">
+              <label class="form-label">日期
+                <input type="date" class="form-control  form-control-lg" id="b_date" required>
+                <div class="valid-feedback">日期有效！</div>
+                <div class="invalid-feedback">日期至少是今天!</div>
+              </label>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label class="form-label">人數
+                <input id="b_people" type="number" class="form-control form-select-lg" placeholder="人數1~1000人">
+                <div class="valid-feedback">輸入符合規定</div>
+                <div class="invalid-feedback">輸入不符合規定</div>
+              </label>
+            </div>
+            <div class="col-6">
+              <label class="form-label">行動電話
+                <input id="b_phone" type="number" class="form-control form-select-lg" placeholder="行動電話10碼(09xxxxxxxx)"
+                  required>
+                <div class="valid-feedback">輸入符合規定</div>
+                <div class="invalid-feedback">輸入不符合規定</div>
+              </label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <select name="" id="b_room" class="form-select form-select-lg">
+              <option value="" disabled selected>---包廂類型---</option>
+              <option value="">小型包廂(1–5人)</option>
+              <option value="">中型包廂(5–10人)</option>
+              <option value="">大型包廂(10–20人)</option>
+              <option value="">Party Hall 宴會包廂(20–100人)</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <select name="b_select01" class="form-select form-select-lg" id="b_city">
+              <option value="" disabled selected>---所在縣市---</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <select name="b_select02" class="form-select form-select-lg" id="b_county">
+              <option value="" disabled selected>---所在地區---</option>
+            </select>
+          </div>
+          <div class="my-4 text-center">
+            <button id="clr_btn_b_data" class="btn btn-secondary">
+              清除
+            </button>
+            <button id="ok_btn_b_data" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+              title="歡唱愉快!" type="button">
+              確認送出
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!--*************** s10 徵才公告 ***********************-->
+  <section id="s10" class="my-5 pb-5">
+    <div style="
+          --font-top-t: 25%;
+          --font-left-t: 47%;
+          --font-color-t: pink;
+          --font-content-t: '歡迎加入';
+        " class="timeline-section-text stroke-r-text b-text"></div>
+    <div class="row mt-2">
+      <div class="col-md-6 bg-cover" style="background-image: url(images/KTV/邀請左bw.png); height: 360px">
+        <div class="row m-1 p-2">
+          <div class="col-6 bgb-text wow animate__bounceInDown" data-wow-duration="2s" data-wow-delay="0s">
+            <small class="text-bg-danger badge">加入我們</small>
+            <div class="h4 text-warning">徵求外場經理1名</div>
+            <p>薪資待遇: 面議</p>
+            <p>
+              工作內容:<br />
+              協助接待重要客人、熟客，協調特殊要求（道具、加時、佈置需求），處理客訴，服務不滿意、飲品問題、噪音糾紛，與客人保持良好關係，提高回流率
+            </p>
+            <a href="https://www.104.com.tw/" class="btn btn-danger" target="_blank">應徵工作</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 bg-cover" style="background-image: url(images/KTV/邀請右bw.png); height: 360px">
+        <div class="row justify-content-end m-1 p-2 wow animate__bounceInDown" data-wow-duration="2s"
+          data-wow-delay="2s">
+          <div class="col-6 bgb-text">
+            <small class="text-bg-success badge">加入我們</small>
+            <div class="h4 text-warning">徵求音控工程師2名</div>
+            <p>薪資待遇: 月薪50,000</p>
+            <p>
+              工作內容:<br />
+              管理 KTV 點歌系統（金嗓/歡唱/天籟
+              等），更新系統、歌曲資料庫，處理歌本或新歌列表維護，管理機房，交換器、音控主機、中央擴大機
+            </p>
+            <a href="https://www.1111.com.tw/" class="btn btn-success" target="_blank">應徵工作</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 bg-cover" style="background-image: url(images/KTV/邀請左bw.png); height: 360px">
+        <div class="row m-1 p-2 wow animate__bounceInUp" data-wow-duration="2s" data-wow-delay="0s">
+          <div class="col-6 bgb-text">
+            <small class="text-bg-danger badge">加入我們</small>
+            <div class="h4 text-warning">徵求大廳 DJ 2名</div>
+            <p>薪資待遇: 月薪45,000</p>
+            <p>
+              工作內容:<br />
+              搭配外場，製造入場 Welcome
+              氛圍，配合外場與櫃台的指示播放指定歌曲，特殊活動時與主持人、行銷人員配合背景樂或Cue點
+            </p>
+            <a href="https://www.taiwanjobs.gov.tw/" class="btn btn-danger" target="_blank">應徵工作</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 bg-cover" style="background-image: url(images/KTV/邀請右bw.png); height: 360px">
+        <div class="row justify-content-end m-1 p-2 wow animate__bounceInUp" data-wow-duration="2s" data-wow-delay="0s">
+          <div class="col-6 bgb-text">
+            <small class="text-bg-success badge">加入我們</small>
+            <div class="h4 text-warning">徵求包廂服務人員3名</div>
+            <p>薪資待遇: 月薪30,000</p>
+            <p>
+              工作內容:<br />
+              接待客人、確認訂位資訊，帶領客人入包廂，協助座位安排，協助客人熟悉設備，點歌機、麥克風、燈光
+            </p>
+            <a href="https://www.518.com.tw/" class="btn btn-success" target="_blank">應徵工作</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--*************** s11 歡唱全攻略 ***********************-->
+  <section id="s11" class="container bg-cover mt-5" style="
+        position: relative;
+        background-image: url(images/KTV/MIC.jpg);
+        background-size: 120%;
+        opacity: 85%;
+      ">
+    <div class="row">
+      <div class="col-5 d-none d-md-block">
+        <div style="width: 250px; position: absolute; top: 25%; left: 10%" class="bgb-text p-2">
+          <h1 class="fw-900 r-stroke-text text-center" style="--font-size: 40px; --stroke-width: 1px" text="嗨唱全攻略">
+            歡唱全攻略
+          </h1>
+          <h5 class="text-light">
+            歡迎蒞臨本KTV包廂！這裡是盡情放聲歌唱、釋放壓力的最佳舞台。無論你是金曲歌王、浴室歌后，還是想與朋友同樂放鬆心情，都希望你在這裡度過最歡樂、最自在的美好時光！
+          </h5>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="text-center r-stroke-text d-block d-md-none mb-1" style="--font-size: 32px; --stroke-width: 1px"
+          text="嗨唱全攻略">
+          歡唱全攻略
+        </div>
+        <div class="timeline-section lh-sm">
+          <div class="row align-items-center justify-content-around timeline-section-pointer">
+            <div class="col-md-5 d-none d-md-block">
+              <div style="
+                    background-image: url(images/KTV/接待處.webp);
+                    width: auto;
+                  " class="bg-cover round-square"></div>
+            </div>
+            <div class="col-9 col-md-5 bgb-text wow animate__slideInLeft" data-wow-duration="1s" data-wow-delay="2s"
+              style="z-index: -200">
+              <div class="h5 text-center text-danger">1. 報到與接待</div>
+              <p>
+                首先到前台報到，確認預約或選擇包廂，工作人員會引導你進入指定的房間。
+              </p>
+            </div>
+          </div>
+          <div class="row my-1 align-items-center justify-content-around flex-row-reverse timeline-section-pointer">
+            <div class="col-5 d-none d-md-block">
+              <div style="
+                    background-image: url(images/KTV/包廂.webp);
+                    width: auto;
+                  " class="bg-cover round-square"></div>
+            </div>
+            <div class="col-9 col-md-5 bgb-text wow animate__slideInLeft" data-wow-duration="1.5s" data-wow-delay="0s"
+              style="z-index: -200">
+              <div class="h5 text-center text-info">2. 選擇包廂</div>
+              <p>
+                如果有多個包廂可供選擇，可以根據自己的需求和偏好，選擇一個合適的包廂。
+              </p>
+            </div>
+          </div>
+          <div class="row mb-1 align-items-center justify-content-around timeline-section-pointer">
+            <div class="col-5 d-none d-md-block">
+              <div style="
+                    background-image: url(images/KTV/點歌.jpg);
+                    width: auto;
+                  " class="bg-cover round-square"></div>
+            </div>
+            <div class="col-9 col-md-5 bgb-text text-warning wow animate__slideInLeft" data-wow-duration="2s"
+              data-wow-delay="0s" style="z-index: -200" ;>
+              <div class="h5 text-center">3. 點歌</div>
+              <p>
+                在點歌機上輸入歌曲編號，確認選擇的歌曲，將其加入播放列表中。
+              </p>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-around flex-row-reverse timeline-section-pointer my-1">
+            <div class="col-5 d-none d-md-block">
+              <div style="
+                    background-image: url(images/KTV/sing_love05.png);
+                    width: auto;
+                  " class="bg-cover round-square"></div>
+            </div>
+            <div class="col-9 col-md-5 bgb-text wow animate__slideInLeft" data-wow-duration="2.5s" data-wow-delay="0s"
+              style="z-index: -200">
+              <div class="h5 text-center text-success">4. 盡情歡唱</div>
+              <p>
+                無論唱得怎麼樣，最重要的是享受這個過程，釋放壓力，盡情表現自己，創造美好回憶！
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--*************** s12 好吃報報 ***********************-->
+  <section id="s12" class="mt-5 bg-cover" style="background-image: url(images/KTV/餐廳底圖.webp);">
+    <div style="position: relative;">
+      <button class="carousel-control-prev dir-text bgb-text f-round bg-cover" type="button" style="position:absolute;"
+        data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">&lt;</span>
+      </button>
+      <button class="carousel-control-next dir-text bgb-text f-round bg-cover" type="button" style="position: absolute;"
+        data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">&gt;</span>
+      </button>
+      <div class="container py-3">
+        <div class="d-flex justify-content-between align-items-end">
+          <div>
+            <div class="fw-900 product-section-title display-3 text-greenyellow wow animate__slideOutRight"
+              data-wow-duration="1s" data-wow-delay="1s"><i class="fa-solid fa-utensils text-danger"></i>地方特色美食</div>
+          </div>
+          <a href="#s12" class="text-decoration-none link-success small">
+            歡迎外送點餐<i class="fa-solid fa-arrow-right-long ms-2"></i>
+          </a>
+        </div>
+        <div id="carouselExampleControls1" class="carousel slide bg-04 bgb-text carousel-fade" data-bs-ride="carousel"
+          data-bs-interval="5000">
+          <div class="carousel-inner d-block mx-auto" id="picture-in">
+            <div class="carousel-item active">
+              <div class="row g-3">
+                <div class="col-md-3 d-none d-md-block">
+                  <div class="fw-900 text-orange h6">大餐廳</div>
+                  <div class="product-card">
+                    <img src="images/party002.jpg" alt="人氣餐飲...." height="180">
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-phone"></i>電話: 0987654321
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-location-dot"></i></i>地址:
+                    光明頂</div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="fw-900 text-orange h6">大餐廳</div>
+                  <div class="product-card">
+                    <img src="images/party000.jpg" alt="人氣餐飲...." height="360">
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-phone"></i>電話: 0987654321
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-location-dot"></i></i>地址:
+                    光明頂</div>
+                </div>
+                <div class="col-md-3 d-none d-md-block">
+                  <div class="fw-900 text-orange h6">大餐廳</div>
+                  <div class="product-card">
+                    <img src="images/party001.jpg" alt="人氣餐飲...." height="180">
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-phone"></i>電話: 0987654321
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-location-dot"></i></i>地址:
+                    光明頂</div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row g-3">
+                <div class="col-md-3 d-none d-md-block">
+                  <div class="fw-900 text-orange h6">大餐廳</div>
+                  <div class="product-card">
+                    <img src="images/party000.jpg" alt="人氣餐飲...." height="180">
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-phone"></i>電話: 0987654321
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-location-dot"></i></i>地址:
+                    光明頂</div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="fw-900 text-orange h6">大餐廳</div>
+                  <div class="product-card">
+                    <img src="images/party001.jpg" alt="人氣餐飲...." height="360">
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-phone"></i>電話: 0987654321
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-location-dot"></i></i>地址:
+                    光明頂</div>
+                </div>
+                <div class="col-md-3 d-none d-md-block">
+                  <div class="fw-900 text-orange h6">大餐廳</div>
+                  <div class="product-card">
+                    <img src="images/party002.jpg" alt="人氣餐飲...." height="180">
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-phone"></i>電話: 0987654321
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-location-dot"></i></i>地址:
+                    光明頂</div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row g-3">
+                <div class="col-md-3 d-none d-md-block">
+                  <div class="fw-900 text-orange h6">大餐廳</div>
+                  <div class="product-card">
+                    <img src="images/party001.jpg" alt="人氣餐飲...." height="180">
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-phone"></i>電話: 0987654321
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-location-dot"></i></i>地址:
+                    光明頂</div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="fw-900 text-orange h6">大餐廳</div>
+                  <div class="product-card">
+                    <img src="images/party002.jpg" alt="人氣餐飲...." height="360">
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-phone"></i>電話: 0987654321
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-location-dot"></i></i>地址:
+                    光明頂</div>
+                </div>
+                <div class="col-md-3 d-none d-md-block">
+                  <div class="fw-900 text-orange h6">大餐廳</div>
+                  <div class="product-card">
+                    <img src="images/party000.jpg" alt="人氣餐飲...." height="180">
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-phone"></i>電話: 0987654321
+                  </div>
+                  <div class="small text-warning fw-900"><i class="fa-solid fa-location-dot"></i></i>地址:
+                    光明頂</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-md">
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <select name="" id="cityFoodSelect" class="form-select form-select-lg fw-500 bg-04 text-center">
+            <option value="" selected disabled>---選擇縣市名稱---</option>
+            <option value="">南投縣</option>
+          </select>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <div class="col-md-12">
+          <div class="card bg-transparent">
+            <div class="card-body bg-04 bg-opacity-50 p-3">
+              <table class="table table-rwd table-hover table-striped bg-sliver" style="--rwd-title-width:15%;">
+                <thead>
+                  <tr>
+                    <th>編號</th>
+                    <th>名稱</th>
+                    <th>電話</th>
+                    <th>地址</th>
+                    <th>簡介</th>
+                  </tr>
+                </thead>
+                <tbody id="food_tbody" class="fw-400">
+                  <tr>
+                    <td data-th="編號"></td>
+                    <td data-th="名稱"></td>
+                    <td data-th="電話"></td>
+                    <td data-th="地址"></td>
+                    <td data-th="簡介"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--*************** s13 點歌排行與歌曲搜尋 ***********************-->
+  <section id="s13" class="my-5">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <div class="container-fluid">
+        <i class="fa-solid fa-magnifying-glass text-cyan h1"></i>
+        <a class="navbar-brand h1" href="#s13">點歌排行與歌曲搜尋</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#s02">回頁首</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#s13" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                排列方式
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="javascript:void(0);" onclick="sortSong('點歌次數')">點歌次數</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" onclick="sortSong('編號')">編號</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" onclick="sortSong('歌名')">歌名</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" onclick="sortSong('歌名')">演唱者</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" onclick="sortSong('語種')">語種</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="s_search">
+            <button class="btn btn-success" type="button" id="btn_search">Search</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid mt-2">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-11">
+          <div class="card bg-05">
+            <div class="card-body p-3">
+              <table class="table table-rwd table-hover table-striped table-bordered border-secondary bg-transparent">
+                <!-- <table class="table table-rwd table-hover table-striped table-bordered border-secondary"> -->
+                <thead class="h5 text-brown wow animate__rollIn" data-wow-duration="2s" data-wow-delay="0s">
+                  <tr>
+                    <th>排行</th>
+                    <th>歌曲編號</th>
+                    <th>歌曲名稱</th>
+                    <th>演唱者</th>
+                    <th>語種</th>
+                    <th>點歌次數</th>
+                    <th>試聽</th>
+                  </tr>
+                </thead>
+                <tbody id="mysongtbody">
+                  <tr>
+                    <td data-th="排行">1</td>
+                    <td data-th="歌曲編號">20001</td>
+                    <td data-th="歌曲名稱">風吹</td>
+                    <td data-th="演唱者">江蕙</td>
+                    <td data-th="語種">台語</td>
+                    <td data-th="點歌次數">1234</td>
+                    <td data-th="試聽"><a
+                        href="https://www.youtube.com/watch?v=BL5Y2UUoj5g&list=RDBL5Y2UUoj5g&start_radio=1"
+                        target="_blank">試聽點</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--*************** s14 上架餐飲管理 ***********************-->
+  <section id="s14" class="my-5 bg-cover py-3"
+    style="background-image: url(images/KTV/純享吧.webp); background-repeat: no-repeat;">
+    <div class="col-10 d-block mx-auto wow animate__jello align-content-center bgb-text" data-wow-duration="2s"
+      data-wow-delay="1s" style="height: 80px;">
+      <div class="col-9 fw-900 text-center mx-auto d-blok text-crimson bg-01"><span class="hollow-text"
+          style="font-size: 48px; white-space: nowrap;">純享Bar管理</span></div>
+    </div>
+    <button type="button" class="btn btn-lg btn-success fw-900 mx-auto d-block mt-3" id="add_btn">新增上架</button>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-11 mt-1 bg-01">
+          <div class="card bg-transparent">
+            <div class="card-body bg-light bg-opacity-50 p-3">
+              <table class="table table-rwd bg-sliver text-dark h6 fw-400 table-hover text-center table-striped">
+                <thead class="bg-grey">
+                  <tr>
+                    <th>編號</th>
+                    <th>名稱</th>
+                    <th>價格</th>
+                    <th>數量</th>
+                    <th>下架時間</th>
+                    <th style="width: 150px;">操作</th>
+                  </tr>
+                </thead>
+                <tbody id="mybartbody">
+                  <tr>
+                    <td data-th="編號">1</td>
+                    <td data-th="名稱">煎蛋</td>
+                    <td data-th="價格">10</td>
+                    <td data-th="數量">5</td>
+                    <td data-th="下架時間">12:00</td>
+                    <td>
+                      <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal">更新</button>
+                      <button class="btn btn-danger">刪除</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <nav aria-label="Page navigation example">
+            <ul class="pagination mt-4 justify-content-center" id="myBarPagination">
+              <li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="nothing()">&lt;</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="nothing()">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="nothing()">&gt;</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- updateModal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="foodBarModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content bg-01">
+          <div class="modal-header text-bg-warning">
+            <h1 class="modal-title fs-5" id="foodBarModalLabel">餐點更新</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">編號
+                <input type="text" class="form-control" id="p_id" placeholder="--自動編號--" disabled>
+              </label>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">名稱
+                <input type="text" list="p_list" class="form-control" placeholder="名稱 1~20個字元" id="p_name">
+                <div class="valid-feedback">輸入符合規定</div>
+                <div class="invalid-feedback">輸入不符合規定</div>
+              </label>
+
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <label class="form-label">價格
+                  <input type="number" min="1" max="100" class="form-control" placeholder="價格 1~100" id="p_price">
+                  <div class="valid-feedback">輸入符合規定</div>
+                  <div class="invalid-feedback">輸入不符合規定</div>
+                </label>
+              </div>
+              <div class="col-6">
+                <label class="form-label">數量
+                  <input type="number" min="1" max="100" class="form-control" placeholder="數量 1~100" id="p_qty">
+                  <div class="valid-feedback">輸入符合規定</div>
+                  <div class="invalid-feedback">輸入不符合規定</div>
+                </label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">下架時間
+                <input type="text" class="form-control" placeholder="下架時間 hh:mm" id="p_dtime">
+                <div class="valid-feedback">輸入符合規定</div>
+                <div class="invalid-feedback">輸入不符合規定</div>
+              </label>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel_btn">取消</button>
+            <button type="button" class="btn btn-primary" id="update_ok_btn">確認</button>
+            <button type="button" class="btn btn-primary" id="add_ok_btn">確認</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--*************** s15 各地民宿介紹 ***********************-->
+  <section id="s15" class="bg-cover" style="background-image: url(images/民宿.jpg);">
+    <div class="container-fluid">
+      <div class="display-4 fw-900 text-darkgreen text-center p-5 wow animate__flipOutY" data-wow-duration="1s"
+        data-wow-delay="2s">
+        <span class="f-line bg-04 text-nowrap">旅館民宿-資訊資料庫</span>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <select name="" id="citySelect" class="form-select form-select-lg fw-900 text-center bg-04 bgb-text">
+            <option value="" selected disabled>---選擇縣市名稱---</option>
+            <option value="">南投縣</option>
+          </select>
+        </div>
+        <div class="col-md-5">
+          <select name="" id="townSelect" class="form-select form-select-lg fw-900 text-center bg-04 bgb-text">
+            <option value="" selected disabled>---選擇區域名稱---</option>
+            <option value="">南投市</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-10">
+          <div class="card bg-transparent">
+            <div class="card-body bg-04 bg-opacity-50 p-3">
+              <table class="table table-rwd table-hover table-striped bg-sliver" style="--rwd-title-width:15%">
+                <thead>
+                  <tr>
+                    <th>編號</th>
+                    <th>名稱</th>
+                    <th>電話</th>
+                    <th>地址</th>
+                    <th>簡介</th>
+                  </tr>
+                </thead>
+                <tbody id="hotel_tbody" class="fw-400">
+                  <tr>
+                    <td data-th="編號"></td>
+                    <td data-th="名稱"></td>
+                    <td data-th="電話"></td>
+                    <td data-th="地址"></td>
+                    <td data-th="簡介"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <nav aria-label="Page navigation example">
+            <ul class="pagination mt-3 justify-content-center" id="mypagination">
+              <li class="page-item"><a class="page-link badge-info" href="#s15">&lt;</a></li>
+              <li class="page-item"><a class="page-link badge-info" href="#s15">1</a></li>
+              <li class="page-item"><a class="page-link badge-info" href="#s15">&gt;</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--*************** s16 友站連結 footer ***********************-->
+  <section id="s16" class="bg-darkslategrey">
+    <div class="container">
+      <ul class="nav">
+        <li class="nav-item wow animate__slideInLeft" data-wow-duration="1s" data-wow-delay="0s">
+          <a class="nav-link disabled fw-900">@PowerBy Sirius 2025</a>
+        </li>
+        <li class="nav-item wow animate__slideInRight" data-wow-duration="1s" data-wow-delay="0s">
+          <a class="nav-link active" aria-current="page" href="https://www.cashboxparty.com/" target="_blank">錢櫃</a>
+        </li>
+        <li class="nav-item wow animate__slideInRight" data-wow-duration="2s" data-wow-delay="0s">
+          <a class="nav-link" href="https://www.holiday.com.tw/" target="_blank">好樂迪</a>
+        </li>
+        <li class="nav-item wow animate__slideInRight" data-wow-duration="3s" data-wow-delay="0s">
+          <a class="nav-link" href="https://permio1.com/wego/" target="_blank">WEGO</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ********************print_data_modal******************** -->
+  <div class="modal fade" id="print_data_modal" tabindex="-1" aria-labelledby="printModalLabel" aria-hidden="true">
+    <div class="modal-dialog f-line">
+      <div class="modal-content bg-01">
+        <div class="modal-header text-bg-warning">
+          <h1 class="modal-title fs-5 fw-900" id="printModalLabel">
+            輸出資料列印
+          </h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body text-bg-light">
+          <div class="fw-900" id="print_data">
+            <h3>姓名:</h3>
+            xxx
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="btn_print_close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            關閉
+          </button>
+          <!-- <button id="ok_btn04" type="button" class="btn btn-primary">確認</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- loginModal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-01">
+        <div class="modal-header text-bg-warning">
+          <h1 class="modal-title fs-5 fw-900" id="loginModalLabel">
+            會員登入
+          </h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <form class="modal-body text-bg-light">
+          <div class="row mb-3">
+            <label class="form-label">帳號
+              <input id="l_name" type="text" class="form-control" placeholder="帳號字數2~30字" />
+              <div class="valid-feedback">輸入符合規定</div>
+              <div class="invalid-feedback">輸入不符合規定</div>
+            </label>
+          </div>
+          <div class="row mb-3 d-flex align-items-center">
+            <label class="col-10 form-label">密碼
+              <input id="l_pass" type="password" class="form-control" placeholder="密碼字數6~30字" />
+              <div class="valid-feedback">輸入符合規定</div>
+              <div class="invalid-feedback">輸入不符合規定</div>
+            </label>
+            <button id="btn_l_show" class="col-2 h-auto rounded-2 h6 text-grey" type="button">顯示</button>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <a href="#s01" class="me-auto text-decoration-none" data-bs-toggle="modal"
+            data-bs-target="#registerModal">註冊帳號</a>
+          <button id="ng_btn01" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            取消
+          </button>
+          <button id="ok_btn_log" type="button" class="btn btn-primary">
+            確認
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- registerModal -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content timeline-section bg-04" style="--time-line-t:10%;--time-line-b:12%;">
+        <div class="modal-header text-bg-success">
+          <h1 class="modal-title fs-5 fw-900" id="registerModalLabel">
+            會員註冊
+          </h1>
+        </div>
+        <div class="modal-body text-bg-light">
+          <form class="row">
+            <div class="col-md-6" style="height: 450px; overflow-y: scroll;">
+              <div class="h3 fw-900">會員守則</div>
+              <p>
+                <span class="fw-900">一、會員資格</span><br />
+                註冊本網站會員時，請確認您已年滿 18
+                歲，並保證所填寫之姓名、電話、Email
+                等資料為真實、正確且可聯繫之資訊，如有變更請主動更新。
+              </p>
+              <p>
+                <span class="fw-900">二、帳號與密碼</span><br />
+                會員有義務妥善保管帳號與密碼，不得出借、轉讓或提供第三人使用。凡經由該帳號登入系統後所進行之一切操作，將視為該會員本人之行為。
+              </p>
+              <p>
+                <span class="fw-900">三、預約與變更</span><br />
+                使用線上預約服務時，請確認日期、時段與方案內容。若需變更或取消預約，請依本公司公告之時間與方式辦理，逾期恕不受理，相關費用以現場或網站公告為準。
+              </p>
+              <p>
+                <span class="fw-900">四、消費與付款</span><br />
+                會員於本網站或門市進行之各項消費與付費方案，均以當時公告之價格與活動內容為準。本公司保留調整方案、價格及優惠內容之權利，恕不另行個別通知。
+              </p>
+              <p>
+                <span class="fw-900">五、使用禮貌與安全</span><br />
+                會員於本會館消費與使用設施時，請遵守現場工作人員指示，並保持基本禮貌與尊重。禁止任何騷擾、喧鬧、暴力、故意損壞設備或影響他人權益之行為，本公司得視情況拒絕提供服務。
+              </p>
+              <p>
+                <span class="fw-900">六、個資與通知</span><br />
+                會員同意本公司於合理範圍內，利用您提供之聯絡方式（包含
+                Email、簡訊、通訊軟體等），通知訂單資訊、服務異動及行銷優惠。個人資料僅用於服務與法令許可之範圍內處理。
+              </p>
+              <p>
+                <span class="fw-900">七、會員權益變更</span><br />
+                本公司保留隨時修改會員守則、調整會員權益與服務內容之權利，修改後之內容將公告於網站，公告後即自動生效。建議會員不定期查閱以維護自身權益。
+              </p>
+              <p class="small text-danger">
+                完成註冊或勾選「同意」即表示您已詳細閱讀並同意遵守上述會員守則。
+              </p>
+              <div class="form-check form-switch">
+                <label class="form-check-label">不同意
+                  <input type="checkbox" name="" id="r_switch" class="form-check-input" />
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 ps-4">
+              <div class="row mb-3">
+                <label class="form-label">帳號
+                  <input type="text" class="form-control" id="r_name" placeholder="帳號字數2~30字" />
+                  <div class="valid-feedback" id="r_name-valid-feedback">帳號符合規定</div>
+                  <div class="invalid-feedback" id="r_name-invalid-feedback">帳號不符合規定</div>
+                </label>
+              </div>
+              <div class="row mb-3 d-flex align-items-center">
+                <label class="col-10 form-label">密碼
+                  <input id="r_pass01" type="password" class="form-control" placeholder="密碼字數6~30字" />
+                  <div class="valid-feedback">輸入符合規定</div>
+                  <div class="invalid-feedback">輸入不符合規定</div>
+                </label>
+                <button id="btn_show01" class="col-2 h-auto rounded-2 h6 text-grey" type="button">顯示</button>
+              </div>
+              <div class="row mb-3 d-flex align-items-center">
+                <label class="col-10 form-label">確認密碼(需與上面欄位相同)
+                  <input id="r_pass02" type="password" class="form-control" placeholder="密碼字數6~30字" />
+                  <div class="valid-feedback">輸入符合規定</div>
+                  <div class="invalid-feedback">輸入不符合規定</div>
+                </label>
+                <button id="btn_show02" class="col-2 h-auto rounded-2 h6 text-grey" type="button">顯示</button>
+              </div>
+              <div class="mt-3 row">
+                <label class="form-label">Email
+                  <div class="mb-3">
+                    <input type="email" class="form-control" id="r_email" placeholder="Email字數5~30字需含'@'" />
+                    <div class="valid-feedback">輸入符合規定</div>
+                    <div class="invalid-feedback">輸入不符合規定</div>
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#s02" class="me-auto text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal">前往登入</a>
+        <button id="ng_btn02" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          取消
+        </button>
+        <button id="ok_btn_reg" type="button" class="btn btn-primary">
+          確認
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/counter_up2.js"></script>
+  <script src="js/jquery-3.7.1.js"></script>
+  <script src="js/sweetalert2.all.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/spa_main_api.js?v=123456"></script>
+  <script src="js/leaflet.js" crossorigin=""></script>
+</body>
+
+</html>
