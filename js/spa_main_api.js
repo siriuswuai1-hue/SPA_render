@@ -49,12 +49,21 @@ let flag_r_name = false,
 
 async function init() {
     //檢查toekn是否存在和合法
-    await checkLoginStatus();
-    await getTravelFoodItem();
-    await getHotelData();
-    await initMap();
-    await getBarItem();
-    await getAllSongs();
+    await Promise.all([
+        checkLoginStatus(),
+        getTravelFoodItem(),
+        getHotelData(),
+        initMap()
+    ]);
+
+    // await checkLoginStatus();
+    // await getTravelFoodItem();
+    // await getHotelData();
+    // await initMap();
+
+    //移到 checkLoginStatus()
+    // await getBarItem();
+    // await getAllSongs();
 }
 
 //main function start
@@ -467,7 +476,6 @@ function s14Monitor() {
     });
 
     //監聽 刪除按鈕 #mybartbody.btn-delete
-    // 監聽 刪除按鈕 #mybartbody .btn-delete
     $("#mybartbody").on("click", ".btn-delete", function () {
         const id = $(this).data("id");
 
@@ -490,19 +498,24 @@ function s14Monitor() {
                         Authorization: `Bearer ${token}`
                     }
                 })
-                    .then(response => {
+                    .then(() => {
                         Swal.fire({
                             title: "已刪除！",
                             icon: "success",
-                            timer: 1500,
-                            showConfirmButton: false
+                            timer: 2000
                         }).then(() => {
                             getBarItem(); // 重新取得列表
                         });
                     })
                     .catch(error => {
-                        console.error("刪除失敗:", error);
-                        const msg = error.response?.data?.error || "刪除失敗，請稍後再試";
+                        console.error("Delete error:", error); // 先印出來看！
+
+                        let msg = "刪除失敗，請稍後再試";
+                        if (error.response) {
+                            // 檢查 response.data 的實際結構
+                            const data = error.response.data;
+                            msg = data?.error || data?.message || data?.msg || msg;
+                        }
                         Swal.fire("錯誤", msg, "error");
                     });
             }
@@ -556,10 +569,6 @@ function s14Monitor() {
         $("#add_ok_btn").removeClass("hideElement");
     });
 
-    // $('#cancel_btn').on('click', function () {
-    //   $('#updateModal').modal('hide');
-    // });
-
     //按鈕監聽 #add_ok_btn
     $("#add_ok_btn").on("click", function () {
         if (flag_p_name && flag_p_dtime && flag_p_qty && flag_p_price) {
@@ -585,7 +594,7 @@ function s14Monitor() {
                             confirmButtonText: "確認",
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                // food;
+                                getBarItem(); // 重新取得列表
                             }
                         });
                     } else alertSW("狀態不明", response.status)
@@ -601,7 +610,6 @@ function s14Monitor() {
                 })
                 .finally(function () {
                     // always executed
-                    flag_p_name = flag_p_dtime = flag_p_qty = flag_p_price = false;
                 });
         } else alertSW("輸入錯誤!", "請檢查欄位!")
     });
@@ -801,9 +809,8 @@ let songData = [];
 function getAllSongs() {
     let token = localStorage.getItem("uid");
 
-    // 若無 token，直接提示並中止
+    // 若無 token，直接中止
     if (!token) {
-        alertSW("請先登入");
         return Promise.resolve(); // 保持回傳 Promise 的一致性
     }
 
@@ -1016,6 +1023,10 @@ let maxFoodPage = 0;
 //取得所有資料
 function getBarItem() {
     let token = localStorage.getItem("uid");
+    // 若無 token，直接中止
+    if (!token) {
+        return Promise.resolve(); // 保持回傳 Promise 的一致性
+    }
     return axios.get(`https://${dataHost}/api/barfoods/list`, {
         headers: { Authorization: `Bearer ${token}` }
     })
@@ -1030,6 +1041,7 @@ function getBarItem() {
                 foodsData[page].push(item);
             });
             maxFoodPage = foodsData.length - 1;
+            if (currentBarPage > maxFoodPage) currentBarPage = maxFoodPage;
             renderBarTable(currentBarPage);
             renderBarPagination(currentBarPage);
         })
@@ -1213,7 +1225,11 @@ async function checkLoginStatus() {
 
 }
 
-function setLoginUI(username) {
+async function setLoginUI(username) {
+    await Promise.all([
+        getBarItem(),
+        getAllSongs()
+    ]);
     // s02 登入與註冊按鈕消失
     $("#login-btn").addClass("d-none");
     $("#register-btn").addClass("d-none");
