@@ -53,8 +53,8 @@ async function init() {
     await getTravelFoodItem();
     await getHotelData();
     await initMap();
-    //await getBarItem();
-    //await getAllSongs();
+    await getBarItem();
+    await getAllSongs();
 }
 
 //main function start
@@ -280,8 +280,7 @@ function S01Monitor() {
                 }
                 axios.post(`https://${dataHost}/api/register`, jsonDATA)
                     .then(function (response) {
-                        console.log(response);
-                        if (response.request.status == 200) {
+                        if (response.request.status == 200 || response.request.status == 201) {
                             Swal.fire({
                                 title: "註冊成功!",
                                 confirmButtonText: "確認",
@@ -468,45 +467,43 @@ function s14Monitor() {
     });
 
     //監聽 刪除按鈕 #mybartbody.btn-delete
+    // 監聽 刪除按鈕 #mybartbody .btn-delete
     $("#mybartbody").on("click", ".btn-delete", function () {
-        //詢問確認刪除?
+        const id = $(this).data("id");
+
+        // 確認刪除
         Swal.fire({
-            title: "確認刪除?",
-            icon: "question",
-            showDenyButton: true,
-            showCancelButton: false,
-            confirmButtonText: "確認",
-            denyButtonText: "取消"
+            title: "確認刪除？",
+            text: "此操作無法復原！",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "確定刪除",
+            cancelButtonText: "取消",
+            reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                //執行刪除行為
-                //console.log($(this).data("id"));
-                let id = $(this).data("id");
-                axios.delete(`https://${dataHost}:3002/barFoods/${id}`)
-                    .then(function (response) {
-                        //console.log(response);
-                        if (response.status == 200) {
-                            //刪除成功
-                            Swal.fire({
-                                title: "刪除成功",
-                                icon: "success",
-                                showDenyButton: false,
-                                showCancelButton: false,
-                                confirmButtonText: "確認",
-                                denyButtonText: `Don't save`
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    // location.href = "product-20251128-table.html";
-                                    getBarItem();
-                                }
-                            });
-                        } else alertSW("刪除失敗")
+                // 執行刪除
+                const token = localStorage.getItem("uid");
+
+                axios.delete(`https://${dataHost}/api/barfoods/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                    .then(response => {
+                        Swal.fire({
+                            title: "已刪除！",
+                            icon: "success",
+                            timer: 1500,
+                            showConfirmButton: false
+                        }).then(() => {
+                            getBarItem(); // 重新取得列表
+                        });
                     })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-                    .finally(function () {
-                        // always executed
+                    .catch(error => {
+                        console.error("刪除失敗:", error);
+                        const msg = error.response?.data?.error || "刪除失敗，請稍後再試";
+                        Swal.fire("錯誤", msg, "error");
                     });
             }
         });
@@ -566,34 +563,41 @@ function s14Monitor() {
     //按鈕監聽 #add_ok_btn
     $("#add_ok_btn").on("click", function () {
         if (flag_p_name && flag_p_dtime && flag_p_qty && flag_p_price) {
+            console.log(flag_p_name, flag_p_dtime, flag_p_qty, flag_p_price);
             //內容都符合規定
             //收集資料並轉呈json格式
             let jsonDATA = {};
             jsonDATA["name"] = $("#p_name").val();
             jsonDATA["price"] = $("#p_price").val();
             jsonDATA["qty"] = $("#p_qty").val();
-            jsonDATA["downTime"] = $("#p_dtime").val();
+            jsonDATA["downtime"] = $("#p_dtime").val();
             //傳遞至後端API 執行新增
-            axios.post(`https://${dataHost}:3002/barFoods`, JSON.stringify(jsonDATA))
+            const token = localStorage.getItem("uid");
+            return axios.post(`https://${dataHost}/api/barfoods/add`, jsonDATA,
+                { headers: { Authorization: `Bearer ${token}` } })
+                // axios.post(`https://${dataHost}:3002/barFoods`, JSON.stringify(jsonDATA))
                 .then(function (response) {
-                    if (response.status == 201) {
+                    if (response.status == 201 || response.status == 200) {
                         //新增成功
                         Swal.fire({
                             title: "新增成功!",
                             icon: "success",
-                            showDenyButton: false,
-                            showCancelButton: false,
                             confirmButtonText: "確認",
-                            denyButtonText: `Don't save`
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // food;
                             }
                         });
-                    } else alertSW(response.statusText)
+                    } else alertSW("狀態不明", response.status)
+                    console.log(response);
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.error("API Error:", error);
+                    Swal.fire({
+                        title: "網路錯誤",
+                        text: error.response?.data?.message || error.message,
+                        icon: "error"
+                    });
                 })
                 .finally(function () {
                     // always executed
@@ -607,18 +611,21 @@ function s14Monitor() {
         if (flag_p_name && flag_p_price && flag_p_qty && flag_p_dtime) {
             //更新輸入符合規定
             //整理傳遞給後端API所需的資料
-            let id = $("#p_id").val();
+            const id = $("#p_id").val();
             let jsonDATA = {};
             jsonDATA["name"] = $("#p_name").val();
             jsonDATA["price"] = $("#p_price").val();
             jsonDATA["qty"] = $("#p_qty").val();
-            jsonDATA["downTime"] = $("#p_dtime").val();
+            jsonDATA["downtime"] = $("#p_dtime").val();
 
             //傳遞至後端API 執行更新
-            axios.put(`https://${dataHost}:3002/barFoods/${id}`, JSON.stringify(jsonDATA))
+            //axios.put(`https://${dataHost}:3002/barFoods/${id}`, JSON.stringify(jsonDATA))
+            let token = localStorage.getItem("uid");
+            return axios.put(`https://${dataHost}/api/barfoods/${id}`, jsonDATA,
+                { headers: { Authorization: `Bearer ${token}` } })
                 .then(function (response) {
                     //console.log(response);
-                    if (response.status == 200) {
+                    if (response.status == 200 || response.status == 201) {
                         Swal.fire({
                             title: "更新成功",
                             icon: "success",
@@ -643,7 +650,6 @@ function s14Monitor() {
                 .finally(function () {
                     // always executed
                 });
-
         } else alertSW("輸入錯誤!", "請檢查欄位!");
     });
 }
@@ -792,21 +798,34 @@ function showdTravelFood(data) {
 //start s13
 //取得songs.json所有資料
 let songData = [];
-let songRanking = new Map;
 function getAllSongs() {
-    return axios.get(`https://${dataHost}:3001/songs`)
+    let token = localStorage.getItem("uid");
+
+    // 若無 token，直接提示並中止
+    if (!token) {
+        alertSW("請先登入");
+        return Promise.resolve(); // 保持回傳 Promise 的一致性
+    }
+
+    return axios.get(`https://${dataHost}/api/songs/list`, {
+        headers: { Authorization: `Bearer ${token}` }
+    })
         .then(function (response) {
-            songData = response.data;
-            sortSong("點歌次數");
+            // 確保 data 存在且為陣列
+            songData = Array.isArray(response.data?.data) ? response.data.data : [];
+            sortSong("點歌次數"); // 資料重構
         })
         .catch(function (error) {
-            console.log(error);
+            // 合併錯誤訊息為單一字串（符合 alertSW 預期）
+            const errorMsg = error.response?.data?.message || error.message || "未知錯誤";
+            alertSW("獲取歌曲列表失敗", errorMsg);
         })
         .finally(function () {
             // always executed
         });
 }
 
+let songRanking = new Map;
 function sortSong(sortWay) {
     // 取出 songs
     // 依歌曲名稱排序（localeCompare 支援中文）
@@ -815,14 +834,14 @@ function sortSong(sortWay) {
             songData.sort((a, b) => a.no - b.no);
             break;
         case "點歌次數":
-            songData.sort((a, b) => b.singedTimes - a.singedTimes);
+            songData.sort((a, b) => b.singed_imes - a.singed_times);
             songRanking.clear();
             songData.forEach(function (item, key) {
                 songRanking.set(item.no, key);
             })
             break;
         case "演唱者":
-            songData.sort((a, b) => a.singerName.localeCompare(b.singerName, 'zh-TW'));
+            songData.sort((a, b) => a.singer_name.localeCompare(b.singer_name, 'zh-TW'));
             break;
         case "歌名":
             songData.sort((a, b) => a.name.localeCompare(b.name, 'zh-TW'));
@@ -831,8 +850,22 @@ function sortSong(sortWay) {
             songData.sort((a, b) => a.language.localeCompare(b.language, 'zh-TW'));
             break;
     }
-    //把排序後資料塞回 data
-    renderSongTable();
+    //產生table
+    $("#mysongtbody").empty();
+    songData.forEach((item) => {
+        let strHTML = `
+                  <tr class="fw-500">
+                    <td data-th="排行">${songRanking.get(item.no) + 1}</td>
+                    <td data-th="歌曲編號">${item.no}</td>
+                    <td data-th="歌曲名稱">${item.name}</td>
+                    <td data-th="演唱者">${item.singer_name}</td>
+                    <td data-th="語種">${item.language}</td>
+                    <td data-th="點歌次數">${item.singed_times}</td>
+                    <td data-th="試聽"><button class="btn btn-success text-nowrap p-0" title="歡迎試聽!" style="font-size:14px;" onclick="openVideoModal('${item.location}')">試聽點</button>
+                    </td>
+                  </tr>`;
+        $("#mysongtbody").append(strHTML);
+    });
 }
 
 //搜尋歌名
@@ -864,7 +897,7 @@ function searchSong(name) {
                     <td>${songRanking.get(item.no) + 1}</td>
                     <td>${item.no}</td>
                     <td>${item.name}</td>
-                    <td>${item.singerName}</td>
+                    <td>${item.singer_name}</td>
                     <td>${item.language}</td>
                     <td>
                       <button class="btn btn-success text-nowrap p-0" title="歡迎試聽!" style="font-size:14px;" type="button" onclick="openVideoModal('${item.location}')">試聽點</button>
@@ -882,25 +915,6 @@ function searchSong(name) {
         //此筆名稱不存在, 可以使用
         alertSW("查無歌名相近歌曲!");
     }
-}
-
-function renderSongTable() {
-    //產生table
-    $("#mysongtbody").empty();
-    songData.forEach((item) => {
-        let strHTML = `
-                  <tr class="fw-500">
-                    <td data-th="排行">${songRanking.get(item.no) + 1}</td>
-                    <td data-th="歌曲編號">${item.no}</td>
-                    <td data-th="歌曲名稱">${item.name}</td>
-                    <td data-th="演唱者">${item.singerName}</td>
-                    <td data-th="語種">${item.language}</td>
-                    <td data-th="點歌次數">${item.singedTimes}</td>
-                    <td data-th="試聽"><button class="btn btn-success text-nowrap p-0" title="歡迎試聽!" style="font-size:14px;" onclick="openVideoModal('${item.location}')">試聽點</button>
-                    </td>
-                  </tr>`;
-        $("#mysongtbody").append(strHTML);
-    });
 }
 //end s13
 
@@ -1001,11 +1015,14 @@ let currentBarPage = 0;
 let maxFoodPage = 0;
 //取得所有資料
 function getBarItem() {
-    return axios.get(`https://${dataHost}:3002/barFoods`)
+    let token = localStorage.getItem("uid");
+    return axios.get(`https://${dataHost}/api/barfoods/list`, {
+        headers: { Authorization: `Bearer ${token}` }
+    })
         .then(function (response) {
             //資料重構
             foodsData = [];
-            response.data.forEach((item, key) => {
+            response.data.data.forEach((item, key) => {
                 if (key % 10 == 0) {
                     foodsData.push([]);
                 }
@@ -1034,10 +1051,10 @@ function renderBarTable(page = 0) {
                         <td data-th="名稱">${item.name}</td>
                         <td data-th="價格">${item.price}</td>
                         <td data-th="數量">${item.qty}</td>
-                        <td data-th="下架時間">${item.downTime}</td>
+                        <td data-th="下架時間">${item.downtime}</td>
                         <td data-th="操作">
                             <button class="btn btn-warning btn-update" data-bs-toggle="modal"
-                                data-bs-target="#updateModal" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-qty="${item.qty}" data-dtime="${item.downTime}">更新</button>
+                                data-bs-target="#updateModal" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-qty="${item.qty}" data-dtime="${item.downtime}">更新</button>
                             <button class="btn btn-danger btn-delete" data-id="${item.id}">刪除</button>
                         </td>
                       </tr>`;
