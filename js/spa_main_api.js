@@ -2,7 +2,7 @@
 //const dataHost = "192.168.10.2";
 //const dataHost = "10.201.171.105";
 //const dataHost = "flask-api-render-gj52.onrender.com";
-const dataHost = "https://web-production-85353.up.railway.app"
+const dataHost = "web-production-85353.up.railway.app";
 
 // wowjs 初始化
 new WOW().init();
